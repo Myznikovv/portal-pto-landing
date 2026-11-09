@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Портал ПТО — исполнительная документация из сметы</title>
+<meta name="description" content="Акты скрытых работ, реестры материалов, сертификаты и схемы собираются из локальной сметы в один готовый PDF-комплект ИД.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1e2029">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Портал ПТО — исполнительная документация из сметы">
+<meta property="og:description" content="Акты скрытых работ, реестры материалов, сертификаты и схемы собираются из сметы в один готовый PDF.">
+<meta property="og:image" content="og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Golos+Text:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="design/tokens.css">
+<link rel="stylesheet" href="design/components.css">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<a class="skip" href="#s7">Перейти к заявке</a>
+<div class="progress" id="progress"></div>
+<nav class="rail" id="rail" aria-label="Листы страницы"></nav>
+
+<div class="head" id="head"><div class="container">
+  <a class="brand" href="#s1">Портал<i>.</i>ПТО</a>
+  <nav class="nav" aria-label="Разделы">
+    <a href="#s3">Как собирается акт</a><a href="#s4">Комплект ИД</a><a href="#s6">Дилерам</a>
+    <a class="btn btn-cta" href="#s7">Оставить заявку</a>
+  </nav>
+</div></div>
+
+<header class="hero" id="s1"><div class="container">
+  <span class="sheet">Лист 1 из 7 · исполнительная документация</span>
+  <h1><span class="sr-only">Вся исполнительная документация — в одном пакете</span>
+    <span aria-hidden="true" class="display" style="font-size: var(--fs-display)">Вся исполнительная</span>
+    <span aria-hidden="true" class="display is-accent" style="font-size: var(--fs-display-xl)" data-scramble="в одном пакете">в одном пакете</span></h1>
+  <p class="lead">Акты скрытых работ, реестры материалов, сертификаты и схемы собираются из вашей сметы в один готовый PDF.</p>
+  <div class="row"><a class="btn btn-cta" href="#s7">Оставить заявку</a><a class="btn btn-ghost" href="#s3">Как собирается акт</a></div>
+  <div class="hero-foot"><div class="event"><span class="sheet">Демо · пример события</span><b>Акт № 14 подписан</b><span>Данные демонстрационные, не из реального объекта</span></div></div>
+</div></header>
+
+<main>
+<section class="section" id="s2"><div class="container">
+  <span class="sheet">Лист 2 из 7 · где теряется время</span>
+  <h2 class="head2"><span class="sr-only">Одни и те же данные переписывают по кругу</span><span aria-hidden="true" class="display" data-scramble="Одни и те же данные">Одни и те же данные</span><span aria-hidden="true" class="display is-accent">переписывают по кругу</span></h2>
+  <p class="lead">Смета, акты, реестры, ведомость — документы про одни и те же работы. Пока их набирают вручную, расхождения неизбежны.</p>
+  <div class="cols">
+    <div class="card reveal"><span class="num">01</span><h3>Из сметы — в акты</h3><p>Работы, объёмы и материалы набирают заново в каждом акте, а расхождения находят уже на приёмке.</p></div>
+    <div class="card reveal"><span class="num">02</span><h3>Сертификаты под каждый материал</h3><p>Документы на материалы ищут по папкам и раскладывают по актам вручную.</p></div>
+    <div class="card reveal"><span class="num">03</span><h3>Смету поправили — акты остались старыми</h3><p>Изменения в смете не доходят до уже оформленных актов и реестров.</p></div>
+  </div>
+</div></section>
+
+<section class="section is-paper story" id="s3"><div class="story-stick"><div class="container story-grid">
+  <div>
+    <span class="sheet">Лист 3 из 7 · как это работает</span>
+    <h2 class="head2"><span class="sr-only">Акт собирается из сметы</span><span aria-hidden="true" class="display" data-scramble="Акт собирается">Акт собирается</span><span aria-hidden="true" class="display is-accent">из сметы</span></h2>
+    <ol class="steps" id="steps">
+      <li><div><b>Работа из сметы</b><span>Позиции и единицы берутся из локальной сметы заказа.</span></div></li>
+      <li><div><b>Материалы и объём</b><span>К работе привязываются материалы и количество.</span></div></li>
+      <li><div><b>Участники и приказы</b><span>Реквизиты, приказы и выписки СРО подставляются в акт.</span></div></li>
+      <li><div><b>Текст АОСР</b><span>Текст акта собирается автоматически, даты и формулировки можно поправить.</span></div></li>
+      <li><div><b>Печать и комплект</b><span>Акты складываются в итоговый комплект ИД одним PDF.</span></div></li>
+    </ol>
+  </div>
+  <div class="paper-sheet" aria-label="Пример заполнения акта (демо)">
+    <div class="titleblock" id="tb">
+      <div class="k">Работа</div><div>Монтаж лотков</div>
+      <div class="k">Материал</div><div>Лоток 200×50</div>
+      <div class="k">Объём</div><div>120 м</div>
+      <div class="k">Участники</div><div>Заказчик, подрядчик</div>
+      <div class="k">Статус</div><div>Принято</div>
+    </div>
+    <div class="stamp is-pending" id="st">АОСР<br>№ 14</div>
+    <span class="muted mono">Пример · данные демонстрационные</span>
+  </div>
+</div></div></section>
+
+<section class="section" id="s4"><div class="container">
+  <span class="sheet">Лист 4 из 7 · комплект ИД</span>
+  <h2 class="head2"><span class="sr-only">Весь комплект ИД в одном файле</span><span aria-hidden="true" class="display" data-scramble="Весь комплект ИД">Весь комплект ИД</span><span aria-hidden="true" class="display is-accent">в одном файле</span></h2>
+  <p class="lead">Порядок листов собирается автоматически. Если не хватает приложения, сборка скажет об этом, а не пропустит молча.</p>
+  <div class="pack">
+    <div class="card reveal"><h3>Что входит</h3>
+      <ul class="checks">
+        <li>Обложка, титульный лист и общий реестр</li>
+        <li>Приказы и разрешительные документы, выписки СРО</li>
+        <li>Ведомость подсчёта выполненных работ</li>
+        <li>Для каждого акта: АОСР, реестр материалов, схемы и сертификаты</li>
+        <li>Корешок папки и этикетка носителя</li>
+      </ul></div>
+    <div class="card is-paper reveal"><h3>Журнал актов <span class="muted mono">· пример</span></h3>
+      <div class="table-wrap"><table class="ledger">
+        <thead><tr><th>Акт</th><th>Работа</th><th class="num">Объём</th><th>Статус</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">АОСР-14</td><td>Монтаж лотков</td><td class="num">120 м</td><td><span class="badge badge-ok">Принято</span></td></tr>
+          <tr class="is-active"><td class="mono">АОСР-15</td><td>Прокладка кабеля</td><td class="num">860 м</td><td><span class="badge badge-warn">На проверке</span></td></tr>
+          <tr><td class="mono">АОСР-16</td><td>Монтаж заземления</td><td class="num">45 м</td><td><span class="badge badge-bad">Замечание</span></td></tr>
+        </tbody></table></div></div>
+  </div>
+</div></section>
+
+<section class="section is-paper" id="s5"><div class="container">
+  <span class="sheet">Лист 5 из 7 · портал</span>
+  <h2 class="head2"><span class="sr-only">Как это выглядит в портале</span><span aria-hidden="true" class="display" data-scramble="Как это выглядит">Как это выглядит</span><span aria-hidden="true" class="display is-accent">в портале</span></h2>
+  <div class="shots">
+    <figure class="screen reveal"><figcaption><span>Работы и материалы: смета → акт → работа → материал</span><span>демо-данные</span></figcaption><img src="assets/portal-editor.png" alt="Редактор «Работы и материалы» в портале: акт АОСР-1 с работой и материалом" width="1568" height="247" loading="lazy"></figure>
+    <figure class="screen reveal"><figcaption><span>Документы по заявке в одной строке</span><span>демо-данные</span></figcaption><img src="assets/portal-documents.png" alt="Строка заявки в портале: ведомость работ, спецификация, сертификаты, АОСР и кнопка «Скачать итоговый ИД»" width="1568" height="174" loading="lazy"></figure>
+  </div>
+</div></section>
+
+<section class="section is-paper" id="s6"><div class="container">
+  <span class="sheet">Лист 6 из 7 · дилерам</span>
+  <h2 class="head2"><span class="sr-only">Передайте заказ — оформим документацию</span><span aria-hidden="true" class="display" data-scramble="Передайте заказ">Передайте заказ</span><span aria-hidden="true" class="display is-accent">оформим документацию</span></h2>
+  <div class="dealer">
+    <div>
+      <p class="lead">Вы передаёте заказ, мы ведём ПТО и собираем исполнительную документацию. Стоимость считается по прайсу от суммы заказа.</p>
+      <div class="row" style="margin-top: var(--s-24)"><a class="btn btn-cta" href="#s7" data-topic="dealer">Стать дилером</a></div>
+    </div>
+    <ul class="checks">
+      <li>Единый прайс по ступеням суммы заказа</li>
+      <li>Калькулятор стоимости в портале для дилеров</li>
+      <li>Ход оформления виден в портале</li>
+    </ul>
+  </div>
+</div></section>
+
+<section class="section" id="s7"><div class="container">
+  <span class="sheet">Лист 7 из 7 · заявка</span>
+  <h2 class="head2"><span class="sr-only">Расскажите о вашем заказе</span><span aria-hidden="true" class="display" data-scramble="Расскажите">Расскажите</span><span aria-hidden="true" class="display is-accent">о вашем заказе</span></h2>
+  <p class="lead">Ответим в рабочее время и подскажем, как оформить документацию по вашему объекту.</p>
+  <form class="form" id="form" novalidate style="margin-top: var(--s-32)">
+    <div class="two">
+      <div class="field"><label for="f-name">Имя</label><input id="f-name" name="name" autocomplete="name" required><span class="hint" id="e-name"></span></div>
+      <div class="field"><label for="f-phone">Телефон</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="+7" required><span class="hint" id="e-phone"></span></div>
+    </div>
+    <div class="two">
+      <div class="field"><label for="f-company">Компания</label><input id="f-company" name="company" autocomplete="organization"></div>
+      <div class="field"><label for="f-topic">Что нужно</label><select id="f-topic" name="topic">
+        <option value="Оформить документацию">Оформить документацию</option>
+        <option value="Подключить портал">Подключить портал</option>
+        <option value="Стать дилером" data-key="dealer">Стать дилером</option></select></div>
+    </div>
+    <div class="field"><label for="f-note">Комментарий</label><textarea id="f-note" name="note" rows="3"></textarea></div>
+    <label class="consent"><input type="checkbox" id="f-consent" required><span>Согласен на обработку персональных данных по <a href="https://xn----7sbzkmbfbku1a.xn--p1ai/policy" target="_blank" rel="noopener">политике конфиденциальности</a></span></label>
+    <span class="hint" id="e-consent" style="color: var(--bad)"></span>
+    <div class="row"><button class="btn btn-cta" type="submit">Отправить заявку</button><span class="form-msg" id="form-msg" role="status"></span></div>
+  </form>
+</div></section>
+</main>
+
+<footer class="foot"><div class="container">
+  <div><a class="brand" href="#s1">Портал<i>.</i>ПТО</a><p>ООО «БИЗНЕСТЕХНОЛОГИИ»<br>ИНН 9719009312 · КПП 771901001<br>ОГРН 1207700412138</p></div>
+  <div><p>105215, г. Москва, ул. Константина Федина, д. 13</p><p><a href="tel:+79777537070">+7 977 753-70-70</a><br><a href="mailto:7537070@mail.ru">7537070@mail.ru</a></p></div>
+</div></footer>
+
+<script src="main.js"></script>
+</body>
+</html>

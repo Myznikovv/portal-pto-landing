@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Style-tile — лендинг ПТО</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Golos+Text:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  .grid { display: grid; gap: var(--s-24); grid-template-columns: repeat(auto-fit, minmax(var(--col-min), 1fr)); }
+  .row { display: flex; flex-wrap: wrap; gap: var(--s-16); align-items: center; }
+  .label { margin: 0 0 var(--s-16); color: var(--ink); font: 600 var(--fs-18)/1.2 var(--font-head); }
+  .note { color: var(--muted); font-size: var(--fs-14); margin: var(--s-8) 0 0; }
+  .tag { display: inline-block; padding: var(--s-4) var(--s-8); border-radius: var(--r-sm); background: var(--warn-soft); color: var(--warn); font: var(--fs-12)/1 var(--font-mono); }
+  .hero .container { padding-block: var(--s-96) var(--s-64); display: grid; gap: var(--s-24); }
+  .hero p { margin: 0; max-width: 36em; }
+  .hero .event { max-width: var(--card-max); }
+  .ab { display: grid; gap: var(--s-16); align-content: start; }
+    .ab .alt { font-family: var(--font-head); font-weight: 700; font-size: var(--fs-display); text-transform: uppercase; color: var(--ink); line-height: var(--lh-tight); }
+  .scene { display: grid; gap: var(--s-24); grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; }
+  @media (max-width: 700px) { .scene { grid-template-columns: 1fr; } }
+  .seg { padding-block: var(--s-64); }
+  .block { display: block; }
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<nav class="rail" id="rail" aria-label="Листы страницы"></nav>
+
+<header class="hero" id="s1">
+  <div class="container">
+    <span class="sheet">Лист 1 из 7 · первый экран</span>
+    <h1><span class="sr-only">Вся исполнительная документация — в одном пакете</span>
+      <span aria-hidden="true" class="display block">Вся исполнительная</span>
+      <span aria-hidden="true" class="display is-accent block" style="font-size: var(--fs-display-xl)" data-scramble="в одном пакете">в одном пакете</span></h1>
+    <p>Пример текста для проверки шрифта и ритма, не финальный. Настоящие формулировки пишем на шаге «контент».</p>
+    <div class="row"><a class="btn btn-cta" href="#s4">Посчитать оформление</a><a class="btn btn-ghost" href="#s3">Как собирается акт</a></div>
+    <div class="event"><span class="sheet">Демо · пример события</span><b>Акт № 14 подписан</b><span>Данные демонстрационные, не из реального объекта</span></div>
+  </div>
+</header>
+
+<main>
+  <section class="section" id="s2"><div class="container">
+    <span class="sheet">Лист 2 из 7 · типографика</span>
+    <h2 class="label" style="margin-top: var(--s-16)">Сравнение заголовка: Unbounded и Golos Text</h2>
+    <div class="grid">
+      <div class="ab"><span class="tag">Вариант А — Unbounded (рекомендую)</span>
+        <div class="display">Полностью <span class="is-accent">цифровой</span> акт</div>
+        <p class="note">Широкий, тяжёлый — тот же вид, что у образца. Только заглавные, 1–2 строки, одно слово цветом.</p></div>
+      <div class="ab"><span class="tag">Вариант Б — Golos Text</span>
+        <div class="alt">Полностью цифровой акт</div>
+        <p class="note">Спокойнее и уже; меньше «характера», проще для длинных слов.</p></div>
+    </div>
+    <h3 style="margin-top: var(--s-48)">h3 и далее — Golos Text 700</h3>
+    <p>Основной текст — Golos Text 400, кегль 16, межстрочный 1,55. Числа и номера — <span class="mono">IBM Plex Mono</span>: <span class="mono">АОСР-14 · 12 000 000,00 ₽ · 0,4 %</span>.</p>
+  </div></section>
+
+  <section class="section is-paper" id="s3"><div class="container">
+    <span class="sheet">Лист 3 из 7 · сквозной мотив</span>
+    <h2 style="margin: var(--s-16) 0 var(--s-8)">Акт собирается</h2>
+    <p class="muted" style="margin-top: 0">Строки заполняются по очереди, в конце ставится печать. Тот же приём — в первом экране, в калькуляторе и в кнопке заявки.</p>
+    <div class="scene" style="margin-top: var(--s-32)">
+      <div class="titleblock is-filling" id="tb">
+        <div class="k" style="--i: 0">Работа</div><div style="--i: 0">Монтаж лотков</div>
+        <div class="k" style="--i: 1">Материал</div><div style="--i: 1">Лоток 200×50</div>
+        <div class="k" style="--i: 2">Объём</div><div style="--i: 2">120 м</div>
+        <div class="k" style="--i: 3">Статус</div><div style="--i: 3">Принято</div>
+      </div>
+      <div class="row" style="justify-content: center"><div class="stamp is-pending" id="st">АОСР<br>№ 14</div></div>
+    </div>
+    <div class="row" style="margin-top: var(--s-24)"><button class="btn btn-ghost" id="replay">Повторить</button><span class="note">Данные примерные. Без JS и при «уменьшить движение» всё сразу на месте.</span></div>
+  </div></section>
+
+  <section class="section" id="s4"><div class="container">
+    <span class="sheet">Лист 4 из 7 · появление и заголовок</span>
+    <h2 style="margin: var(--s-16) 0 var(--s-24)"><span class="sr-only">Считаем по прайсу</span><span aria-hidden="true" class="display is-accent" data-scramble="Считаем по прайсу">Считаем по прайсу</span></h2>
+    <div class="grid">
+      <div class="card reveal"><h3>Карточка 1</h3><p class="muted">Появляется при прокрутке, сдвиг на один шаг шкалы.</p></div>
+      <div class="card is-paper reveal"><h3>Карточка 2</h3><p class="muted">Роль «пояснение»: фон paper.</p></div>
+      <div class="card reveal" style="border-color: var(--link)"><h3>Карточка 3</h3><p class="muted">Роль «выбранное»: линия --link.</p></div>
+    </div>
+  </div></section>
+
+  <section class="section is-paper seg" id="s5"><div class="container"><span class="sheet">Лист 5 из 7 · рабочее название «Пакет ИД»</span></div></section>
+  <section class="section seg" id="s6"><div class="container"><span class="sheet">Лист 6 из 7 · рабочее название «Дилерам»</span></div></section>
+  <section class="section seg" id="s7"><div class="container"><span class="sheet">Лист 7 из 7 · рабочее название «Заявка»</span></div></section>
+</main>
+
+<script>
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches
+  const glyphs = 'АБВГДЕЖЗИКЛМНОПРСТУФХЦЧШЭЮЯ'
+  // Буквы «собираются» слева направо. Реальный текст уже в разметке (sr-only и без JS)
+  const scramble = el => {
+    const final = el.dataset.scramble
+    if (reduced) return
+    const start = performance.now()
+    const tick = now => {
+      const p = Math.min(1, (now - start) / 800)
+      el.textContent = [...final].map((ch, i) => (/\s|[—.]/.test(ch) || i / final.length < p ? ch : glyphs[(Math.random() * glyphs.length) | 0])).join('')
+      if (p < 1) requestAnimationFrame(tick); else el.textContent = final
+    }
+    requestAnimationFrame(tick)
+  }
+  const seen = new IntersectionObserver(entries => entries.forEach(e => {
+    if (!e.isIntersecting) return
+    seen.unobserve(e.target)
+    if (e.target.dataset.scramble) scramble(e.target)
+    if (e.target.classList.contains('reveal')) e.target.classList.add('is-in')
+  }), { threshold: 0.4 })
+  document.querySelectorAll('[data-scramble], .reveal').forEach(el => seen.observe(el))
+
+  // «Акт собирается»
+  const tb = document.getElementById('tb'), st = document.getElementById('st')
+  const fill = () => {
+    tb.classList.remove('is-filled'); st.classList.remove('is-stamped'); st.classList.add('is-pending')
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      tb.classList.add('is-filled')
+      setTimeout(() => { st.classList.remove('is-pending'); st.classList.add('is-stamped') }, reduced ? 0 : 700)
+    }))
+  }
+  new IntersectionObserver((e, o) => { if (e[0].isIntersecting) { fill(); o.disconnect() } }, { threshold: 0.5 }).observe(tb)
+  document.getElementById('replay').onclick = fill
+
+  // Полоса прогресса и рейка листов
+  const rail = document.getElementById('rail'), bar = document.getElementById('progress')
+  const secs = [...document.querySelectorAll('[id^="s"]')].filter(el => /^s\d$/.test(el.id))
+  secs.forEach((s, i) => { const a = document.createElement('a'); a.href = '#' + s.id; a.textContent = String(i + 1).padStart(2, '0'); a.setAttribute('aria-label', 'Лист ' + (i + 1)); rail.append(a) })
+  const update = () => {
+    bar.style.setProperty('--p', scrollY / Math.max(1, document.documentElement.scrollHeight - innerHeight))
+    let cur = 0; secs.forEach((s, i) => { if (s.getBoundingClientRect().top < innerHeight * 0.5) cur = i })
+    ;[...rail.children].forEach((a, i) => { a.classList.toggle('is-current', i === cur); a.classList.toggle('is-done', i < cur) })
+  }
+  addEventListener('scroll', update, { passive: true }); update()
+</script>
+</body>
+</html>

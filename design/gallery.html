@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Галерея компонентов — лендинг ПТО</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Golos+Text:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  /* Только для галереи: принудительно показываем состояния, которые в жизни вызывает курсор и клавиатура */
+  .demo-hover.btn-cta { background: var(--cta-hover); }
+  .demo-hover.btn-ghost { border-color: var(--ink); }
+  .demo-focus { outline: var(--bw-strong) solid var(--link); outline-offset: var(--s-4); }
+  .demo-active { transform: translateY(1px); }
+  .row { display: flex; flex-wrap: wrap; gap: var(--s-16); align-items: center; }
+  .grid { display: grid; gap: var(--s-24); grid-template-columns: repeat(auto-fit, minmax(var(--col-min), 1fr)); }
+  .swatch { display: grid; gap: var(--s-8); }
+  .swatch i { display: block; height: var(--s-48); border: var(--bw) solid var(--line); border-radius: var(--r-sm); }
+  .swatch b { color: var(--ink); font-size: var(--fs-14); }
+  .swatch span { color: var(--muted); font: var(--fs-12)/1.3 var(--font-mono); }
+  .bar { display: block; height: var(--s-12); background: var(--link); border-radius: var(--r-sm); }
+  .label { margin: var(--s-48) 0 var(--s-16); color: var(--ink); font: 600 var(--fs-18)/1.2 var(--font-display); }
+  .state { display: grid; gap: var(--s-8); justify-items: start; }
+  .state small { color: var(--muted); font: var(--fs-12)/1 var(--font-mono); }
+</style>
+</head>
+<body>
+<main class="container section">
+  <span class="sheet">Лист 0 из 0 · токены и компоненты</span>
+  <h1 style="margin-top: var(--s-16)">Галерея компонентов</h1>
+  <p class="muted">Каждый элемент — во всех состояниях. Цвета, отступы и радиусы только из tokens.css; проверка: <span class="mono">node check-tokens.cjs</span>.</p>
+
+  <h2 class="label">Цвета по ролям</h2>
+  <div class="grid">
+    <div class="swatch"><i style="background: var(--cta)"></i><b>--cta</b><span>кнопка и печать · #bf1e2e</span></div>
+    <div class="swatch"><i style="background: var(--link)"></i><b>--link</b><span>ссылки, выбранное · #2b59ff</span></div>
+    <div class="swatch"><i style="background: var(--ink)"></i><b>--ink</b><span>заголовки · #3e4150</span></div>
+    <div class="swatch"><i style="background: var(--text)"></i><b>--text</b><span>основной текст · #555966</span></div>
+    <div class="swatch"><i style="background: var(--paper)"></i><b>--paper</b><span>подложка секций · #f6f7f9</span></div>
+    <div class="swatch"><i style="background: var(--dark)"></i><b>--dark</b><span>подвал, блок цены · #1e2029</span></div>
+    <div class="swatch"><i style="background: var(--line)"></i><b>--line</b><span>линии чертежа · #d5d8e6</span></div>
+  </div>
+
+  <h2 class="label">Шкала отступов и радиусы</h2>
+  <div class="grid">
+    <div class="card" style="display: grid; gap: var(--s-8)">
+      <div class="row"><span class="mono muted">s-4</span><span class="bar" style="width: var(--s-4)"></span></div>
+      <div class="row"><span class="mono muted">s-8</span><span class="bar" style="width: var(--s-8)"></span></div>
+      <div class="row"><span class="mono muted">s-16</span><span class="bar" style="width: var(--s-16)"></span></div>
+      <div class="row"><span class="mono muted">s-24</span><span class="bar" style="width: var(--s-24)"></span></div>
+      <div class="row"><span class="mono muted">s-48</span><span class="bar" style="width: var(--s-48)"></span></div>
+      <div class="row"><span class="mono muted">s-96</span><span class="bar" style="width: var(--s-96)"></span></div>
+    </div>
+    <div class="row">
+      <div class="card" style="border-radius: var(--r-sm)"><span class="mono">r-sm</span><br><span class="muted">поля</span></div>
+      <div class="card" style="border-radius: var(--r-md)"><span class="mono">r-md</span><br><span class="muted">кнопки</span></div>
+      <div class="card" style="border-radius: var(--r-lg)"><span class="mono">r-lg</span><br><span class="muted">карточки</span></div>
+      <div class="card" style="border-radius: var(--r-xl)"><span class="mono">r-xl</span><br><span class="muted">секции</span></div>
+    </div>
+  </div>
+
+  <h2 class="label">Кнопки: обычная · наведение · нажатие · фокус · недоступна</h2>
+  <div class="grid">
+    <div class="state"><small>.btn-cta</small><div class="row">
+      <a class="btn btn-cta" href="#">Получить расчёт</a><a class="btn btn-cta demo-hover" href="#">Наведение</a>
+      <a class="btn btn-cta demo-active" href="#">Нажатие</a><a class="btn btn-cta demo-focus" href="#">Фокус</a><button class="btn btn-cta" disabled>Недоступна</button></div></div>
+    <div class="state"><small>.btn-ghost</small><div class="row">
+      <a class="btn btn-ghost" href="#">Смотреть пример</a><a class="btn btn-ghost demo-hover" href="#">Наведение</a>
+      <a class="btn btn-ghost demo-focus" href="#">Фокус</a><button class="btn btn-ghost" disabled>Недоступна</button></div></div>
+    <div class="state"><small>.btn-link</small><div class="row"><a class="btn btn-link" href="#">Открыть журнал работ →</a></div></div>
+  </div>
+
+  <h2 class="label">Бейджи статуса (капсула — только здесь)</h2>
+  <div class="row"><span class="badge badge-ok">Принято</span><span class="badge badge-warn">На проверке</span><span class="badge badge-bad">Замечание</span></div>
+
+  <h2 class="label">Печать · номер листа · основная надпись</h2>
+  <div class="grid">
+    <div class="row"><div class="stamp">АОСР<br>№ 14</div><div style="display: grid; gap: var(--s-12)"><span class="sheet">Лист 3 из 9</span><span class="sheet">Лист 9 из 9</span></div></div>
+    <div class="titleblock">
+      <div class="k">Ставка по прайсу</div><div>0,4 %</div>
+      <div class="k">Сумма заказа</div><div>12 000 000,00 ₽</div>
+      <div class="k">Максимум по прайсу</div><div>48 000,00 ₽</div>
+    </div>
+  </div>
+
+  <h2 class="label">Таблица-журнал</h2>
+  <div class="card is-paper">
+    <table class="ledger">
+      <thead><tr><th>Акт</th><th>Работа</th><th class="num">Объём</th><th>Статус</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">АОСР-14</td><td>Монтаж кабельных лотков</td><td class="num">120 м</td><td><span class="badge badge-ok">Принято</span></td></tr>
+        <tr class="is-active"><td class="mono">АОСР-15</td><td>Прокладка кабеля ВВГнг</td><td class="num">860 м</td><td><span class="badge badge-warn">На проверке</span></td></tr>
+        <tr><td class="mono">АОСР-16</td><td>Монтаж заземления</td><td class="num">45 м</td><td><span class="badge badge-bad">Замечание</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="label">Поле бланка: обычное · фокус · ошибка · недоступно</h2>
+  <div class="grid">
+    <div class="field"><label for="a">Телефон</label><input id="a" placeholder="+7"><span class="hint">Перезвоним в рабочее время</span></div>
+    <div class="field"><label for="b">Телефон</label><input id="b" class="demo-focus" value="+7 900"></div>
+    <div class="field is-error"><label for="c">Телефон</label><input id="c" value="+7 9"><span class="hint">Введите номер полностью</span></div>
+    <div class="field"><label for="d">Телефон</label><input id="d" value="+7 900 000-00-00" disabled></div>
+  </div>
+
+  <h2 class="label">Чек-лист</h2>
+  <div class="card"><ul class="checks"><li>Акты скрытых работ по смете</li><li>Журнал выполнения работ</li><li class="is-todo">Исполнительные схемы (ждём от объекта)</li></ul></div>
+
+  <h2 class="label">Рамка скриншота (только реальный интерфейс)</h2>
+  <figure class="screen"><figcaption><span>portal · Работы и материалы</span><span>реальный экран</span></figcaption><div class="placeholder">место под скриншот</div></figure>
+
+  <h2 class="label">Тёмная секция</h2>
+  <div class="section is-dark" style="border-radius: var(--r-xl)"><div class="container"><h3>Максимум по прайсу</h3><p>Цена оформления считается по сумме заказа — без скрытых коэффициентов.</p></div></div>
+</main>
+</body>
+</html>

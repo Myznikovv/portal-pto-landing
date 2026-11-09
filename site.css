@@ -1,0 +1,81 @@
+/* Страница лендинга ПТО. Значения — только из design/tokens.css (проверка: node design/check-tokens.cjs). */
+html { scroll-behavior: smooth; scroll-padding-top: var(--header); }
+.skip { position: fixed; left: var(--s-16); top: calc(var(--s-48) * -2); z-index: 100; padding: var(--s-12) var(--s-16); background: var(--ink); color: var(--on-dark); border-radius: var(--r-md); }
+.skip:focus { top: var(--s-16); }
+
+/* Шапка: на тёмном первом экране прозрачная, дальше светлая */
+.head { position: fixed; inset: 0 0 auto 0; z-index: 45; height: var(--header); display: flex; align-items: center;
+  background: color-mix(in srgb, var(--bg) 92%, transparent); color: var(--ink); border-bottom: var(--bw) solid var(--line); backdrop-filter: blur(var(--s-12)); }
+.head .container { display: flex; align-items: center; justify-content: space-between; gap: var(--s-24); }
+.nav { display: flex; gap: var(--s-24); align-items: center; }
+.nav a:not(.btn) { color: inherit; text-decoration: none; font-size: var(--fs-14); font-weight: 600; }
+.nav .btn { min-height: calc(var(--tap) - var(--s-8)); padding: var(--s-8) var(--s-16); white-space: nowrap; }
+@media (max-width: 760px) { .nav a:not(.btn) { display: none; } }
+
+/* Первый экран */
+.hero { padding-top: var(--header); min-height: 100vh; display: flex; align-items: center; }
+.hero .container { display: grid; gap: var(--s-24); padding-block: var(--s-64); }
+.hero h1 .display { display: block; }
+.hero .container { position: relative; z-index: 1; }
+.hero .lead { margin: 0; max-width: 34em; font-size: var(--fs-18); }
+.hero .event { max-width: var(--card-max); }
+.hero-foot { display: flex; flex-wrap: wrap; gap: var(--s-24); align-items: end; justify-content: space-between; }
+
+.lead { font-size: var(--fs-18); max-width: 38em; }
+.cols { display: grid; gap: var(--s-24); grid-template-columns: repeat(auto-fit, minmax(var(--col-min), 1fr)); margin-top: var(--s-32); }
+.cols .card h3 { font-size: var(--fs-18); margin-bottom: var(--s-8); }
+.cols .card p { margin: 0; }
+.cols .num { display: block; margin-bottom: var(--s-16); color: var(--cta); font: 600 var(--fs-14)/1 var(--font-mono); }
+.head2 { margin: var(--s-16) 0 var(--s-16); }
+.head2 .display { display: block; }
+
+/* Закреплённая сцена «акт собирается» */
+.story { position: relative; }
+.story.is-pinned { min-height: calc(100vh * var(--story-len)); }
+.story-stick { padding-block: var(--s-64); }
+.story.is-pinned .story-stick { position: sticky; top: var(--header); min-height: calc(100vh - var(--header)); display: flex; align-items: center; padding-block: var(--s-32); }
+.story-grid { display: grid; gap: var(--s-48); grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; }
+@media (max-width: 800px) { .story-grid { grid-template-columns: 1fr; gap: var(--s-24); } }
+.steps { list-style: none; margin: var(--s-24) 0 0; padding: 0; display: grid; gap: var(--s-8); counter-reset: step; }
+.steps li { display: grid; grid-template-columns: var(--s-32) 1fr; gap: var(--s-12); padding: var(--s-8) 0; color: var(--muted); transition: color var(--t-base) var(--ease); counter-increment: step; }
+.steps li::before { content: counter(step, decimal-leading-zero); font: 600 var(--fs-12)/1.8 var(--font-mono); }
+.steps li.is-on { color: var(--ink); }
+.steps li.is-on::before { color: var(--link); }
+.steps b { display: block; font-weight: 600; }
+.steps span { font-size: var(--fs-14); }
+.paper-sheet { display: grid; gap: var(--s-24); justify-items: center; }
+.paper-sheet .titleblock { width: 100%; }
+.story:not(.is-pinned) .titleblock > * { opacity: 1; }
+.story:not(.is-pinned) .stamp.is-pending { opacity: 1; transform: rotate(-8deg); }
+
+.pack { display: grid; gap: var(--s-32); grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; margin-top: var(--s-32); }
+@media (max-width: 800px) { .pack { grid-template-columns: 1fr; } }
+.pack h3 { font-size: var(--fs-18); margin-bottom: var(--s-16); }
+.table-wrap { overflow-x: auto; }
+
+.shots { display: grid; gap: var(--s-24); grid-template-columns: 1fr; margin-top: var(--s-32); }
+.shots .screen figcaption { flex-wrap: wrap; }
+.shots .screen figcaption span:last-child { color: var(--muted); }
+
+.dealer { display: grid; gap: var(--s-32); grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; }
+@media (max-width: 800px) { .dealer { grid-template-columns: 1fr; } }
+
+.form { display: grid; gap: var(--s-16); max-width: calc(var(--card-max) * 2); }
+.form .two { display: grid; gap: var(--s-16); grid-template-columns: repeat(auto-fit, minmax(var(--col-min), 1fr)); }
+.field select { min-height: var(--tap); padding: var(--s-12); border: var(--bw) solid var(--line); border-radius: var(--r-sm); background: var(--bg); color: var(--ink); font: var(--fs-16)/var(--lh-body) var(--font-body); }
+.field select:focus-visible { outline: var(--bw-strong) solid var(--link); outline-offset: 0; border-color: var(--link); }
+.consent { display: flex; gap: var(--s-12); align-items: start; font-size: var(--fs-14); color: var(--muted); }
+.consent input { margin-top: var(--s-4); width: var(--s-16); height: var(--s-16); accent-color: var(--cta); }
+.form-msg { min-height: var(--s-24); font-size: var(--fs-14); color: var(--ok); }
+.form-msg.is-error { color: var(--bad); }
+
+.foot { padding-block: var(--s-48); background: var(--paper); color: var(--text); border-top: var(--bw) solid var(--line); font-size: var(--fs-14); }
+.foot .container { display: grid; gap: var(--s-24); grid-template-columns: repeat(auto-fit, minmax(var(--col-min), 1fr)); }
+.foot a { color: var(--link); }
+.foot .brand { color: var(--ink); }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .head { transition: none; } .steps li { transition: none; } }
+
+/* Построчное заполнение акта при прокрутке (когда сцена закреплена) */
+.story.is-pinned .titleblock > * { opacity: 0; transition: opacity var(--t-base) var(--ease); }
+.story.is-pinned .titleblock > .is-on { opacity: 1; }
