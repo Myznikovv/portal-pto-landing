@@ -41,29 +41,32 @@ sheets.forEach((section, i) => {
   rail.append(link)
 })
 
-// ── Закреплённая сцена «акт собирается»: прокрутка по сцене заполняет строки и ставит печать
-const story = $('#s3'), steps = $$('#steps li'), cells = $$('#tb > *'), stamp = $('#st')
-// Закрепляем сцену только на широком и достаточно высоком экране: на телефоне она выше окна, нижняя часть осталась бы недосягаемой
+// ── Длинная иллюстрация: прокрутка по закреплённой сцене двигает разрез вбок, дорисовывает работы по очереди и отмечает акты
+const story = $('#s3'), reel = $('#reel'), cut = $('#cut'), works = $$('#cut .w'), acts = $$('#acts .act')
+// Закрепляем только на широком и достаточно высоком экране; на телефоне разрез листается пальцем и показан целиком
 const canPin = () => !reduced && matchMedia('(min-width: 801px)').matches && innerHeight >= 700
 const syncPin = () => {
   const pin = canPin()
   story.classList.toggle('is-pinned', pin)
   if (!pin) {
-    steps.forEach(step => step.classList.add('is-on'))
-    cells.forEach(cell => cell.classList.add('is-on'))
-    stamp.classList.remove('is-pending'); stamp.classList.add('is-stamped')
+    cut.style.transform = ''
+    works.forEach(work => work.style.setProperty('--d', 1))
   }
 }
 const updateStory = () => {
   if (!story.classList.contains('is-pinned')) return
   const rect = story.getBoundingClientRect()
   const progress = Math.min(1, Math.max(0, -rect.top / Math.max(1, rect.height - innerHeight)))
-  const active = Math.min(steps.length - 1, Math.floor(progress * steps.length))
-  steps.forEach((step, i) => step.classList.toggle('is-on', i <= active))
-  cells.forEach((cell, i) => cell.classList.toggle('is-on', Math.floor(i / 2) <= active))
-  const stamped = progress >= 0.9
-  stamp.classList.toggle('is-stamped', stamped)
-  stamp.classList.toggle('is-pending', !stamped)
+  const span = Math.max(0, cut.getBoundingClientRect().width - reel.clientWidth)
+  cut.style.transform = `translateX(${-span * progress}px)`
+  const n = works.length
+  works.forEach((work, i) => work.style.setProperty('--d', Math.min(1, Math.max(0, progress * n * 1.08 - i))))
+  const current = Math.min(n - 1, Math.floor(progress * n * 1.08))
+  acts.forEach((act, i) => {
+    const done = progress * n * 1.08 - i >= 1
+    act.classList.toggle('is-done', done)
+    act.classList.toggle('is-current', i === current && !done)
+  })
 }
 
 const update = () => {
@@ -134,13 +137,16 @@ if (iso) {
     { cls: 'found', act: ['АОСР-1', 'Фундамент'], at: [1, 7, 0.4], off: [-118, -30], draw: g => box(1, 1, 0, 8, 6, 0.8, g) },
     { cls: 'frame', act: ['АОСР-2', 'Каркас'], at: [1, 1, 5.2], off: [-118, -70], draw: g => {
       ;[[1, 1], [8.6, 1], [1, 4], [8.6, 4]].forEach(([x, y]) => box(x, y, 0.8, 0.4, 0.4, 4, g))
-      box(1, 1, 4.8, 8, 6, 0.4, g)
+      box(1, 1, 4.8, 8, 0.4, 0.4, g); box(1, 1, 4.8, 0.4, 6, 0.4, g)
     } },
     { cls: 'tray', act: ['АОСР-3', 'Лотки'], at: [8.4, 2.4, 4.1], off: [26, -96], draw: g => {
-      box(1.6, 2.2, 3.9, 6.8, 0.5, 0.25, g); box(1.6, 5, 3.9, 6.8, 0.5, 0.25, g); box(7.6, 5.6, 0.8, 0.3, 0.3, 3.1, g)
+      box(1.6, 2.2, 4.2, 6.8, 0.5, 0.2, g); box(1.6, 5, 4.2, 6.8, 0.5, 0.2, g); box(7.6, 5.6, 0.8, 0.3, 0.3, 3.4, g)
     } },
     { cls: 'panel', act: ['АОСР-4', 'Щитовая'], at: [8.5, 7, 1.6], off: [34, -24], draw: g => box(6.9, 6.2, 0.8, 1.6, 0.8, 2.4, g) },
-    { cls: 'front', draw: g => [[1, 6.6], [8.6, 6.6]].forEach(([x, y]) => box(x, y, 0.8, 0.4, 0.4, 4, g)) }
+    { cls: 'front', draw: g => {
+      ;[[1, 6.6], [8.6, 6.6]].forEach(([x, y]) => box(x, y, 0.8, 0.4, 0.4, 4, g))
+      box(8.6, 1, 4.8, 0.4, 6, 0.4, g); box(1, 6.6, 4.8, 8, 0.4, 0.4, g)
+    } }
   ]
   const groups = stages.map(stage => { const g = el('g', { class: 'iso-stage ' + stage.cls }, iso); stage.draw(g); return g })
   // Лист акта: карточка с номером, строками и маленькой печатью

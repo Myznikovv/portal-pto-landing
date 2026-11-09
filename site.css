@@ -156,3 +156,56 @@ html { scroll-behavior: smooth; scroll-padding-top: var(--header); }
 /* Разлёт листов не должен давать горизонтальную прокрутку; на телефоне листы разлетаются слабее */
 main { overflow-x: clip; }
 @media (max-width: 800px) { .folder { --spread: 0.45; } }
+
+/* ═══ Длинная иллюстрация: разрез здания едет при прокрутке, работы дорисовываются, акты отмечаются ═══ */
+.reel-wrap { display: grid; gap: var(--s-24); }
+.reel-head { display: grid; gap: var(--s-24); grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: end; }
+.reel-head .lead { margin: 0; }
+.reel-head .display { font-size: clamp(var(--fs-24), 2.6vw, var(--fs-h2)); }
+.reel-head .head2 { margin-bottom: 0; }
+.story.is-pinned .reel-wrap { gap: var(--s-16); }
+@media (max-width: 900px) { .reel-head { grid-template-columns: minmax(0, 1fr); } }
+.reel { overflow-x: auto; border: var(--bw) solid var(--line); border-radius: var(--r-lg); background: var(--card); }
+.story.is-pinned .reel { overflow: hidden; }
+.cut { display: block; height: 38vh; min-height: calc(var(--s-128) * 2); width: auto; will-change: transform; }
+.cut .dim line, .cut .dim circle { stroke: var(--muted); stroke-width: 1.5; fill: none; }
+.cut .dim text { font-family: var(--font-mono); font-size: var(--cut-fs-sm); fill: var(--muted); }
+.cut .soil line { stroke: var(--line); stroke-width: 1.5; }
+.cut .soil-mask { fill: none; }
+.cut .slab, .cut .col { fill: var(--paper); stroke: var(--ink); stroke-width: 2; }
+.cut .wall { fill: color-mix(in srgb, var(--line) 60%, var(--bg)); stroke: var(--ink); stroke-width: 2; }
+.cut .ground { stroke: var(--ink); stroke-width: 3; }
+.cut .panel rect { fill: var(--ink); }
+.cut .panel line { stroke: var(--muted); stroke-width: 2; }
+.cut .panel text { font-family: var(--font-mono); font-size: var(--cut-fs-lg); font-weight: 600; fill: var(--ink); }
+.cut .draw { fill: none; stroke-dasharray: 1; stroke-dashoffset: calc(1 - var(--d, 1)); stroke-linecap: round; stroke-linejoin: round; }
+.cut .fillin { opacity: var(--d, 1); }
+.cut .strip { stroke: var(--ink); stroke-width: 7; }
+.cut .pipe { stroke: var(--link); stroke-width: 10; }
+.cut .socket { fill: var(--card); stroke: var(--link); stroke-width: 3; }
+.cut .rod { stroke: var(--ink); stroke-width: 3; }
+.cut .tray { stroke: var(--ink); stroke-width: 3; }
+.cut .trayfill { fill: var(--link-soft); }
+.cut .ceil { stroke: var(--muted); stroke-width: 3; }
+.cut .cable { stroke: var(--link); stroke-width: 6; }
+.cut .tag { opacity: clamp(0, calc(var(--d, 1) * 4 - 3), 1); transition: opacity var(--t-fast) linear; }
+.cut .tag rect { fill: var(--card); stroke: var(--line); stroke-width: 2; }
+.cut .tag .leader { stroke: var(--muted); stroke-width: 2; stroke-dasharray: 6 6; }
+.cut .t-num { font-family: var(--font-mono); font-size: var(--cut-fs-lg); font-weight: 600; fill: var(--cta); }
+.cut .t-name { font-family: var(--font-body); font-size: var(--cut-fs-md); fill: var(--ink); }
+
+.acts { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-12); grid-template-columns: repeat(5, minmax(0, 1fr)); }
+@media (max-width: 1000px) { .acts { grid-template-columns: repeat(auto-fit, minmax(var(--col-min), 1fr)); } }
+.act { position: relative; display: grid; align-content: start; gap: var(--s-4); padding: var(--s-12) var(--s-16); background: var(--card); border: var(--bw) solid var(--line);
+  border-radius: var(--r-md); font-size: var(--fs-12); color: var(--muted); transition: border-color var(--t-base) var(--ease), opacity var(--t-base) var(--ease); }
+.act b { font-size: var(--fs-14); line-height: 1.3; color: var(--ink); }
+.act-num { font: 600 var(--fs-12)/1 var(--font-mono); color: var(--cta); }
+.act-vol { font: 600 var(--fs-14)/1.2 var(--font-mono); color: var(--ink); }
+.act-docs { font-family: var(--font-mono); }
+.act::after { content: '✓'; position: absolute; top: var(--s-8); right: var(--s-8); display: grid; place-items: center; width: var(--s-24); height: var(--s-24);
+  border: var(--bw-strong) solid var(--cta); border-radius: 50%; color: var(--cta); font-weight: 700; transform: rotate(-8deg); }
+.story.is-pinned .act { opacity: 0.45; }
+.story.is-pinned .act::after { opacity: 0; transform: rotate(-8deg) scale(1.6); transition: opacity var(--t-fast) linear, transform var(--t-story) var(--ease); }
+.story.is-pinned .act.is-current { opacity: 1; border-color: var(--link); }
+.story.is-pinned .act.is-done { opacity: 1; }
+.story.is-pinned .act.is-done::after { opacity: 1; transform: rotate(-8deg); }
