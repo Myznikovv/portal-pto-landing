@@ -185,3 +185,19 @@ if (folder) {
     setTimeout(() => { folderStamp.classList.remove('is-pending'); folderStamp.classList.add('is-stamped') }, reduced ? 0 : 1300)
   }, { threshold: 0.5 }).observe(folder)
 }
+
+// ── Лист «Как собирается акт»: при появлении шаги подсвечиваются по очереди, строки акта заполняются, ставится печать
+const stepsBlock = $('#steps'), actFrame = $('#tb'), actStamp = $('#st')
+if (stepsBlock && actFrame && actStamp) {
+  const items = $$('#steps li')
+  const play = () => {
+    items.forEach((item, i) => setTimeout(() => item.classList.add('is-on'), reduced ? 0 : i * 280))
+    actFrame.classList.add('is-filled')
+    setTimeout(() => { actStamp.classList.remove('is-pending'); actStamp.classList.add('is-stamped') }, reduced ? 0 : items.length * 280 + 200)
+  }
+  new IntersectionObserver((entries, observer) => {
+    if (!entries[0].isIntersecting) return
+    observer.disconnect()
+    play()
+  }, { threshold: 0.4 }).observe(actFrame)
+}
