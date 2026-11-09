@@ -114,3 +114,68 @@ form.addEventListener('submit', async event => {
     message.textContent = `Не удалось отправить. Позвоните: +7 977 753-70-70 или напишите на ${LEAD_EMAIL}.`
   }
 })
+
+// ── Изометрический объект на первом экране: этапы стройки появляются по очереди, к каждому «выпрыгивает» свой акт
+const iso = $('#iso')
+if (iso) {
+  const NS = 'http://www.w3.org/2000/svg'
+  const U = 22, C = Math.cos(Math.PI / 6), S = 0.5
+  const P = (x, y, z) => [(x - y) * C * U, (x + y) * S * U - z * U]
+  const el = (tag, attrs, parent) => { const node = document.createElementNS(NS, tag); Object.entries(attrs).forEach(([k, v]) => node.setAttribute(k, v)); parent.append(node); return node }
+  const poly = (points, cls, parent) => el('polygon', { points: points.map(p => p.join(',')).join(' '), class: cls }, parent)
+  // Видны верх и две передние грани (к зрителю по +x и +y)
+  const box = (x, y, z, w, d, h, parent) => {
+    poly([P(x, y + d, z), P(x + w, y + d, z), P(x + w, y + d, z + h), P(x, y + d, z + h)], 'f-l', parent)
+    poly([P(x + w, y, z), P(x + w, y + d, z), P(x + w, y + d, z + h), P(x + w, y, z + h)], 'f-r', parent)
+    poly([P(x, y, z + h), P(x + w, y, z + h), P(x + w, y + d, z + h), P(x, y + d, z + h)], 'f-top', parent)
+  }
+  const stages = [
+    { cls: 'ground', draw: g => box(0, 0, 0, 10, 8, 0, g) },
+    { cls: 'found', act: ['АОСР-1', 'Фундамент'], at: [1, 7, 0.4], off: [-118, -30], draw: g => box(1, 1, 0, 8, 6, 0.8, g) },
+    { cls: 'frame', act: ['АОСР-2', 'Каркас'], at: [1, 1, 5.2], off: [-118, -70], draw: g => {
+      ;[[1, 1], [8.6, 1], [1, 4], [8.6, 4]].forEach(([x, y]) => box(x, y, 0.8, 0.4, 0.4, 4, g))
+      box(1, 1, 4.8, 8, 6, 0.4, g)
+    } },
+    { cls: 'tray', act: ['АОСР-3', 'Лотки'], at: [8.4, 2.4, 4.1], off: [26, -96], draw: g => {
+      box(1.6, 2.2, 3.9, 6.8, 0.5, 0.25, g); box(1.6, 5, 3.9, 6.8, 0.5, 0.25, g); box(7.6, 5.6, 0.8, 0.3, 0.3, 3.1, g)
+    } },
+    { cls: 'panel', act: ['АОСР-4', 'Щитовая'], at: [8.5, 7, 1.6], off: [34, -24], draw: g => box(6.9, 6.2, 0.8, 1.6, 0.8, 2.4, g) },
+    { cls: 'front', draw: g => [[1, 6.6], [8.6, 6.6]].forEach(([x, y]) => box(x, y, 0.8, 0.4, 0.4, 4, g)) }
+  ]
+  const groups = stages.map(stage => { const g = el('g', { class: 'iso-stage ' + stage.cls }, iso); stage.draw(g); return g })
+  // Лист акта: карточка с номером, строками и маленькой печатью
+  const sheets = stages.filter(stage => stage.act).map(stage => {
+    const [px, py] = P(...stage.at)
+    const [dx, dy] = stage.off
+    // Позиция — атрибутом на внешней группе, анимация — CSS на внутренней (CSS transform перебил бы атрибут)
+    const place = el('g', { transform: `translate(${px + dx}, ${py + dy})` }, iso)
+    const g = el('g', { class: 'iso-sheet' }, place)
+    el('rect', { width: 92, height: 74, rx: 3 }, g)
+    el('text', { x: 8, y: 18, class: 'hd' }, g).textContent = stage.act[0]
+    el('text', { x: 8, y: 34, class: 'sub' }, g).textContent = stage.act[1]
+    el('rect', { x: 8, y: 44, width: 48, height: 3, class: 'bar' }, g)
+    el('rect', { x: 8, y: 52, width: 36, height: 3, class: 'bar' }, g)
+    el('circle', { cx: 74, cy: 56, r: 11 }, g)
+    el('text', { x: 66, y: 60, class: 'ok' }, g).textContent = '✓'
+    return { g, stage }
+  })
+  const box2 = iso.getBBox()
+  iso.setAttribute('viewBox', `${box2.x - 8} ${box2.y - 8} ${box2.width + 16} ${box2.height + 16}`)
+  const show = () => {
+    groups.forEach((g, i) => setTimeout(() => g.classList.add('is-on'), reduced ? 0 : 300 + i * 420))
+    sheets.forEach(({ g, stage }) => setTimeout(() => g.classList.add('is-on'), reduced ? 0 : 300 + stages.indexOf(stage) * 420 + 260))
+  }
+  show()
+}
+
+// ── Папка комплекта: листы слетаются в стопку, появляется этикетка, ставится печать
+const folder = $('#folder')
+if (folder) {
+  const folderStamp = $('#folder-stamp')
+  new IntersectionObserver((entries, observer) => {
+    if (!entries[0].isIntersecting) return
+    observer.disconnect()
+    folder.classList.add('is-assembled')
+    setTimeout(() => { folderStamp.classList.remove('is-pending'); folderStamp.classList.add('is-stamped') }, reduced ? 0 : 1300)
+  }, { threshold: 0.5 }).observe(folder)
+}

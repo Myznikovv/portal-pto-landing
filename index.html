@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Портал ПТО — исполнительная документация из сметы</title>
+<title>Портал ПТО — исполнительная из сметы, без задержки оплаты</title>
 <meta name="description" content="Акты скрытых работ, реестры материалов, сертификаты и схемы собираются из локальной сметы в один готовый PDF-комплект ИД.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1e2029">
@@ -34,25 +34,33 @@
   </nav>
 </div></div>
 
-<header class="hero" id="s1"><div class="container">
+<header class="hero" id="s1"><div class="container hero-grid"><div class="hero-text">
   <span class="sheet">Лист 1 из 7 · исполнительная документация</span>
-  <h1><span class="sr-only">Вся исполнительная документация — в одном пакете</span>
-    <span aria-hidden="true" class="display" style="font-size: var(--fs-display)">Вся исполнительная</span>
-    <span aria-hidden="true" class="display is-accent" style="font-size: var(--fs-display-xl)" data-scramble="в одном пакете">в одном пакете</span></h1>
-  <p class="lead">Акты скрытых работ, реестры материалов, сертификаты и схемы собираются из вашей сметы в один готовый PDF.</p>
-  <div class="row"><a class="btn btn-cta" href="#s7">Оставить заявку</a><a class="btn btn-ghost" href="#s3">Как собирается акт</a></div>
+  <h1><span class="sr-only">Работы сданы, а денег нет? Исполнительная — из вашей сметы</span>
+    <span aria-hidden="true" class="display">Работы сданы,</span>
+    <span aria-hidden="true" class="display is-accent" data-scramble="а денег нет?">а денег нет?</span></h1>
+  <p class="lead">Заказчик не подпишет КС-2, пока нет исполнительной. Портал собирает акты, реестры и сертификаты из вашей сметы в один PDF — исполнительная готова вместе с работами, а не через месяц после них.</p>
+  <div class="row"><a class="btn btn-cta" href="#s7">Разобрать мой объект</a><a class="btn btn-ghost" href="#s3">Как собирается акт</a></div>
   <div class="hero-foot"><div class="event"><span class="sheet">Демо · пример события</span><b>Акт № 14 подписан</b><span>Данные демонстрационные, не из реального объекта</span></div></div>
+</div>
+  <div class="hero-art"><svg class="iso" id="iso" aria-hidden="true" focusable="false"></svg></div>
 </div></header>
 
+<div class="ticker" aria-hidden="true"><div class="ticker-track"><span>АОСР</span><i>·</i><span>Ведомость работ</span><i>·</i><span>Сертификаты</span><i>·</i><span>Реестр материалов</span><i>·</i><span>Исполнительные схемы</span><i>·</i><span>Приказы</span><i>·</i><span>Выписки СРО</span><i>·</i><span>Журнал работ</span><i>·</i><span>АОСР</span><i>·</i><span>Ведомость работ</span><i>·</i><span>Сертификаты</span><i>·</i><span>Реестр материалов</span><i>·</i><span>Исполнительные схемы</span><i>·</i><span>Приказы</span><i>·</i><span>Выписки СРО</span><i>·</i><span>Журнал работ</span><i>·</i></div></div>
 <main>
 <section class="section" id="s2"><div class="container">
-  <span class="sheet">Лист 2 из 7 · где теряется время</span>
-  <h2 class="head2"><span class="sr-only">Одни и те же данные переписывают по кругу</span><span aria-hidden="true" class="display" data-scramble="Одни и те же данные">Одни и те же данные</span><span aria-hidden="true" class="display is-accent">переписывают по кругу</span></h2>
-  <p class="lead">Смета, акты, реестры, ведомость — документы про одни и те же работы. Пока их набирают вручную, расхождения неизбежны.</p>
-  <div class="cols">
-    <div class="card reveal"><span class="num">01</span><h3>Из сметы — в акты</h3><p>Работы, объёмы и материалы набирают заново в каждом акте, а расхождения находят уже на приёмке.</p></div>
-    <div class="card reveal"><span class="num">02</span><h3>Сертификаты под каждый материал</h3><p>Документы на материалы ищут по папкам и раскладывают по актам вручную.</p></div>
-    <div class="card reveal"><span class="num">03</span><h3>Смету поправили — акты остались старыми</h3><p>Изменения в смете не доходят до уже оформленных актов и реестров.</p></div>
+  <span class="sheet">Лист 2 из 7 · знакомо?</span>
+  <h2 class="head2"><span class="sr-only">Где застревают деньги за выполненные работы</span><span aria-hidden="true" class="display" data-scramble="Где застревают">Где застревают</span><span aria-hidden="true" class="display is-accent">ваши деньги</span></h2>
+  <p class="lead">Работа на объекте сделана. Дальше всё упирается в бумаги — и каждая из этих ситуаций откладывает оплату.</p>
+  <div class="pains">
+    <article class="pain reveal"><span class="num">01</span><h3>«Без исполнительной КС-2 не подпишем»</h3><p>Работы приняты на словах, а оплата ждёт, пока соберут акты, реестры и сертификаты.</p>
+      <p class="fix">Акты собираются по ходу работ из сметы — комплект готов к сдаче сразу, а не в конце объекта.</p></article>
+    <article class="pain reveal"><span class="num">02</span><h3>Одно замечание — и переписывать все акты</h3><p>Поменялась смета, объём или дата — и правки вручную расходятся по десяткам документов.</p>
+      <p class="fix">Правите в одном месте. Портал покажет, что комплект нужно пересобрать, и соберёт его заново.</p></article>
+    <article class="pain reveal"><span class="num">03</span><h3>Сертификаты ищут по почте и флешкам</h3><p>Документы на материалы лежат у снабжения, у поставщика, «где-то в чате».</p>
+      <p class="fix">Сертификаты привязываются к материалам и сами попадают в акт и в итоговый PDF.</p></article>
+    <article class="pain reveal"><span class="num">04</span><h3>Инженер ПТО ушёл — исполнительная ушла с ним</h3><p>Вся история объекта жила в его папках и шаблонах.</p>
+      <p class="fix">Смета, акты, приказы и выписки СРО хранятся в портале у компании, а не у одного человека.</p></article>
   </div>
 </div></section>
 
@@ -84,7 +92,10 @@
 <section class="section" id="s4"><div class="container">
   <span class="sheet">Лист 4 из 7 · комплект ИД</span>
   <h2 class="head2"><span class="sr-only">Весь комплект ИД в одном файле</span><span aria-hidden="true" class="display" data-scramble="Весь комплект ИД">Весь комплект ИД</span><span aria-hidden="true" class="display is-accent">в одном файле</span></h2>
-  <p class="lead">Порядок листов собирается автоматически. Если не хватает приложения, сборка скажет об этом, а не пропустит молча.</p>
+  <div class="pack-head">
+    <p class="lead">Порядок листов собирается автоматически. Если не хватает приложения, сборка скажет об этом, а не пропустит молча.</p>
+    <div class="folder" id="folder" aria-hidden="true"><div class="leaf" style="--i: 0; --x: -150%; --y: -40%; --r: -16deg"><b>Обложка</b><span>Комплект ИД</span></div><div class="leaf" style="--i: 1; --x: 130%; --y: -55%; --r: 12deg"><b>Реестр</b><span>общий</span></div><div class="leaf" style="--i: 2; --x: -120%; --y: 60%; --r: 9deg"><b>АОСР-1</b><span>монтаж</span></div><div class="leaf" style="--i: 3; --x: 140%; --y: 45%; --r: -10deg"><b>Ведомость</b><span>работ</span></div><div class="leaf" style="--i: 4; --x: 0%; --y: -120%; --r: 4deg"><b>Сертификаты</b><span>материалы</span></div><div class="label"><span>ДЕМО-01-ЭОМ</span><span>Том 1</span></div><div class="stamp is-pending" id="folder-stamp">Комплект<br>ИД</div></div>
+  </div>
   <div class="pack">
     <div class="card reveal"><h3>Что входит</h3>
       <ul class="checks">
@@ -116,10 +127,10 @@
 
 <section class="section is-paper" id="s6"><div class="container">
   <span class="sheet">Лист 6 из 7 · дилерам</span>
-  <h2 class="head2"><span class="sr-only">Передайте заказ — оформим документацию</span><span aria-hidden="true" class="display" data-scramble="Передайте заказ">Передайте заказ</span><span aria-hidden="true" class="display is-accent">оформим документацию</span></h2>
+  <h2 class="head2"><span class="sr-only">Берёте объекты, но некому вести ПТО? Передайте документацию нам</span><span aria-hidden="true" class="display" data-scramble="Некому вести ПТО?">Некому вести ПТО?</span><span aria-hidden="true" class="display is-accent">Передайте нам</span></h2>
   <div class="dealer">
     <div>
-      <p class="lead">Вы передаёте заказ, мы ведём ПТО и собираем исполнительную документацию. Стоимость считается по прайсу от суммы заказа.</p>
+      <p class="lead">Свой инженер ПТО — это зарплата круглый год, даже когда объектов нет. Передайте заказ: мы ведём ПТО и собираем исполнительную, а стоимость считается по прайсу от суммы заказа — без штатной единицы.</p>
       <div class="row" style="margin-top: var(--s-24)"><a class="btn btn-cta" href="#s7" data-topic="dealer">Стать дилером</a></div>
     </div>
     <ul class="checks">
@@ -132,8 +143,8 @@
 
 <section class="section" id="s7"><div class="container">
   <span class="sheet">Лист 7 из 7 · заявка</span>
-  <h2 class="head2"><span class="sr-only">Расскажите о вашем заказе</span><span aria-hidden="true" class="display" data-scramble="Расскажите">Расскажите</span><span aria-hidden="true" class="display is-accent">о вашем заказе</span></h2>
-  <p class="lead">Ответим в рабочее время и подскажем, как оформить документацию по вашему объекту.</p>
+  <h2 class="head2"><span class="sr-only">Пришлите смету — разберём вашу исполнительную</span><span aria-hidden="true" class="display" data-scramble="Пришлите смету">Пришлите смету</span><span aria-hidden="true" class="display is-accent">разберём вашу ИД</span></h2>
+  <p class="lead">Расскажите, что за объект и на каком этапе исполнительная. Ответим в рабочее время и скажем, что нужно, чтобы закрыть её без задержки оплаты.</p>
   <form class="form" id="form" novalidate style="margin-top: var(--s-32)">
     <div class="two">
       <div class="field"><label for="f-name">Имя</label><input id="f-name" name="name" autocomplete="name" required><span class="hint" id="e-name"></span></div>
