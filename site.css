@@ -209,3 +209,13 @@ main { overflow-x: clip; }
 .story.is-pinned .act.is-current { opacity: 1; border-color: var(--link); }
 .story.is-pinned .act.is-done { opacity: 1; }
 .story.is-pinned .act.is-done::after { opacity: 1; transform: rotate(-8deg); }
+
+/* Частые вопросы: нативные details/summary — работают без JS и читаются поисковиками */
+.faq { display: grid; gap: var(--s-12); margin-top: var(--s-32); max-width: calc(var(--card-max) * 2.6); }
+.faq-item { background: var(--card); border: var(--bw) solid var(--line); border-radius: var(--r-md); }
+.faq-item summary { display: flex; justify-content: space-between; gap: var(--s-16); padding: var(--s-16) var(--s-24); cursor: pointer; list-style: none; color: var(--ink); font-weight: 600; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: '+'; color: var(--link); font: 600 var(--fs-18)/1 var(--font-mono); transition: transform var(--t-fast) var(--ease); }
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item summary:focus-visible { outline: var(--bw-strong) solid var(--link); outline-offset: var(--s-4); border-radius: var(--r-md); }
+.faq-item p { margin: 0; padding: 0 var(--s-24) var(--s-24); }
