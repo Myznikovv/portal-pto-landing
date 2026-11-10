@@ -9,13 +9,25 @@ const LEAD_EMAIL = '7537070@mail.ru'
 
 // ── Заголовок «собирается»: буквы сходятся слева направо. Настоящий текст уже в разметке (sr-only) и остаётся после анимации
 const glyphs = 'АБВГДЕЖЗИКЛМНОПРСТУФХЦЧШЭЮЯ'
+// Буквы «собираются»: настоящий текст сразу задаёт ширину и переносы, случайный символ рисуется поверх (::after) — блок не скачет
 const scramble = el => {
   const final = el.dataset.scramble
   if (reduced) return
+  el.textContent = ''
+  const cells = [...final].map(ch => {
+    if (/\s|[—.]/.test(ch)) { el.append(ch); return null }
+    const cell = document.createElement('span')
+    cell.className = 'sc'; cell.textContent = ch; el.append(cell)
+    return cell
+  })
   const start = performance.now()
   const tick = now => {
     const progress = Math.min(1, (now - start) / 800)
-    el.textContent = [...final].map((ch, i) => (/\s|[—.]/.test(ch) || i / final.length < progress ? ch : glyphs[(Math.random() * glyphs.length) | 0])).join('')
+    cells.forEach((cell, i) => {
+      if (!cell || !cell.classList.contains('sc')) return
+      if (i / cells.length < progress) cell.classList.remove('sc')
+      else cell.dataset.g = glyphs[(Math.random() * glyphs.length) | 0]
+    })
     if (progress < 1) requestAnimationFrame(tick)
     else el.textContent = final
   }

@@ -219,3 +219,7 @@ main { overflow-x: clip; }
 .faq-item[open] summary::after { transform: rotate(45deg); }
 .faq-item summary:focus-visible { outline: var(--bw-strong) solid var(--link); outline-offset: var(--s-4); border-radius: var(--r-md); }
 .faq-item p { margin: 0; padding: 0 var(--s-24) var(--s-24); }
+
+/* Заголовки с перебором букв: ширину держит настоящая буква, случайная — поверх */
+.sc { position: relative; -webkit-text-fill-color: transparent; }
+.sc::after { content: attr(data-g); position: absolute; left: 50%; top: 0; transform: translateX(-50%); -webkit-text-fill-color: currentColor; }
