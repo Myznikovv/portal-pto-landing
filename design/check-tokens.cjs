@@ -6,6 +6,12 @@ const path = require('node:path')
 const dir = __dirname
 // design/ и сама страница лендинга (папка выше): site.css, index.html
 const targets = [dir, path.join(dir, '..')].flatMap(folder => fs.readdirSync(folder).filter(name => /\.(css|html)$/.test(name) && name !== 'tokens.css').map(name => path.relative(dir, path.join(folder, name))))
+// тематические страницы: <slug>/index.html на уровень ниже страницы
+const site = path.join(dir, '..')
+for (const sub of fs.readdirSync(site, { withFileTypes: true })) {
+  const page = path.join(site, sub.name, 'index.html')
+  if (sub.isDirectory() && !sub.name.startsWith('.') && fs.existsSync(page)) targets.push(path.relative(dir, page))
+}
 let failed = 0
 const fail = (file, line, text) => { failed++; console.log(`${file}:${line}  ${text}`) }
 

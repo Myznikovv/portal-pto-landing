@@ -1,0 +1,29 @@
+/* Тематические страницы (АОСР, ИД по ЭОМ, ПТО на аутсорсе, реестр). Значения — только из design/tokens.css. */
+.article { padding-top: calc(var(--header) + var(--s-48)); padding-bottom: var(--s-96); }
+.article-grid { display: grid; gap: var(--s-48); grid-template-columns: minmax(0, 1fr) minmax(0, var(--card-max)); align-items: start; }
+@media (max-width: 900px) { .article-grid { grid-template-columns: minmax(0, 1fr); } }
+.article article { max-width: 44em; }
+.article h1 { margin: var(--s-16) 0 var(--s-24); color: var(--ink); font-size: var(--fs-h2); line-height: var(--lh-tight); }
+.article h2 { margin: var(--s-48) 0 var(--s-16); color: var(--ink); font-size: var(--fs-24); }
+.article p { margin: 0 0 var(--s-16); }
+.article .checks { margin: 0 0 var(--s-16); }
+.steps-list { margin: 0 0 var(--s-16); padding-left: var(--s-24); display: grid; gap: var(--s-8); }
+.steps-list li::marker { color: var(--cta); font-family: var(--font-mono); font-weight: 600; }
+.crumbs { display: flex; flex-wrap: wrap; gap: var(--s-8); margin-bottom: var(--s-24); color: var(--muted); font-size: var(--fs-14); }
+.crumbs a { color: var(--link); }
+.article .faq { margin-top: 0; }
+.article-side { display: grid; gap: var(--s-24); position: sticky; top: calc(var(--header) + var(--s-24)); }
+@media (max-width: 900px) { .article-side { position: static; } }
+.article-side .side-h { margin: 0 0 var(--s-12); font-size: var(--fs-18); }
+.article-side .btn { width: 100%; }
+.side-contact { margin: var(--s-16) 0 0; font-size: var(--fs-14); }
+.side-contact a, .more a { color: var(--link); }
+.more { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--s-12); font-size: var(--fs-14); }
+
+/* Ссылки на тематические страницы с главной */
+.topics { margin: var(--s-16) 0 0; padding: 0; list-style: none; display: grid; gap: var(--s-12); grid-template-columns: repeat(auto-fit, minmax(calc(var(--col-min) * 0.8), 1fr)); }
+.topics a { display: block; height: 100%; padding: var(--s-16) var(--s-24); background: var(--card); border: var(--bw) solid var(--line); border-radius: var(--r-md); color: var(--ink); font-weight: 600; text-decoration: none; }
+.topics a::after { content: ' →'; color: var(--link); }
+@media (hover: hover) and (pointer: fine) { .topics a:hover { border-color: var(--link); } }
+.topics a:focus-visible { outline: var(--bw-strong) solid var(--link); outline-offset: var(--s-4); }
+.topics-h { margin: var(--s-48) 0 0; font-size: var(--fs-18); color: var(--ink); }
