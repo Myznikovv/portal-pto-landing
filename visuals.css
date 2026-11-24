@@ -265,7 +265,7 @@
 }
 .xr { position: relative; margin: 0; display: grid; grid-template-columns: minmax(0, 1fr) var(--xr-side); gap: var(--s-16); align-items: center; }
 .xr-art { position: relative; cursor: pointer; max-width: calc((100vh - var(--header) - var(--s-48)) * 0.8); justify-self: end; width: 100%; }
-.xr-art img { display: block; width: 100%; height: auto; mix-blend-mode: multiply; filter: brightness(1.05) contrast(1.08); }
+.xr-art img { display: block; width: 100%; height: auto; }
 .xr-xray { position: absolute; inset: 0; clip-path: inset(calc((1 - var(--scan, 1)) * 100%) 0 0 0); }
 .xr-scan { position: absolute; left: calc(var(--s-16) * -1); right: calc(var(--s-16) * -1); top: calc((1 - var(--scan, 1)) * 100%); height: var(--bw-strong);
   background: var(--link); opacity: 0; transition: opacity var(--t-base) var(--ease); pointer-events: none; }
@@ -331,3 +331,16 @@
 .axo-count b { font-size: var(--fs-h2); }
 .hero .lead { font-size: var(--fs-18); max-width: 30em; }
 @media (max-width: 640px) { .xr-tag { display: none; } }
+
+/* Фон первого экрана: тёплая «калька» и изометрическая разметка площадки под комплексом (в тон аксонометрии, не клетка) */
+.hero { background-color: var(--paper); }
+.hero::after { background: linear-gradient(transparent, var(--bg)); }
+.hero-shot::before { content: ''; position: absolute; inset: -12% -8% -18% -14%; z-index: -1; pointer-events: none;
+  background:
+    repeating-linear-gradient(30deg, transparent 0 calc(var(--grid-step) - var(--bw)), color-mix(in srgb, var(--link) 14%, transparent) calc(var(--grid-step) - var(--bw)) var(--grid-step)),
+    repeating-linear-gradient(-30deg, transparent 0 calc(var(--grid-step) - var(--bw)), color-mix(in srgb, var(--link) 14%, transparent) calc(var(--grid-step) - var(--bw)) var(--grid-step)),
+    radial-gradient(closest-side, var(--bg), transparent);
+  -webkit-mask: radial-gradient(ellipse 55% 50% at 45% 62%, var(--ink) 35%, transparent 100%);
+          mask: radial-gradient(ellipse 55% 50% at 45% 62%, var(--ink) 35%, transparent 100%); }
+.hero-shot { isolation: isolate; }
+.xd { box-shadow: var(--shadow-screen), 0 0 0 var(--bw) color-mix(in srgb, var(--line) 50%, transparent); }
