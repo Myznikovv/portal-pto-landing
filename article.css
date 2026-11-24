@@ -27,3 +27,9 @@
 @media (hover: hover) and (pointer: fine) { .topics a:hover { border-color: var(--link); } }
 .topics a:focus-visible { outline: var(--bw-strong) solid var(--link); outline-offset: var(--s-4); }
 .topics-h { margin: var(--s-48) 0 0; font-size: var(--fs-18); color: var(--ink); }
+
+/* Фото скрытой работы под вводным абзацем: документальный кадр, подпись «пример» */
+.site-photo { margin: var(--s-32) 0 var(--s-16); padding: var(--s-8); background: var(--card); border: var(--bw) solid var(--line); border-radius: var(--r-sm); box-shadow: var(--shadow-screen); }
+.site-photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+.site-photo figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s-8) var(--s-16); padding: var(--s-8) var(--s-4) 0; color: var(--muted); font-size: var(--fs-14); }
+.site-photo figcaption .mono { font-size: var(--fs-12); text-transform: uppercase; letter-spacing: 0.08em; }

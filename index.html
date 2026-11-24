@@ -23,6 +23,7 @@
 <link rel="stylesheet" href="design/components.css">
 <link rel="stylesheet" href="site.css">
 <link rel="stylesheet" href="article.css">
+<link rel="stylesheet" href="visuals.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://myznikovv.github.io/portal-pto-landing/#org", "name": "ООО «БИЗНЕСТЕХНОЛОГИИ»", "alternateName": "Портал ПТО", "url": "https://myznikovv.github.io/portal-pto-landing/", "logo": "https://myznikovv.github.io/portal-pto-landing/favicon.svg", "telephone": "+7 977 753-70-70", "email": "7537070@mail.ru", "taxID": "9719009312", "address": {"@type": "PostalAddress", "streetAddress": "ул. Константина Федина, д. 13", "addressLocality": "Москва", "postalCode": "105215", "addressCountry": "RU"}}, {"@type": "WebPage", "@id": "https://myznikovv.github.io/portal-pto-landing/", "url": "https://myznikovv.github.io/portal-pto-landing/", "name": "Исполнительная документация и ПТО: АОСР из сметы", "inLanguage": "ru-RU", "about": {"@id": "https://myznikovv.github.io/portal-pto-landing/#org"}}, {"@type": "Service", "name": "Оформление исполнительной документации", "serviceType": "Исполнительная документация", "provider": {"@id": "https://myznikovv.github.io/portal-pto-landing/#org"}, "areaServed": {"@type": "Country", "name": "Россия"}, "description": "АОСР, реестры материалов, сертификаты, ведомости и исполнительные схемы собираются из сметы в один PDF-комплект."}, {"@type": "Service", "name": "Ведение ПТО на аутсорсе", "serviceType": "Услуги ПТО", "provider": {"@id": "https://myznikovv.github.io/portal-pto-landing/#org"}, "areaServed": {"@type": "Country", "name": "Россия"}, "description": "Ведём ПТО и собираем исполнительную документацию по заказу подрядчика или дилера; стоимость по прайсу от суммы заказа."}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Что входит в исполнительную документацию?", "acceptedAnswer": {"@type": "Answer", "text": "Обложка, титульный лист и общий реестр; приказы и разрешительные документы, выписки СРО; ведомость подсчёта выполненных работ; для каждого акта — АОСР, реестр материалов, исполнительные схемы и сертификаты; корешок папки и этикетка носителя. В портале всё это собирается в один PDF."}}, {"@type": "Question", "name": "Что такое АОСР и когда его оформляют?", "acceptedAnswer": {"@type": "Answer", "text": "АОСР — акт освидетельствования скрытых работ. Его оформляют на работы, которые закрываются следующими этапами: контур заземления в грунте, трубы в стяжке пола, кабель в штробе или за подвесным потолком. Акт подписывают до того, как работу закроют. В портале текст акта собирается из сметы автоматически, даты и формулировки можно поправить."}}, {"@type": "Question", "name": "Почему заказчик не подписывает КС-2 без исполнительной документации?", "acceptedAnswer": {"@type": "Answer", "text": "Исполнительная документация подтверждает, что работы выполнены по проекту и из заявленных материалов. Пока нет актов скрытых работ, реестров и сертификатов, заказчику нечем подтвердить объём в КС-2 — поэтому приёмка и оплата откладываются."}}, {"@type": "Question", "name": "Можно ли передать ведение ПТО на аутсорс?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Вы передаёте заказ, мы ведём ПТО и собираем исполнительную документацию. Это удобно подрядчикам и дилерам, которым невыгодно держать своего инженера ПТО."}}, {"@type": "Question", "name": "Сколько стоит оформление исполнительной документации?", "acceptedAnswer": {"@type": "Answer", "text": "Стоимость считается по прайсу от суммы заказа: чем больше заказ, тем ниже ставка. Пришлите смету или сумму заказа — посчитаем."}}, {"@type": "Question", "name": "Где хранятся документы по объекту?", "acceptedAnswer": {"@type": "Answer", "text": "В портале, у вашей компании: смета, акты, приказы, выписки СРО и сертификаты. Документы не пропадают, если меняется инженер ПТО, а комплект можно пересобрать после правок в смете."}}]}]}</script>
 </head>
 <body>
@@ -56,6 +57,26 @@
   <span class="sheet">Лист 2 из 9 · знакомо?</span>
   <h2 class="head2"><span class="sr-only">Где застревают деньги за выполненные работы</span><span aria-hidden="true" class="display" data-scramble="Где застревают">Где застревают</span><span aria-hidden="true" class="display is-accent">ваши деньги</span></h2>
   <p class="lead">Работа на объекте сделана. Дальше всё упирается в бумаги — и каждая из этих ситуаций откладывает оплату.</p>
+  <figure class="lag" id="lag" aria-label="Схема: когда исполнительную собирают после работ, подпись КС-2 и оплата сдвигаются на время сборки; когда акты оформляются по ходу работ, КС-2 подписывают сразу после работ">
+    <div class="lag-row">
+      <span class="lag-name">Как обычно</span>
+      <div class="lag-track">
+        <span class="seg seg-work" style="--w: 48%; --i: 0"><b>Работы на объекте</b></span>
+        <span class="seg seg-wait" style="--w: 38%; --i: 1"><b>Собирают ИД — оплата ждёт</b></span>
+        <span class="pin" style="--at: 86%; --i: 2">КС-2</span>
+      </div>
+    </div>
+    <div class="lag-row has-ticks">
+      <span class="lag-name">С порталом</span>
+      <div class="lag-track">
+        <span class="seg seg-work" style="--w: 48%; --i: 0"><b>Работы + акты по ходу</b>
+          <span class="ticks" aria-hidden="true"><i style="--t: 1">1</i><i style="--t: 2">2</i><i style="--t: 3">3</i><i style="--t: 4">4</i><i style="--t: 5">5</i></span></span>
+        <span class="pin" style="--at: 48%; --i: 3">КС-2</span>
+      </div>
+    </div>
+    <div class="lag-row lag-dim" aria-hidden="true"><span class="lag-name"></span><div class="lag-track"><span class="dim-line" style="--from: 48%; --to: 86%"><b>КС-2 раньше на время сборки ИД</b></span></div></div>
+    <figcaption class="mono muted">Схема без масштаба · 1–5 — акты скрытых работ, оформленные по ходу</figcaption>
+  </figure>
   <div class="pains">
     <article class="pain reveal"><span class="num">01</span><h3>«Без исполнительной КС-2 не подпишем»</h3><p>Работы приняты на словах, а оплата ждёт, пока соберут акты, реестры и сертификаты.</p>
       <p class="fix">Акты собираются по ходу работ из сметы — комплект готов к сдаче сразу, а не в конце объекта.</p></article>
@@ -309,26 +330,57 @@
       <li><div><b>Печать и комплект</b><span>Акты складываются в итоговый комплект ИД одним PDF.</span></div></li>
     </ol>
   </div>
-  <div class="paper-sheet" aria-label="Пример заполнения акта (демо)">
-    <div class="titleblock is-filling" id="tb">
-      <div class="k" style="--i: 0">Работа</div><div style="--i: 0">Монтаж лотков</div>
-      <div class="k" style="--i: 1">Материал</div><div style="--i: 1">Лоток 200×50</div>
-      <div class="k" style="--i: 2">Объём</div><div style="--i: 2">120 м</div>
-      <div class="k" style="--i: 3">Участники</div><div style="--i: 3">Заказчик, подрядчик</div>
-      <div class="k" style="--i: 4">Статус</div><div style="--i: 4">Принято</div>
+  <div class="build" aria-label="Пример: строка сметы превращается в акт скрытых работ (данные демонстрационные)">
+    <div class="est">
+      <span class="est-k mono">Смета · поз. 14</span>
+      <span class="est-name">Монтаж лотков перфорированных 200×50 за подвесным потолком</span>
+      <span class="est-unit mono">м</span><span class="est-qty mono">180</span>
     </div>
-    <div class="stamp is-pending" id="st">АОСР<br>№ 14</div>
-    <span class="muted mono">Пример · данные демонстрационные</span>
+    <div class="est-flow" aria-hidden="true"><span>в пункты 1 и 3 акта</span></div>
+    <article class="aosr is-filling" id="tb">
+      <header class="aosr-head"><span class="mono">ДЕМО-01-ЭОМ</span><b>Акт освидетельствования скрытых работ № 3</b></header>
+      <ol class="aosr-fields">
+        <li style="--i: 0"><span>К освидетельствованию предъявлены работы</span><b>Монтаж лотков перфорированных за подвесным потолком, 180 м</b></li>
+        <li style="--i: 1"><span>Работы выполнены по проектной документации</span><b>ДЕМО-01-ЭОМ, лист 4</b></li>
+        <li style="--i: 2"><span>При выполнении работ применены</span><b>Лоток перфорированный 200×50 — сертификат</b></li>
+        <li style="--i: 3"><span>Предъявлены документы</span><b>Исполнительная схема, фото</b></li>
+        <li style="--i: 4"><span>Разрешается производство последующих работ</span><b>Прокладка кабеля в лотках</b></li>
+      </ol>
+      <footer class="aosr-sign" style="--i: 5"><span>Заказчик</span><span>Подрядчик</span><span>Стройконтроль</span></footer>
+      <figure class="clip"><img src="assets/photo/lotki.jpg" alt="Фото скрытой работы: перфорированные лотки на шпильках над каркасом подвесного потолка (пример)" width="1100" height="829" loading="lazy"><figcaption class="mono">Фото · пример</figcaption></figure>
+      <div class="stamp is-pending" id="st">АОСР<br>№ 3</div>
+    </article>
   </div>
 </div></section>
 
 <section class="section" id="s5"><div class="container">
   <span class="sheet">Лист 5 из 9 · состав исполнительной документации</span>
   <h2 class="head2"><span class="sr-only">Весь комплект ИД в одном файле</span><span aria-hidden="true" class="display" data-scramble="Весь комплект ИД">Весь комплект ИД</span><span aria-hidden="true" class="display is-accent">в одном файле</span></h2>
-  <div class="pack-head">
-    <p class="lead">Порядок листов собирается автоматически. Если не хватает приложения, сборка скажет об этом, а не пропустит молча.</p>
-    <div class="folder" id="folder" aria-hidden="true"><div class="leaf" style="--i: 0; --x: -150%; --y: -40%; --r: -16deg"><b>Обложка</b><span>Комплект ИД</span></div><div class="leaf" style="--i: 1; --x: 130%; --y: -55%; --r: 12deg"><b>Реестр</b><span>общий</span></div><div class="leaf" style="--i: 2; --x: -120%; --y: 60%; --r: 9deg"><b>АОСР-1</b><span>монтаж</span></div><div class="leaf" style="--i: 3; --x: 140%; --y: 45%; --r: -10deg"><b>Ведомость</b><span>работ</span></div><div class="leaf" style="--i: 4; --x: 0%; --y: -120%; --r: 4deg"><b>Сертификаты</b><span>материалы</span></div><div class="label"><span>ДЕМО-01-ЭОМ</span><span>Том 1</span></div><div class="stamp is-pending" id="folder-stamp">Комплект<br>ИД</div></div>
-  </div>
+  <p class="lead">Порядок листов собирается автоматически. Если не хватает приложения, сборка скажет об этом, а не пропустит молча.</p>
+  <figure class="kit" id="kit" aria-label="Пример порядка листов в комплекте ИД: общая часть, затем для каждого акта — АОСР, реестр материалов, схема и сертификат; у АОСР-2 не хватает сертификата">
+    <div class="kit-group"><span class="kit-k mono">Общая часть</span><ol class="kit-row">
+      <li class="pg pg-cover" style="--n: 0"><b>Обложка</b><i>ДЕМО-01-ЭОМ</i></li>
+      <li class="pg" style="--n: 1"><b>Титул</b></li>
+      <li class="pg pg-list" style="--n: 2"><b>Реестр</b><i>общий</i></li>
+      <li class="pg" style="--n: 3"><b>Приказы</b></li>
+      <li class="pg" style="--n: 4"><b>СРО</b><i>выписка</i></li>
+      <li class="pg pg-list" style="--n: 5"><b>Ведомость</b><i>работ</i></li>
+    </ol></div>
+    <div class="kit-group"><span class="kit-k mono">АОСР-1 · контур заземления</span><ol class="kit-row">
+      <li class="pg pg-act" style="--n: 6"><b>АОСР-1</b></li>
+      <li class="pg pg-list" style="--n: 7"><b>Реестр</b><i>материалов</i></li>
+      <li class="pg pg-scheme" style="--n: 8"><b>Схема</b></li>
+      <li class="pg pg-cert" style="--n: 9"><b>Сертификат</b><i>полоса 40×4</i></li>
+    </ol></div>
+    <div class="kit-group"><span class="kit-k mono">АОСР-2 · гофротруба в стяжке</span><ol class="kit-row">
+      <li class="pg pg-act" style="--n: 10"><b>АОСР-2</b></li>
+      <li class="pg pg-list" style="--n: 11"><b>Реестр</b><i>материалов</i></li>
+      <li class="pg pg-scheme" style="--n: 12"><b>Схема</b></li>
+      <li class="pg pg-missing" style="--n: 13"><b>Сертификат</b><i>нет файла</i></li>
+    </ol></div>
+    <div class="kit-group kit-more"><span class="kit-k mono">АОСР-3 … АОСР-5</span><ol class="kit-row"><li class="pg pg-ghost" style="--n: 14"><b>…</b></li></ol></div>
+    <figcaption class="kit-note" style="--n: 15"><span class="badge badge-warn">Подсказка сборки</span><span>АОСР-2: нет сертификата на трубу ПНД Ø25 — добавьте файл к материалу, и лист встанет на место.</span><span class="mono muted">Пример</span></figcaption>
+  </figure>
   <div class="pack">
     <div class="card reveal"><h3>Что входит</h3>
       <ul class="checks">
@@ -372,6 +424,12 @@
       <li>Ход оформления виден в портале</li>
     </ul>
   </div>
+  <ol class="route" id="route" aria-label="Как передать ПТО на аутсорс">
+    <li style="--i: 0"><span class="route-n mono">01 · вы</span><b>Передаёте заказ и смету</b><span>Без найма инженера ПТО в штат</span></li>
+    <li style="--i: 1"><span class="route-n mono">02 · мы</span><b>Ведём ПТО и собираем акты</b><span>АОСР, реестры, схемы, сертификаты</span></li>
+    <li style="--i: 2"><span class="route-n mono">03 · портал</span><b>Ход оформления виден вам</b><span>Какие акты готовы, чего не хватает</span></li>
+    <li style="--i: 3"><span class="route-n mono">04 · заказчик</span><b>Получает комплект ИД</b><span>Одним PDF к подписанию КС-2</span><span class="stamp route-stamp" aria-hidden="true">ИД<br>сдана</span></li>
+  </ol>
 </div></section>
 
 <section class="section is-paper" id="s8"><div class="container">
@@ -386,7 +444,8 @@
   <span class="sheet">Лист 9 из 9 · заявка</span>
   <h2 class="head2"><span class="sr-only">Пришлите смету — разберём вашу исполнительную</span><span aria-hidden="true" class="display" data-scramble="Пришлите смету">Пришлите смету</span><span aria-hidden="true" class="display is-accent">разберём вашу ИД</span></h2>
   <p class="lead">Расскажите, что за объект и на каком этапе исполнительная. Ответим в рабочее время и скажем, что нужно, чтобы закрыть её без задержки оплаты.</p>
-  <form class="form" id="form" novalidate style="margin-top: var(--s-32)">
+  <div class="apply">
+  <form class="form" id="form" novalidate>
     <div class="two">
       <div class="field"><label for="f-name">Имя</label><input id="f-name" name="name" autocomplete="name" required><span class="hint" id="e-name"></span></div>
       <div class="field"><label for="f-phone">Телефон</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="+7" required><span class="hint" id="e-phone"></span></div>
@@ -403,6 +462,21 @@
     <span class="hint" id="e-consent" style="color: var(--bad)"></span>
     <div class="row"><button class="btn btn-cta" type="submit">Отправить заявку</button><span class="form-msg" id="form-msg" role="status"></span></div>
   </form>
+  <aside class="req" aria-hidden="true">
+    <div class="req-sheet">
+      <span class="req-k mono">Заявка на разбор ИД</span>
+      <p class="req-note" data-out="note"></p>
+      <div class="titleblock req-tb">
+        <div class="k">Компания</div><div data-out="company">—</div>
+        <div class="k">Контакт</div><div data-out="name">—</div>
+        <div class="k">Телефон</div><div data-out="phone">—</div>
+        <div class="k">Что нужно</div><div data-out="topic">Оформить документацию</div>
+        <div class="k">Дата</div><div data-out="date">—</div>
+      </div>
+      <div class="stamp is-pending" id="req-stamp">Заявка<br>заполнена</div>
+    </div>
+  </aside>
+  </div>
 </div></section>
 </main>
 
@@ -412,5 +486,6 @@
 </div></footer>
 
 <script src="main.js"></script>
+<script src="visuals.js"></script>
 </body>
 </html>
