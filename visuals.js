@@ -12,6 +12,13 @@
     blocks.forEach(block => { block.classList.add('vis-anim'); observer.observe(block) })
   }
 
+  // Первый экран: метка на фото, выноска и журнал появляются по очереди после загрузки
+  const heroShot = document.getElementById('hero-shot')
+  if (heroShot && !reduced) {
+    heroShot.classList.add('vis-anim')
+    requestAnimationFrame(() => requestAnimationFrame(() => heroShot.classList.add('is-in')))
+  }
+
   // Журнал объекта на первом экране: события сменяются по одному. Без скрипта и при reduced-motion видны все четыре
   const feed = document.getElementById('feed')
   if (feed && !reduced) {

@@ -218,3 +218,62 @@
 .form-call { margin: 0; color: var(--muted); font-size: var(--fs-14); }
 .form-call a { color: var(--link); white-space: nowrap; }
 .field textarea::placeholder, .field input::placeholder { color: var(--muted); }
+
+/* ═══ Первый экран: фото скрытой работы с чертёжной разметкой (вместо изометрии) ═══ */
+.hero-shot { position: relative; margin: 0 0 var(--s-48); }
+.hero-frame { position: relative; overflow: hidden; border-radius: var(--r-sm); background: var(--ink); box-shadow: var(--shadow-screen); }
+.hero-frame img { display: block; width: 100%; height: auto; aspect-ratio: 1024 / 688; object-fit: cover; filter: saturate(0.85) contrast(1.02); }
+/* уголки видоискателя */
+.hero-frame::after { content: ''; position: absolute; inset: var(--s-12); pointer-events: none; --c: color-mix(in srgb, var(--bg) 85%, transparent);
+  background:
+    linear-gradient(var(--c), var(--c)) 0 0 / var(--s-24) var(--bw-strong) no-repeat, linear-gradient(var(--c), var(--c)) 0 0 / var(--bw-strong) var(--s-24) no-repeat,
+    linear-gradient(var(--c), var(--c)) 100% 0 / var(--s-24) var(--bw-strong) no-repeat, linear-gradient(var(--c), var(--c)) 100% 0 / var(--bw-strong) var(--s-24) no-repeat,
+    linear-gradient(var(--c), var(--c)) 0 100% / var(--s-24) var(--bw-strong) no-repeat, linear-gradient(var(--c), var(--c)) 0 100% / var(--bw-strong) var(--s-24) no-repeat,
+    linear-gradient(var(--c), var(--c)) 100% 100% / var(--s-24) var(--bw-strong) no-repeat, linear-gradient(var(--c), var(--c)) 100% 100% / var(--bw-strong) var(--s-24) no-repeat; }
+.hero-marks { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hm-leader { fill: none; stroke: var(--bg); stroke-width: 3; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.hm-ring { fill: none; stroke: var(--bg); stroke-width: 3; }
+.hm-dot { fill: var(--link); stroke: var(--bg); stroke-width: 3; }
+.hero-tag { position: absolute; left: 68.4%; top: 28.5%; transform: translateY(-50%); display: grid; gap: var(--s-4); padding: var(--s-8) var(--s-12);
+  background: var(--card); border-left: var(--bw-strong) solid var(--link); border-radius: var(--r-sm); color: var(--muted); font-size: var(--fs-12); line-height: 1.25; }
+.hero-tag .mono:first-child { color: var(--cta); font-weight: 600; }
+.hero-tag b { color: var(--ink); font-size: var(--fs-14); }
+.hero-cap { position: absolute; right: var(--s-12); bottom: var(--s-12); padding: var(--s-4) var(--s-8); background: color-mix(in srgb, var(--ink) 75%, transparent);
+  color: var(--on-dark); font-size: var(--fs-12); text-transform: uppercase; letter-spacing: 0.08em; border-radius: var(--r-sm); }
+.hero-shot .feed { position: absolute; left: calc(var(--s-48) * -1); bottom: calc(var(--s-48) * -1); width: var(--card-max); max-width: 80%; box-shadow: var(--shadow-screen); }
+@media (max-width: 900px) {
+  .hero-shot { margin: var(--s-8) 0 0; }
+  .hero-shot .feed { position: relative; left: auto; bottom: auto; width: auto; max-width: none; margin: var(--s-12) 0 0; }
+  .hero-tag { left: auto; right: var(--s-8); top: var(--s-12); transform: none; }
+  .hero-tag b { font-size: var(--fs-12); }
+  .hm-leader { display: none; }
+}
+.hero-shot.vis-anim .hm-leader { transition: stroke-dashoffset var(--t-story) var(--ease) 500ms; }
+.hero-shot.vis-anim .hm-ring { transform-box: fill-box; transform-origin: center; transition: transform var(--t-story) var(--ease) 200ms, opacity var(--t-fast) linear 200ms; }
+.hero-shot.vis-anim .hero-tag { transition: opacity var(--t-base) var(--ease) 1100ms; }
+.hero-shot.vis-anim .feed { transition: opacity var(--t-base) var(--ease) 1500ms, transform var(--t-story) var(--ease) 1500ms; }
+.hero-shot.vis-anim:not(.is-in) .hm-leader { stroke-dashoffset: 1; }
+.hero-shot.vis-anim:not(.is-in) .hm-ring { opacity: 0; transform: scale(2.4); }
+.hero-shot.vis-anim:not(.is-in) .hero-tag { opacity: 0; }
+.hero-shot.vis-anim:not(.is-in) .feed { opacity: 0; transform: translateY(var(--s-16)); }
+
+/* ═══ Лист 5: общий реестр в рамке листа (вместо карточек «Что входит» / «Журнал актов») ═══ */
+.registry { display: grid; gap: var(--s-48); grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr); align-items: start; margin-top: var(--s-48); }
+.reg-side { display: grid; gap: var(--s-12); }
+.reg-side h3 { font-size: var(--fs-18); }
+.reg-side p { margin: 0; }
+.reg-side .btn-link { justify-self: start; }
+.reg-sheet { position: relative; padding: var(--s-32) var(--s-32) var(--s-24); background: var(--card); border: var(--bw) solid var(--line); border-radius: var(--r-sm);
+  box-shadow: var(--shadow-screen); outline: var(--bw) solid var(--ink); outline-offset: calc(var(--s-12) * -1); }
+.reg-table { width: 100%; border-collapse: collapse; font-size: var(--fs-14); }
+.reg-table th { padding: var(--s-8); border-bottom: var(--bw-strong) solid var(--ink); color: var(--muted); font-weight: 600; font-size: var(--fs-12); text-align: left; text-transform: uppercase; letter-spacing: 0.06em; }
+.reg-table td { padding: var(--s-8); border-bottom: var(--bw) solid var(--line-soft); color: var(--ink); vertical-align: top; }
+.reg-table .num { text-align: right; font-family: var(--font-mono); white-space: nowrap; }
+.reg-table th:first-child, .reg-table td:first-child { width: var(--s-32); color: var(--muted); }
+.reg-table td:last-child { color: var(--muted); font-size: var(--fs-12); }
+.reg-table tr.is-gap td { background: var(--warn-soft); }
+.reg-table tr.is-gap td:last-child { color: var(--warn); font-weight: 600; }
+.reg-stamp { display: grid; grid-template-columns: auto auto auto; justify-content: end; margin: var(--s-16) 0 0 auto; width: max-content; border: var(--bw-strong) solid var(--ink); font-size: var(--fs-12); }
+.reg-stamp span { padding: var(--s-4) var(--s-12); border: var(--bw) solid var(--line); color: var(--ink); }
+.reg-stamp span:first-child { grid-column: 1 / -1; font-weight: 600; }
+@media (max-width: 900px) { .registry { grid-template-columns: minmax(0, 1fr); gap: var(--s-24); } .reg-sheet { padding: var(--s-24) var(--s-16) var(--s-16); } }

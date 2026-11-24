@@ -46,17 +46,28 @@
     <span aria-hidden="true" class="display is-accent" data-scramble="а денег нет?">а денег нет?</span></h1>
   <p class="lead">Заказчик не подпишет КС-2, пока нет исполнительной документации. Портал собирает акты скрытых работ (АОСР), реестры и сертификаты из вашей сметы в один PDF — исполнительная готова вместе с работами, а не через месяц после них.</p>
   <div class="row"><a class="btn btn-cta" href="#s9">Разобрать мой объект</a><a class="btn btn-ghost" href="#s4">Как собирается акт</a></div>
-  <div class="hero-foot"><div class="event feed" id="feed" aria-live="off">
-    <span class="sheet">Пример · журнал объекта</span>
-    <ol class="feed-list">
-      <li><b>АОСР-3 собран</b><span>Лотки 200×50 · 180 м · схема и сертификат приложены</span></li>
-      <li><b>Сертификат прикреплён</b><span>Кабель ВВГнг(А)-LS 5×16 → АОСР-4</span></li>
-      <li><b>Не хватает файла</b><span>АОСР-2: сертификат на трубу ПНД Ø25</span></li>
-      <li><b>Комплект ИД собран</b><span>Реестр, ведомость, АОСР-1…5 — один PDF</span></li>
-    </ol>
-  </div></div>
 </div>
-  <div class="hero-art"><svg class="iso" id="iso" aria-hidden="true" focusable="false"></svg></div>
+  <figure class="hero-shot" id="hero-shot">
+    <div class="hero-frame">
+      <img src="assets/photo/hero-lotki.jpg" alt="Лотки с кабелем на шпильках над каркасом подвесного потолка — скрытая работа до закрытия потолком (пример)" width="1024" height="688" fetchpriority="high">
+      <svg class="hero-marks" viewBox="0 0 1024 688" aria-hidden="true" focusable="false">
+        <path class="hm-leader" pathLength="1" d="M500 341 L640 196 H700"/>
+        <circle class="hm-ring" cx="500" cy="341" r="22"/>
+        <circle class="hm-dot" cx="500" cy="341" r="6"/>
+      </svg>
+      <div class="hero-tag" aria-hidden="true"><span class="mono">АОСР-3</span><b>Лотки 200×50 с кабелем</b><span class="mono">180 м · оси Д–Ж</span></div>
+      <span class="hero-cap mono">Фото к акту · пример</span>
+    </div>
+    <div class="event feed" id="feed" aria-live="off">
+      <span class="sheet">Пример · журнал объекта</span>
+      <ol class="feed-list">
+        <li><b>АОСР-3 собран</b><span>Лотки 200×50 · 180 м · схема и сертификат приложены</span></li>
+        <li><b>Сертификат прикреплён</b><span>Кабель ВВГнг(А)-LS 5×16 → АОСР-4</span></li>
+        <li><b>Не хватает файла</b><span>АОСР-2: сертификат на трубу ПНД Ø25</span></li>
+        <li><b>Комплект ИД собран</b><span>Реестр, ведомость, АОСР-1…5 — один PDF</span></li>
+      </ol>
+    </div>
+  </figure>
 </div></header>
 
 <div class="ticker" aria-hidden="true"><div class="ticker-track"><span>АОСР</span><i>·</i><span>Ведомость работ</span><i>·</i><span>Сертификаты</span><i>·</i><span>Реестр материалов</span><i>·</i><span>Исполнительные схемы</span><i>·</i><span>Приказы</span><i>·</i><span>Выписки СРО</span><i>·</i><span>Журнал работ</span><i>·</i><span>АОСР</span><i>·</i><span>Ведомость работ</span><i>·</i><span>Сертификаты</span><i>·</i><span>Реестр материалов</span><i>·</i><span>Исполнительные схемы</span><i>·</i><span>Приказы</span><i>·</i><span>Выписки СРО</span><i>·</i><span>Журнал работ</span><i>·</i></div></div>
@@ -389,24 +400,30 @@
     <div class="kit-group kit-more"><span class="kit-k mono">АОСР-3 … АОСР-5</span><ol class="kit-row"><li class="pg pg-ghost" style="--n: 14"><b>…</b></li></ol></div>
     <figcaption class="kit-note" style="--n: 15"><span class="badge badge-warn">Подсказка сборки</span><span>АОСР-2: нет сертификата на трубу ПНД Ø25 — добавьте файл к материалу, и лист встанет на место.</span><span class="mono muted">Пример</span></figcaption>
   </figure>
-  <div class="pack">
-    <div class="card reveal"><h3>Что входит</h3>
-      <ul class="checks">
-        <li>Обложка, титульный лист и общий реестр</li>
-        <li>Приказы и разрешительные документы, выписки СРО</li>
-        <li>Ведомость подсчёта выполненных работ</li>
-        <li>Для каждого акта: АОСР, реестр материалов, схемы и сертификаты</li>
-        <li>Корешок папки и этикетка носителя</li>
-      </ul></div>
-    <div class="card is-paper reveal"><h3>Журнал актов <span class="muted mono">· пример</span></h3>
-      <div class="table-wrap"><table class="ledger">
-        <thead><tr><th>Акт</th><th>Работа</th><th class="num">Объём</th><th>Статус</th></tr></thead>
+  <div class="registry reveal">
+    <div class="reg-side">
+      <h3>Общий реестр — опись комплекта</h3>
+      <p>Заказчик сверяет по нему, всё ли сдано. Портал ведёт реестр сам: номера листов совпадают с лентой выше, пропуск виден сразу.</p>
+      <a class="btn-link" href="reestr-ispolnitelnoy-dokumentacii/">Как устроен реестр ИД →</a>
+    </div>
+    <div class="reg-sheet">
+      <div class="table-wrap"><table class="reg-table">
+        <caption class="sr-only">Пример общего реестра комплекта исполнительной документации</caption>
+        <thead><tr><th class="num">№</th><th>Наименование документа</th><th class="num">Листы</th><th>Примечание</th></tr></thead>
         <tbody>
-          <tr><td class="mono">АОСР-1</td><td>Контур заземления</td><td class="num">60 м</td><td><span class="badge badge-ok">Принято</span></td></tr>
-          <tr><td class="mono">АОСР-2</td><td>Гофротруба в стяжке</td><td class="num">120 м</td><td><span class="badge badge-bad">Замечание</span></td></tr>
-          <tr><td class="mono">АОСР-3</td><td>Лотки за потолком</td><td class="num">180 м</td><td><span class="badge badge-ok">Принято</span></td></tr>
-          <tr class="is-active"><td class="mono">АОСР-4</td><td>Кабель в лотках</td><td class="num">860 м</td><td><span class="badge badge-warn">На проверке</span></td></tr>
-        </tbody></table></div></div>
+          <tr><td class="num">1</td><td>Обложка комплекта</td><td class="num">01</td><td></td></tr>
+          <tr><td class="num">2</td><td>Титульный лист</td><td class="num">02</td><td></td></tr>
+          <tr><td class="num">3</td><td>Общий реестр</td><td class="num">03</td><td></td></tr>
+          <tr><td class="num">4</td><td>Приказы и разрешительные документы</td><td class="num">04</td><td></td></tr>
+          <tr><td class="num">5</td><td>Выписка из реестра СРО</td><td class="num">05</td><td></td></tr>
+          <tr><td class="num">6</td><td>Ведомость подсчёта выполненных работ</td><td class="num">06</td><td></td></tr>
+          <tr><td class="num">7</td><td>АОСР-1 · контур заземления, с реестром материалов, схемой и сертификатом</td><td class="num">07–10</td><td></td></tr>
+          <tr class="is-gap"><td class="num">8</td><td>АОСР-2 · гофротруба в стяжке, с реестром материалов и схемой</td><td class="num">11–14</td><td>Нет сертификата — лист 14</td></tr>
+          <tr><td class="num">9</td><td>АОСР-3 … АОСР-5 с приложениями</td><td class="num">…</td><td></td></tr>
+          <tr><td class="num">10</td><td>Корешок папки и этикетка носителя</td><td class="num">—</td><td></td></tr>
+        </tbody></table></div>
+      <div class="reg-stamp mono" aria-hidden="true"><span>Реестр ИД</span><span>ДЕМО-01-ЭОМ</span><span>Лист 1</span><span>Листов 1</span></div>
+    </div>
   </div>
 </div></section>
 
