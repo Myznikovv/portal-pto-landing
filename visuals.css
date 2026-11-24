@@ -344,3 +344,57 @@
           mask: radial-gradient(ellipse 55% 50% at 45% 62%, var(--ink) 35%, transparent 100%); }
 .hero-shot { isolation: isolate; }
 .xd { box-shadow: var(--shadow-screen), 0 0 0 var(--bw) color-mix(in srgb, var(--line) 50%, transparent); }
+
+/* ═══ Лист 2: шкала времени объекта — где застревают деньги ═══ */
+.tl { position: relative; margin: var(--s-48) 0 0; padding: var(--s-32) var(--s-32) var(--s-24); background: var(--paper); border-radius: var(--r-lg);
+  display: grid; gap: var(--s-24); --name: calc(var(--s-96) + var(--s-24)); }
+.tl-axis { display: flex; justify-content: space-between; margin-left: var(--name); padding-bottom: var(--s-8); border-bottom: var(--bw) solid var(--ink);
+  color: var(--muted); font: var(--fs-12)/1 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; position: relative; }
+.tl-axis span:nth-child(2) { position: absolute; left: 55%; transform: translateX(-50%); }
+.tl-axis::after { content: ''; position: absolute; left: 55%; bottom: calc(var(--s-8) * -1); height: var(--s-8); border-left: var(--bw) solid var(--ink); }
+.tl-row { display: grid; grid-template-columns: var(--name) minmax(0, 1fr); align-items: center; }
+.tl-name { font: 600 var(--fs-14)/1.2 var(--font-body); color: var(--ink); }
+.tl-track { position: relative; height: var(--s-48); }
+.tl-usual { margin-top: var(--s-48); } .tl-usual + .tl-row { margin-top: var(--s-32); }
+.tl-bar { position: absolute; top: 0; bottom: 0; left: calc(var(--a) * 1%); width: calc((var(--b) - var(--a)) * 1%); display: flex; align-items: center; padding: 0 var(--s-16);
+  font: 600 var(--fs-14)/1.2 var(--font-body); white-space: nowrap; overflow: hidden; transform-origin: left; }
+.tl-work { background: var(--ink); color: var(--on-dark); border-radius: var(--r-sm); }
+.tl-wait { color: var(--warn); border: var(--bw) dashed var(--warn); border-left: 0; border-top-right-radius: var(--r-sm); border-bottom-right-radius: var(--r-sm);
+  background: repeating-linear-gradient(-45deg, var(--warn-soft) 0 var(--s-8), var(--paper) var(--s-8) var(--s-16)); }
+.tl-pay { position: absolute; top: 50%; left: calc(var(--at) * 1%); z-index: 2; display: grid; place-items: center; width: var(--s-48); aspect-ratio: 1; border-radius: 50%;
+  background: var(--ok); color: var(--on-dark); font: 700 var(--fs-18)/1 var(--font-body); transform: translate(-50%, -50%); box-shadow: 0 0 0 var(--s-4) var(--paper); }
+.tl-pin { position: absolute; left: calc(var(--at) * 1%); bottom: calc(100% + var(--s-12)); display: grid; place-items: center; width: var(--s-32); aspect-ratio: 1;
+  border-radius: 50%; border: var(--bw-strong) solid var(--cta); background: var(--card); color: var(--cta); font: 700 var(--fs-12)/1 var(--font-mono); transform: translateX(-50%); }
+.tl-pin::after { content: ''; position: absolute; left: 50%; top: 100%; height: var(--s-12); border-left: var(--bw) solid var(--cta); }
+.tl-acts i { position: absolute; bottom: calc(100% + var(--s-8)); left: calc(var(--at) * 1%); width: var(--s-16); height: var(--s-24); background: var(--card); border-radius: var(--r-sm);
+  transform: translateX(-50%) rotate(-6deg); box-shadow: 0 0 0 var(--bw) var(--ink); }
+.tl-acts i::after { content: ''; position: absolute; right: calc(var(--s-4) * -1); bottom: calc(var(--s-4) * -1); width: var(--s-12); height: var(--s-12); border-radius: 50%; border: var(--bw-strong) solid var(--cta); background: var(--card); }
+.tl-dim { position: relative; margin-left: var(--name); height: var(--s-32); }
+.tl-dim::before { content: ''; position: absolute; left: calc(var(--a) * 1%); width: calc((var(--b) - var(--a)) * 1%); top: var(--s-24); border-top: var(--bw-strong) solid var(--ok); }
+.tl-dim::after { content: ''; position: absolute; left: calc(var(--a) * 1%); width: calc((var(--b) - var(--a)) * 1%); top: calc(var(--s-16) + var(--bw)); height: var(--s-16);
+  border-left: var(--bw-strong) solid var(--ok); border-right: var(--bw-strong) solid var(--ok); box-sizing: border-box; }
+.tl-dim b { position: absolute; left: calc(var(--a) * 1%); width: calc((var(--b) - var(--a)) * 1%); top: 0; text-align: center; color: var(--ok); font: 600 var(--fs-12)/1 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; }
+.fixes { list-style: none; margin: var(--s-32) 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-32); }
+.fixes li { display: grid; align-content: start; gap: var(--s-8); padding-top: var(--s-16); border-top: var(--bw-strong) solid var(--ink); }
+.fx-n { display: grid; place-items: center; width: var(--s-32); aspect-ratio: 1; border-radius: 50%; border: var(--bw-strong) solid var(--cta); color: var(--cta); font: 700 var(--fs-12)/1 var(--font-mono); }
+.fixes s { color: var(--muted); font-size: var(--fs-14); text-decoration-color: color-mix(in srgb, var(--cta) 60%, transparent); }
+.fixes b { color: var(--ink); font: 600 var(--fs-16)/1.3 var(--font-body); }
+@media (max-width: 900px) {
+  .tl { padding: var(--s-24) var(--s-16); --name: 0; }
+  .tl-row { grid-template-columns: minmax(0, 1fr); gap: var(--s-8); }
+  .tl-axis, .tl-dim { margin-left: 0; }
+  .tl-pin, .tl-acts { display: none; }
+  .tl-dim b { left: 0; width: 100%; text-align: right; }
+  .tl-bar { font-size: var(--fs-12); padding: 0 var(--s-8); }
+  .fixes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) { .fixes { grid-template-columns: minmax(0, 1fr); } .tl-axis span:nth-child(2) { display: none; } }
+/* появление */
+.tl.vis-anim .tl-bar { transition: transform var(--t-story) var(--ease); transition-delay: calc(var(--i) * 600ms); }
+.tl.vis-anim .tl-pay, .tl.vis-anim .tl-pin { transition: opacity var(--t-base) var(--ease), transform var(--t-story) var(--ease); transition-delay: calc(var(--i) * 350ms + 600ms); }
+.tl.vis-anim .tl-acts i { transition: opacity var(--t-fast) linear calc(var(--at) * 12ms + 200ms); }
+.tl.vis-anim .tl-dim { transition: opacity var(--t-base) var(--ease) 2600ms; }
+.tl.vis-anim:not(.is-in) .tl-bar { transform: scaleX(0); }
+.tl.vis-anim:not(.is-in) .tl-pay { opacity: 0; transform: translate(-50%, -50%) scale(1.8); }
+.tl.vis-anim:not(.is-in) .tl-pin { opacity: 0; transform: translate(-50%, calc(var(--s-8) * -1)); }
+.tl.vis-anim:not(.is-in) .tl-acts i, .tl.vis-anim:not(.is-in) .tl-dim { opacity: 0; }
