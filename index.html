@@ -46,7 +46,15 @@
     <span aria-hidden="true" class="display is-accent" data-scramble="а денег нет?">а денег нет?</span></h1>
   <p class="lead">Заказчик не подпишет КС-2, пока нет исполнительной документации. Портал собирает акты скрытых работ (АОСР), реестры и сертификаты из вашей сметы в один PDF — исполнительная готова вместе с работами, а не через месяц после них.</p>
   <div class="row"><a class="btn btn-cta" href="#s9">Разобрать мой объект</a><a class="btn btn-ghost" href="#s4">Как собирается акт</a></div>
-  <div class="hero-foot"><div class="event"><span class="sheet">Демо · пример события</span><b>Акт № 14 подписан</b><span>Данные демонстрационные, не из реального объекта</span></div></div>
+  <div class="hero-foot"><div class="event feed" id="feed" aria-live="off">
+    <span class="sheet">Пример · журнал объекта</span>
+    <ol class="feed-list">
+      <li><b>АОСР-3 собран</b><span>Лотки 200×50 · 180 м · схема и сертификат приложены</span></li>
+      <li><b>Сертификат прикреплён</b><span>Кабель ВВГнг(А)-LS 5×16 → АОСР-4</span></li>
+      <li><b>Не хватает файла</b><span>АОСР-2: сертификат на трубу ПНД Ø25</span></li>
+      <li><b>Комплект ИД собран</b><span>Реестр, ведомость, АОСР-1…5 — один PDF</span></li>
+    </ol>
+  </div></div>
 </div>
   <div class="hero-art"><svg class="iso" id="iso" aria-hidden="true" focusable="false"></svg></div>
 </div></header>
@@ -394,9 +402,10 @@
       <div class="table-wrap"><table class="ledger">
         <thead><tr><th>Акт</th><th>Работа</th><th class="num">Объём</th><th>Статус</th></tr></thead>
         <tbody>
-          <tr><td class="mono">АОСР-14</td><td>Монтаж лотков</td><td class="num">120 м</td><td><span class="badge badge-ok">Принято</span></td></tr>
-          <tr class="is-active"><td class="mono">АОСР-15</td><td>Прокладка кабеля</td><td class="num">860 м</td><td><span class="badge badge-warn">На проверке</span></td></tr>
-          <tr><td class="mono">АОСР-16</td><td>Монтаж заземления</td><td class="num">45 м</td><td><span class="badge badge-bad">Замечание</span></td></tr>
+          <tr><td class="mono">АОСР-1</td><td>Контур заземления</td><td class="num">60 м</td><td><span class="badge badge-ok">Принято</span></td></tr>
+          <tr><td class="mono">АОСР-2</td><td>Гофротруба в стяжке</td><td class="num">120 м</td><td><span class="badge badge-bad">Замечание</span></td></tr>
+          <tr><td class="mono">АОСР-3</td><td>Лотки за потолком</td><td class="num">180 м</td><td><span class="badge badge-ok">Принято</span></td></tr>
+          <tr class="is-active"><td class="mono">АОСР-4</td><td>Кабель в лотках</td><td class="num">860 м</td><td><span class="badge badge-warn">На проверке</span></td></tr>
         </tbody></table></div></div>
   </div>
 </div></section>
@@ -404,9 +413,29 @@
 <section class="section is-paper" id="s6"><div class="container">
   <span class="sheet">Лист 6 из 9 · портал</span>
   <h2 class="head2"><span class="sr-only">Как это выглядит в портале</span><span aria-hidden="true" class="display" data-scramble="Как это выглядит">Как это выглядит</span><span aria-hidden="true" class="display is-accent">в портале</span></h2>
+  <p class="lead">Настоящие экраны портала на демонстрационной заявке. Цифры на них — пример, номера на кадре объяснены под ним.</p>
   <div class="shots">
-    <figure class="screen reveal"><figcaption><span>Работы и материалы: смета → акт → работа → материал</span><span>демо-данные</span></figcaption><img src="assets/portal-editor.png" alt="Редактор «Работы и материалы» в портале: акт АОСР-1 с работой и материалом" width="1568" height="247" loading="lazy"></figure>
-    <figure class="screen reveal"><figcaption><span>Документы по заявке в одной строке</span><span>демо-данные</span></figcaption><img src="assets/portal-documents.png" alt="Строка заявки в портале: ведомость работ, спецификация, сертификаты, АОСР и кнопка «Скачать итоговый ИД»" width="1568" height="174" loading="lazy"></figure>
+    <figure class="screen shot reveal"><figcaption><span>Работы и материалы: смета → акт → работа → материал</span><span>демо-данные</span></figcaption>
+      <div class="shot-scroll"><div class="shot-img"><img src="assets/portal-editor.png" alt="Редактор «Работы и материалы» в портале: акт АОСР-1 со сроками, работой из сметы и материалом" width="1568" height="247" loading="lazy">
+        <i class="mark" style="--x: 14%; --y: 31%">1</i><i class="mark" style="--x: 14%; --y: 46%">2</i><i class="mark" style="--x: 14%; --y: 67%">3</i><i class="mark" style="--x: 14%; --y: 90%">4</i><i class="mark" style="--x: 83.5%; --y: 86%">5</i></div></div>
+      <ol class="shot-legend">
+        <li><b>Акт АОСР</b> — раздел сметы, из которого собирается акт</li>
+        <li><b>Сроки</b> — даты начала и окончания работ для акта</li>
+        <li><b>Работа из сметы</b> — единица, количество и цена</li>
+        <li><b>Материал к работе</b> — попадает в реестр материалов</li>
+        <li><b>Фото и сертификат</b> — прикрепляются к материалу</li>
+      </ol></figure>
+    <figure class="screen shot reveal"><figcaption><span>Документы по заявке в одной строке</span><span>демо-данные</span></figcaption>
+      <div class="shot-scroll"><div class="shot-img"><img src="assets/portal-documents.png" alt="Строка заявки в портале: ведомость работ, спецификация, сертификаты, архив КС, АОСР и кнопка «Скачать итоговый ИД»" width="1568" height="174" loading="lazy">
+        <i class="mark" style="--x: 18.6%; --y: 10%">1</i><i class="mark" style="--x: 32.4%; --y: 10%">2</i><i class="mark" style="--x: 46.2%; --y: 10%">3</i><i class="mark" style="--x: 60%; --y: 10%">4</i><i class="mark" style="--x: 73.8%; --y: 10%">5</i><i class="mark" style="--x: 86%; --y: 62%">6</i></div></div>
+      <ol class="shot-legend">
+        <li><b>Ведомость работ</b> и смета заявки</li>
+        <li><b>Спецификация</b> материалов</li>
+        <li><b>Сертификаты</b> одним файлом</li>
+        <li><b>КС-2, КС-3, КС-6</b> — архив форм</li>
+        <li><b>АОСР</b> — файл актов и версия в Excel</li>
+        <li><b>Итоговый ИД</b> — весь комплект одним PDF</li>
+      </ol></figure>
   </div>
 </div></section>
 
@@ -435,9 +464,18 @@
 <section class="section is-paper" id="s8"><div class="container">
   <span class="sheet">Лист 8 из 9 · частые вопросы об исполнительной документации</span>
   <h2 class="head2"><span class="sr-only">Частые вопросы об исполнительной документации и ПТО</span><span aria-hidden="true" class="display" data-scramble="Частые вопросы">Частые вопросы</span><span aria-hidden="true" class="display is-accent">про ИД и ПТО</span></h2>
+  <div class="faq-grid">
   <div class="faq"><details class="faq-item"><summary>Что входит в исполнительную документацию?</summary><p>Обложка, титульный лист и общий реестр; приказы и разрешительные документы, выписки СРО; ведомость подсчёта выполненных работ; для каждого акта — АОСР, реестр материалов, исполнительные схемы и сертификаты; корешок папки и этикетка носителя. В портале всё это собирается в один PDF.</p></details><details class="faq-item"><summary>Что такое АОСР и когда его оформляют?</summary><p>АОСР — акт освидетельствования скрытых работ. Его оформляют на работы, которые закрываются следующими этапами: контур заземления в грунте, трубы в стяжке пола, кабель в штробе или за подвесным потолком. Акт подписывают до того, как работу закроют. В портале текст акта собирается из сметы автоматически, даты и формулировки можно поправить.</p></details><details class="faq-item"><summary>Почему заказчик не подписывает КС-2 без исполнительной документации?</summary><p>Исполнительная документация подтверждает, что работы выполнены по проекту и из заявленных материалов. Пока нет актов скрытых работ, реестров и сертификатов, заказчику нечем подтвердить объём в КС-2 — поэтому приёмка и оплата откладываются.</p></details><details class="faq-item"><summary>Можно ли передать ведение ПТО на аутсорс?</summary><p>Да. Вы передаёте заказ, мы ведём ПТО и собираем исполнительную документацию. Это удобно подрядчикам и дилерам, которым невыгодно держать своего инженера ПТО.</p></details><details class="faq-item"><summary>Сколько стоит оформление исполнительной документации?</summary><p>Стоимость считается по прайсу от суммы заказа: чем больше заказ, тем ниже ставка. Пришлите смету или сумму заказа — посчитаем.</p></details><details class="faq-item"><summary>Где хранятся документы по объекту?</summary><p>В портале, у вашей компании: смета, акты, приказы, выписки СРО и сертификаты. Документы не пропадают, если меняется инженер ПТО, а комплект можно пересобрать после правок в смете.</p></details></div>
-  <h3 class="topics-h">Подробнее по теме</h3>
-  <ul class="topics"><li><a href="akt-skrytyh-rabot-aosr/">Акт скрытых работ (АОСР): что это и как оформить</a></li><li><a href="ispolnitelnaya-dokumentaciya-elektromontazh/">Исполнительная документация по электромонтажу</a></li><li><a href="pto-na-autsorse/">ПТО на аутсорсе для подрядчиков и дилеров</a></li><li><a href="reestr-ispolnitelnoy-dokumentacii/">Реестр исполнительной документации</a></li></ul>
+  <aside class="reads" aria-labelledby="reads-h">
+    <h3 class="topics-h" id="reads-h">Подробнее по теме</h3>
+    <ul class="read-list">
+      <li><a href="akt-skrytyh-rabot-aosr/"><img src="assets/photo/gofra.jpg" alt="" width="1100" height="829" loading="lazy"><span><b>Акт скрытых работ (АОСР)</b><i>Что это и как оформить</i></span></a></li>
+      <li><a href="ispolnitelnaya-dokumentaciya-elektromontazh/"><img src="assets/photo/kabel.jpg" alt="" width="1100" height="829" loading="lazy"><span><b>ИД по электромонтажу</b><i>Типичные скрытые работы по ЭОМ</i></span></a></li>
+      <li><a href="pto-na-autsorse/"><img src="assets/photo/shtroba.jpg" alt="" width="1100" height="829" loading="lazy"><span><b>ПТО на аутсорсе</b><i>Для подрядчиков и дилеров</i></span></a></li>
+      <li><a href="reestr-ispolnitelnoy-dokumentacii/"><img src="assets/photo/zazem.jpg" alt="" width="1100" height="829" loading="lazy"><span><b>Реестр ИД</b><i>Опись комплекта по порядку</i></span></a></li>
+    </ul>
+  </aside>
+  </div>
 </div></section>
 
 <section class="section" id="s9"><div class="container">
@@ -457,10 +495,11 @@
         <option value="Подключить портал">Подключить портал</option>
         <option value="Стать дилером" data-key="dealer">Стать дилером</option></select></div>
     </div>
-    <div class="field"><label for="f-note">Комментарий</label><textarea id="f-note" name="note" rows="3"></textarea></div>
+    <div class="field"><label for="f-note">Комментарий</label><textarea id="f-note" name="note" rows="3" placeholder="Например: электромонтаж, около 10 актов, сдача КС-2 в конце месяца"></textarea></div>
     <label class="consent"><input type="checkbox" id="f-consent" required><span>Согласен на обработку персональных данных по <a href="https://xn----7sbzkmbfbku1a.xn--p1ai/policy" target="_blank" rel="noopener">политике конфиденциальности</a></span></label>
     <span class="hint" id="e-consent" style="color: var(--bad)"></span>
     <div class="row"><button class="btn btn-cta" type="submit">Отправить заявку</button><span class="form-msg" id="form-msg" role="status"></span></div>
+    <p class="form-call">Удобнее голосом — <a href="tel:+79777537070">+7 977 753-70-70</a>, в рабочее время.</p>
   </form>
   <aside class="req" aria-hidden="true">
     <div class="req-sheet">
@@ -483,6 +522,7 @@
 <footer class="foot"><div class="container">
   <div><a class="brand" href="#s1">Портал<i>.</i>ПТО</a><p>ООО «БИЗНЕСТЕХНОЛОГИИ»<br>ИНН 9719009312 · КПП 771901001<br>ОГРН 1207700412138</p></div>
   <div><p>105215, г. Москва, ул. Константина Федина, д. 13</p><p><a href="tel:+79777537070">+7 977 753-70-70</a><br><a href="mailto:7537070@mail.ru">7537070@mail.ru</a></p></div>
+  <nav aria-label="Справка"><p><a href="akt-skrytyh-rabot-aosr/">Акт скрытых работ (АОСР)</a><br><a href="ispolnitelnaya-dokumentaciya-elektromontazh/">ИД по электромонтажу</a><br><a href="pto-na-autsorse/">ПТО на аутсорсе</a><br><a href="reestr-ispolnitelnoy-dokumentacii/">Реестр ИД</a></p></nav>
 </div></footer>
 
 <script src="main.js"></script>

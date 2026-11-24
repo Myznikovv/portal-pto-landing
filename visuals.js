@@ -12,6 +12,21 @@
     blocks.forEach(block => { block.classList.add('vis-anim'); observer.observe(block) })
   }
 
+  // Журнал объекта на первом экране: события сменяются по одному. Без скрипта и при reduced-motion видны все четыре
+  const feed = document.getElementById('feed')
+  if (feed && !reduced) {
+    const items = [...feed.querySelectorAll('.feed-list li')]
+    let current = 0
+    feed.classList.add('is-live')
+    items[0].classList.add('is-on')
+    setInterval(() => {
+      if (document.hidden) return
+      items[current].classList.remove('is-on')
+      current = (current + 1) % items.length
+      items[current].classList.add('is-on')
+    }, 2800)
+  }
+
   // Заявка: что вводят в форму, сразу появляется в основной надписи листа; после отправки ставится печать
   const form = document.getElementById('form')
   const stamp = document.getElementById('req-stamp')

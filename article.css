@@ -33,3 +33,4 @@
 .site-photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
 .site-photo figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s-8) var(--s-16); padding: var(--s-8) var(--s-4) 0; color: var(--muted); font-size: var(--fs-14); }
 .site-photo figcaption .mono { font-size: var(--fs-12); text-transform: uppercase; letter-spacing: 0.08em; }
+.article .side-contact { margin: var(--s-16) 0 0; }
