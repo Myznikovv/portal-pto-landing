@@ -87,46 +87,6 @@
 .aosr.is-filled .aosr-fields li, .aosr.is-filled .aosr-sign { opacity: 1; }
 .aosr.is-filled .aosr-fields b { background: transparent; transition-delay: calc(var(--i) * var(--t-step) + var(--t-story)); }
 
-/* ═══ Лист 5: лента листов комплекта ═══ */
-.kit { margin: var(--s-32) 0 0; display: flex; flex-wrap: wrap; gap: var(--s-24) var(--s-32); align-items: end; padding: var(--s-32);
-  background: var(--paper); border: var(--bw) solid var(--line); border-radius: var(--r-lg); counter-reset: pg; }
-.kit-group { display: grid; gap: var(--s-8); }
-.kit-k { color: var(--muted); font-size: var(--fs-12); text-transform: uppercase; letter-spacing: 0.08em; }
-.kit-row { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s-8); }
-.pg { position: relative; display: grid; align-content: start; gap: var(--s-4); width: var(--mini-w); height: var(--mini-h); padding: var(--s-8);
-  border: var(--bw) solid var(--line); border-radius: var(--r-sm); color: var(--muted); font-size: var(--fs-12); line-height: 1.2; counter-increment: pg;
-  background: repeating-linear-gradient(var(--card) 0 var(--s-8), var(--line-soft) var(--s-8) calc(var(--s-8) + var(--bw))) 0 var(--s-48) / 100% 45% no-repeat, var(--card); }
-.pg b { color: var(--ink); font: 600 var(--fs-12)/1.2 var(--font-mono); }
-.pg i { font-style: normal; }
-.pg::after { content: counter(pg, decimal-leading-zero); position: absolute; right: var(--s-8); bottom: var(--s-4); color: var(--muted); font: var(--fs-12)/1 var(--font-mono); }
-.pg-cover { background: var(--ink); border-color: var(--ink); color: var(--on-dark-muted); outline: var(--bw) solid var(--on-dark-muted); outline-offset: calc(var(--s-4) * -1); }
-.pg-cover b, .pg-cover::after { color: var(--on-dark); }
-.pg-act::before { content: '✓'; position: absolute; left: var(--s-8); bottom: var(--s-8); display: grid; place-items: center; width: var(--s-24); aspect-ratio: 1;
-  border: var(--bw-strong) solid var(--cta); border-radius: 50%; color: var(--cta); font-weight: 700; transform: rotate(-8deg); }
-.pg-scheme { background:
-  linear-gradient(var(--link), var(--link)) var(--s-12) 78% / 55% var(--bw-strong) no-repeat,
-  linear-gradient(var(--link), var(--link)) calc(var(--s-12) + 55% - var(--bw-strong)) 100% / var(--bw-strong) 36% no-repeat,
-  linear-gradient(color-mix(in srgb, var(--line) 70%, transparent) var(--bw), transparent var(--bw)) 0 0 / var(--s-12) var(--s-12),
-  linear-gradient(90deg, color-mix(in srgb, var(--line) 70%, transparent) var(--bw), transparent var(--bw)) 0 0 / var(--s-12) var(--s-12),
-  var(--card); }
-.pg-scheme { background-origin: content-box; }
-.pg-cert::before { content: ''; position: absolute; left: 50%; top: 58%; width: var(--s-32); aspect-ratio: 1; border: var(--bw) solid var(--muted); border-radius: 50%;
-  outline: var(--bw) solid var(--muted); outline-offset: var(--s-4); transform: translate(-50%, -50%); }
-.pg-missing { border: var(--bw-strong) dashed var(--warn); background: var(--warn-soft); color: var(--warn); }
-.pg-missing b { color: var(--warn); }
-.pg-missing::before { content: '!'; position: absolute; left: 50%; top: 60%; display: grid; place-items: center; width: var(--s-24); aspect-ratio: 1;
-  border: var(--bw-strong) solid var(--warn); border-radius: 50%; color: var(--warn); font: 700 var(--fs-14)/1 var(--font-mono); transform: translate(-50%, -50%); }
-.pg-ghost { place-content: center; justify-items: center; border-style: dashed; background: transparent; counter-increment: none; }
-.pg-ghost::after { content: none; }
-.kit-note { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: var(--s-8) var(--s-16); align-items: center; padding-top: var(--s-16);
-  border-top: var(--bw) dashed var(--line); color: var(--ink); font-size: var(--fs-14); }
-.kit-note .mono { font-size: var(--fs-12); }
-@media (max-width: 640px) { .kit { padding: var(--s-16); gap: var(--s-16); } }
-
-.kit.vis-anim .pg, .kit.vis-anim .kit-note { transition: opacity var(--t-base) var(--ease), transform var(--t-story) var(--ease); transition-delay: calc(var(--n) * 110ms); }
-.kit.vis-anim:not(.is-in) .pg { opacity: 0; transform: translateY(calc(var(--s-24) * -1)) rotate(-6deg); }
-.kit.vis-anim:not(.is-in) .kit-note { opacity: 0; transform: translateY(var(--s-8)); }
-
 /* ═══ Лист 7: маршрут передачи ПТО ═══ */
 .route { position: relative; list-style: none; margin: var(--s-64) 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-32); }
 .route::before { content: ''; position: absolute; left: var(--s-24); right: var(--s-24); top: calc(var(--s-32) + var(--s-8)); border-top: var(--bw-strong) dashed var(--link); transform-origin: left; }
@@ -398,3 +358,69 @@
 .tl.vis-anim:not(.is-in) .tl-pay { opacity: 0; transform: translate(-50%, -50%) scale(1.8); }
 .tl.vis-anim:not(.is-in) .tl-pin { opacity: 0; transform: translate(-50%, calc(var(--s-8) * -1)); }
 .tl.vis-anim:not(.is-in) .tl-acts i, .tl.vis-anim:not(.is-in) .tl-dim { opacity: 0; }
+
+/* ═══ Лист 5: комплект ИД — разделы веерами, как карты в руке, в конце итоговый PDF ═══ */
+.deck-wrap { margin: var(--s-48) 0 0; padding: var(--s-24) 0; background: var(--paper); border-radius: var(--r-lg); overflow: hidden; }
+.deck-scroll { overflow-x: auto; padding: var(--s-32) var(--s-24) var(--s-16) var(--s-64); }
+.deck { list-style: none; margin: 0 auto; padding: 0; display: flex; justify-content: space-between; align-items: flex-end; gap: var(--s-16); min-width: max-content; width: 100%; }
+.hand { display: grid; justify-items: center; gap: var(--s-24); }
+.hand-tab { order: 2; padding: var(--s-4) var(--s-12); border-radius: var(--r-pill); background: var(--card); border: var(--bw) solid var(--line); color: var(--ink); font: 600 var(--fs-12)/1 var(--font-mono); white-space: nowrap; }
+.hand-cards { list-style: none; margin: 0; padding: 0; position: relative; width: calc(var(--pg-w) + (var(--k-max, 6) - 1) * var(--s-12)); height: calc(var(--pg-h) * 1.18); }
+.hand:nth-child(1) .hand-cards { --k-max: 6; } .hand:nth-child(2) .hand-cards, .hand:nth-child(3) .hand-cards { --k-max: 4; } .hand:nth-child(4) .hand-cards { --k-max: 1; }
+.pg { position: absolute; left: 50%; bottom: 0; width: var(--pg-w); height: var(--pg-h); margin-left: calc(var(--pg-w) / -2); display: grid; align-content: start; gap: var(--s-4);
+  padding: var(--s-12); background: var(--card); border: var(--bw) solid var(--line); border-radius: var(--r-sm); box-shadow: 0 var(--bw) var(--s-8) color-mix(in srgb, var(--ink) 12%, transparent);
+  font-size: var(--fs-12); line-height: 1.2; color: var(--muted); z-index: calc(var(--i) + 1); transform-origin: 50% 120%;
+  --rot: calc((var(--i) - (var(--k) - 1) / 2) * 7deg);
+  transform: rotate(var(--rot)); transition: transform var(--t-base) var(--ease); }
+@media (hover: hover) { .pg:hover { transform: rotate(var(--rot)) translateY(calc(var(--s-32) * -1)); z-index: 20; } }
+.pg b { color: var(--ink); font: 700 var(--fs-12)/1.2 var(--font-body); }
+.pg em { font-style: normal; }
+.pg > i { display: block; height: var(--bw-strong); margin-top: var(--s-4); background: var(--line-soft); }
+.pg > i:nth-of-type(3n) { width: 70%; }
+.pg u { position: absolute; right: var(--s-8); bottom: var(--s-8); text-decoration: none; font: var(--fs-12)/1 var(--font-mono); color: var(--muted); }
+.pg-cover { background: var(--ink); border-color: var(--ink); color: var(--on-dark-muted); align-content: space-between; outline: var(--bw) solid var(--on-dark-muted); outline-offset: calc(var(--s-4) * -1); }
+.pg-cover b { color: var(--on-dark); font: 700 var(--fs-14)/1.2 var(--font-mono); }
+.pg-cover u { color: var(--on-dark-muted); }
+.pg-grid { display: block; margin-top: var(--s-8); height: calc(var(--pg-h) * 0.5); border: var(--bw) solid var(--line);
+  background: linear-gradient(90deg, transparent calc(var(--s-16) - var(--bw)), var(--line) 0 var(--s-16), transparent 0),
+              repeating-linear-gradient(transparent 0 calc(var(--s-12) - var(--bw)), var(--line) calc(var(--s-12) - var(--bw)) var(--s-12)); }
+.pg-act b { color: var(--cta); font-family: var(--font-mono); }
+.pg-sign { display: block; margin-top: var(--s-12); width: 55%; border-top: var(--bw) solid var(--ink); }
+.pg-seal { position: absolute; right: var(--s-12); bottom: var(--s-24); width: var(--s-32); aspect-ratio: 1; border-radius: 50%; border: var(--bw-strong) solid var(--cta);
+  outline: var(--bw) solid var(--cta); outline-offset: calc(var(--bw-strong) * -3); transform: rotate(-12deg); }
+.pg-draw { display: block; margin-top: var(--s-8); height: calc(var(--pg-h) * 0.55); border: var(--bw) solid var(--line);
+  background: linear-gradient(var(--link), var(--link)) 20% 70% / 55% var(--bw-strong) no-repeat,
+              linear-gradient(var(--link), var(--link)) 75% 100% / var(--bw-strong) 45% no-repeat,
+              repeating-linear-gradient(90deg, transparent 0 calc(var(--s-12) - var(--bw)), var(--line-soft) 0 var(--s-12)),
+              repeating-linear-gradient(transparent 0 calc(var(--s-12) - var(--bw)), var(--line-soft) 0 var(--s-12)); }
+.pg-cert { outline: var(--bw-strong) double var(--warn); outline-offset: calc(var(--s-4) * -1); }
+.pg-badge { position: absolute; left: 50%; top: 60%; width: var(--s-48); aspect-ratio: 1; border-radius: 50%; border: var(--bw) solid var(--muted);
+  outline: var(--bw) dashed var(--muted); outline-offset: var(--s-4); transform: translate(-50%, -50%); }
+.pg-missing { background: var(--warn-soft); border: var(--bw-strong) dashed var(--warn); box-shadow: none; color: var(--warn); }
+.pg-missing b { color: var(--warn); }
+.pg-warn { position: absolute; left: 50%; top: 60%; display: grid; place-items: center; width: var(--s-32); aspect-ratio: 1; border-radius: 50%; background: var(--warn);
+  color: var(--on-dark); font: 700 var(--fs-16)/1 var(--font-mono); transform: translate(-50%, -50%); animation: pg-pulse 1.8s var(--ease) infinite; }
+@keyframes pg-pulse { 50% { box-shadow: 0 0 0 var(--s-8) color-mix(in srgb, var(--warn) 18%, transparent); } }
+.pg-more { align-content: center; justify-items: center; text-align: center; border-style: dashed; background: transparent; box-shadow: none; }
+.pg-pdf { display: grid; justify-items: center; align-content: end; gap: var(--s-8); text-align: center; padding-bottom: calc(var(--s-24) + var(--s-24)); }
+.pdf-file { position: relative; display: grid; place-items: end center; width: calc(var(--pg-w) * 0.8); aspect-ratio: 0.75; padding-bottom: var(--s-16); background: var(--card);
+  border: var(--bw-strong) solid var(--ink); border-radius: var(--r-sm); clip-path: polygon(0 0, 72% 0, 100% 22%, 100% 100%, 0 100%); }
+.pdf-file::after { content: ''; position: absolute; right: 0; top: 0; width: 28%; height: 22%; background: var(--line); }
+.pdf-file b { padding: var(--s-4) var(--s-8); background: var(--cta); color: var(--on-dark); font: 700 var(--fs-14)/1 var(--font-mono); border-radius: var(--r-sm); }
+.pdf-name { color: var(--ink); font: 600 var(--fs-12)/1.2 var(--font-mono); }
+.pdf-sub { color: var(--muted); font-size: var(--fs-12); }
+.hand + .hand::before, .pg-pdf::before { content: none; }
+.deck-note { display: flex; flex-wrap: wrap; gap: var(--s-8) var(--s-16); align-items: center; margin: var(--s-8) var(--s-24) 0; padding-top: var(--s-16); border-top: var(--bw) dashed var(--line); color: var(--ink); font-size: var(--fs-14); }
+/* раздача: разделы по очереди, листы раскрываются веером */
+.deck-wrap.vis-anim .pg { transition: transform var(--t-story) var(--ease), opacity var(--t-base) var(--ease); transition-delay: calc(var(--g, 0) * 260ms + var(--i) * 60ms); }
+.deck-wrap.vis-anim .hand { --g: inherit; }
+.deck-wrap.vis-anim .pg-pdf, .deck-wrap.vis-anim .deck-note { transition: opacity var(--t-base) var(--ease), transform var(--t-story) var(--ease); transition-delay: 1300ms; }
+.deck-wrap.vis-anim:not(.is-in) .pg { opacity: 0; transform: translateY(var(--s-32)) rotate(0deg); }
+.deck-wrap.vis-anim:not(.is-in) .pg-pdf { opacity: 0; transform: scale(0.7); }
+.deck-wrap.vis-anim:not(.is-in) .deck-note { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .pg-warn { animation: none; } }
+
+/* стрелки потока между разделами и к PDF */
+.hand { position: relative; }
+.hand:not(:first-child)::after, .pg-pdf::after { content: '→'; position: absolute; left: calc(var(--s-16) * -1); top: 42%; transform: translateX(-50%); color: var(--muted); font: 600 var(--fs-18)/1 var(--font-mono); }
+.pg-pdf { position: relative; }
