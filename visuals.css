@@ -219,43 +219,54 @@
 .form-call a { color: var(--link); white-space: nowrap; }
 .field textarea::placeholder, .field input::placeholder { color: var(--muted); }
 
-/* ═══ Первый экран: фото скрытой работы с чертёжной разметкой (вместо изометрии) ═══ */
-.hero-shot { position: relative; margin: 0 0 var(--s-48); }
-.hero-frame { position: relative; overflow: hidden; border-radius: var(--r-sm); background: var(--ink); box-shadow: var(--shadow-screen); }
-.hero-frame img { display: block; width: 100%; height: auto; aspect-ratio: 1024 / 688; object-fit: cover; filter: saturate(0.85) contrast(1.02); }
-/* уголки видоискателя */
-.hero-frame::after { content: ''; position: absolute; inset: var(--s-12); pointer-events: none; --c: color-mix(in srgb, var(--bg) 85%, transparent);
-  background:
-    linear-gradient(var(--c), var(--c)) 0 0 / var(--s-24) var(--bw-strong) no-repeat, linear-gradient(var(--c), var(--c)) 0 0 / var(--bw-strong) var(--s-24) no-repeat,
-    linear-gradient(var(--c), var(--c)) 100% 0 / var(--s-24) var(--bw-strong) no-repeat, linear-gradient(var(--c), var(--c)) 100% 0 / var(--bw-strong) var(--s-24) no-repeat,
-    linear-gradient(var(--c), var(--c)) 0 100% / var(--s-24) var(--bw-strong) no-repeat, linear-gradient(var(--c), var(--c)) 0 100% / var(--bw-strong) var(--s-24) no-repeat,
-    linear-gradient(var(--c), var(--c)) 100% 100% / var(--s-24) var(--bw-strong) no-repeat, linear-gradient(var(--c), var(--c)) 100% 100% / var(--bw-strong) var(--s-24) no-repeat; }
-.hero-marks { position: absolute; inset: 0; width: 100%; height: 100%; }
-.hm-leader { fill: none; stroke: var(--bg); stroke-width: 3; stroke-dasharray: 1; stroke-dashoffset: 0; }
-.hm-ring { fill: none; stroke: var(--bg); stroke-width: 3; }
-.hm-dot { fill: var(--link); stroke: var(--bg); stroke-width: 3; }
-.hero-tag { position: absolute; left: 68.4%; top: 28.5%; transform: translateY(-50%); display: grid; gap: var(--s-4); padding: var(--s-8) var(--s-12);
-  background: var(--card); border-left: var(--bw-strong) solid var(--link); border-radius: var(--r-sm); color: var(--muted); font-size: var(--fs-12); line-height: 1.25; }
-.hero-tag .mono:first-child { color: var(--cta); font-weight: 600; }
-.hero-tag b { color: var(--ink); font-size: var(--fs-14); }
-.hero-cap { position: absolute; right: var(--s-12); bottom: var(--s-12); padding: var(--s-4) var(--s-8); background: color-mix(in srgb, var(--ink) 75%, transparent);
-  color: var(--on-dark); font-size: var(--fs-12); text-transform: uppercase; letter-spacing: 0.08em; border-radius: var(--r-sm); }
-.hero-shot .feed { position: absolute; left: calc(var(--s-48) * -1); bottom: calc(var(--s-48) * -1); width: var(--card-max); max-width: 80%; box-shadow: var(--shadow-screen); }
-@media (max-width: 900px) {
-  .hero-shot { margin: var(--s-8) 0 0; }
-  .hero-shot .feed { position: relative; left: auto; bottom: auto; width: auto; max-width: none; margin: var(--s-12) 0 0; }
-  .hero-tag { left: auto; right: var(--s-8); top: var(--s-12); transform: none; }
-  .hero-tag b { font-size: var(--fs-12); }
-  .hm-leader { display: none; }
-}
-.hero-shot.vis-anim .hm-leader { transition: stroke-dashoffset var(--t-story) var(--ease) 500ms; }
-.hero-shot.vis-anim .hm-ring { transform-box: fill-box; transform-origin: center; transition: transform var(--t-story) var(--ease) 200ms, opacity var(--t-fast) linear 200ms; }
-.hero-shot.vis-anim .hero-tag { transition: opacity var(--t-base) var(--ease) 1100ms; }
-.hero-shot.vis-anim .feed { transition: opacity var(--t-base) var(--ease) 1500ms, transform var(--t-story) var(--ease) 1500ms; }
-.hero-shot.vis-anim:not(.is-in) .hm-leader { stroke-dashoffset: 1; }
-.hero-shot.vis-anim:not(.is-in) .hm-ring { opacity: 0; transform: scale(2.4); }
-.hero-shot.vis-anim:not(.is-in) .hero-tag { opacity: 0; }
+/* ═══ Первый экран: аксонометрия пролёта — каркас и пять скрытых работ прорисовываются по очереди ═══ */
+.hero-shot { position: relative; margin: 0; }
+.axo { display: block; width: 100%; height: auto; overflow: visible; }
+.axo polyline { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.axo polygon { stroke: var(--ink); stroke-width: 1.2; stroke-linejoin: round; }
+.axo .f-t { fill: var(--bg); }
+.axo .f-l { fill: var(--paper); }
+.axo .f-r { fill: color-mix(in srgb, var(--line) 55%, var(--bg)); }
+.axo .ax-panel polygon { fill: var(--ink); }
+.axo .ax-tray polygon { stroke: var(--link); }
+.axo .ax-tray .f-t { fill: var(--link-soft); }
+.axo .ax-tray .f-l, .axo .ax-tray .f-r { fill: var(--link); }
+.ax-axis { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 16 4 2 4; opacity: 0.6; }
+.ax-dim { stroke: var(--muted); stroke-width: 1; }
+.ax-bubble { fill: var(--bg); stroke: var(--muted); stroke-width: 1; }
+.ax-bubble-t, .ax-dim-t, .ax-panel-t { font: calc(var(--fs-12) * 1.2) var(--font-mono); fill: var(--muted); }
+.ax-panel-t { fill: var(--ink); font-weight: 600; }
+.ax-phantom { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 8 6; }
+.ax-grid { stroke: var(--line); stroke-width: 1; stroke-dasharray: 3 4; }
+.ax-strip { stroke: var(--ink); stroke-width: 2.6; }
+.ax-pipe { stroke: var(--link); stroke-width: 3; }
+.ax-cable { stroke: var(--link); stroke-width: 3.6; }
+.ax-rod { stroke: var(--muted); stroke-width: 1.2; }
+.ax-flow { stroke: var(--bg); stroke-width: 1.6; stroke-dasharray: 0.015 0.05; opacity: 0; }
+.ax-leader { fill: none; stroke: var(--muted); stroke-width: 1; }
+.ax-pin { fill: var(--link); stroke: var(--bg); stroke-width: 2; }
+.ax-tag-n { font: 600 calc(var(--fs-12) * 1.4) var(--font-mono); fill: var(--cta); letter-spacing: 0.04em; }
+.ax-tag-t { font: 600 calc(var(--fs-14) * 1.35) var(--font-body); fill: var(--ink); }
+.ax-tag text { paint-order: stroke; stroke: var(--bg); stroke-width: 4; stroke-linejoin: round; }
+.ax-check { fill: var(--bg); stroke: var(--cta); stroke-width: 1.5; }
+.ax-check-t { font: 700 calc(var(--fs-12) * 1.2) var(--font-body); fill: var(--cta); }
+.hero-shot { margin-right: calc(var(--s-48) * -1); }
+.hero-shot .feed { position: absolute; left: calc(var(--s-32) * -1); bottom: calc(var(--s-96) * -1); width: min(70%, calc(var(--card-max) * 0.85)); box-shadow: var(--shadow-screen); }
+.hero-shot .feed .feed-list b { font-size: var(--fs-16); }
+@media (max-width: 900px) { .hero-shot { margin-right: 0; } .hero-shot .feed { position: relative; bottom: auto; width: auto; margin-top: var(--s-16); } }
+@media (max-width: 640px) { .ax-tag-t { display: none; } }
+
+.hero-shot.vis-anim .ax-work, .hero-shot.vis-anim .ax-dim { stroke-dasharray: 1; transition: stroke-dashoffset var(--t-story) var(--ease) var(--d); }
+.hero-shot.vis-anim .ax-box, .hero-shot.vis-anim .ax-fade, .hero-shot.vis-anim .ax-axis, .hero-shot.vis-anim .ax-phantom,
+.hero-shot.vis-anim .ax-grid, .hero-shot.vis-anim .ax-tag { transition: opacity var(--t-base) var(--ease) var(--d); }
+.hero-shot.vis-anim .feed { transition: opacity var(--t-base) var(--ease) 5200ms, transform var(--t-story) var(--ease) 5200ms; }
+.hero-shot.vis-anim.is-in .ax-flow { opacity: 0.9; transition: opacity var(--t-base) linear 5000ms; animation: ax-flow 1.6s linear infinite; }
+@keyframes ax-flow { to { stroke-dashoffset: -0.065; } }
+.hero-shot.vis-anim:not(.is-in) .ax-work, .hero-shot.vis-anim:not(.is-in) .ax-dim { stroke-dashoffset: 1; }
+.hero-shot.vis-anim:not(.is-in) .ax-box, .hero-shot.vis-anim:not(.is-in) .ax-fade, .hero-shot.vis-anim:not(.is-in) .ax-axis,
+.hero-shot.vis-anim:not(.is-in) .ax-phantom, .hero-shot.vis-anim:not(.is-in) .ax-grid, .hero-shot.vis-anim:not(.is-in) .ax-tag { opacity: 0; }
 .hero-shot.vis-anim:not(.is-in) .feed { opacity: 0; transform: translateY(var(--s-16)); }
+.ax-axis { transition-property: opacity; }
 
 /* ═══ Лист 5: общий реестр в рамке листа (вместо карточек «Что входит» / «Журнал актов») ═══ */
 .registry { display: grid; gap: var(--s-48); grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr); align-items: start; margin-top: var(--s-48); }
