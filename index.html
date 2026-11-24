@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="design/components.css">
 <link rel="stylesheet" href="site.css?v=10">
 <link rel="stylesheet" href="article.css">
-<link rel="stylesheet" href="visuals.css?v=18">
+<link rel="stylesheet" href="visuals.css?v=20">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://myznikovv.github.io/portal-pto-landing/#org", "name": "ООО «БИЗНЕСТЕХНОЛОГИИ»", "alternateName": "Портал ПТО", "url": "https://myznikovv.github.io/portal-pto-landing/", "logo": "https://myznikovv.github.io/portal-pto-landing/favicon.svg", "telephone": "+7 977 753-70-70", "email": "7537070@mail.ru", "taxID": "9719009312", "address": {"@type": "PostalAddress", "streetAddress": "ул. Константина Федина, д. 13", "addressLocality": "Москва", "postalCode": "105215", "addressCountry": "RU"}}, {"@type": "WebPage", "@id": "https://myznikovv.github.io/portal-pto-landing/", "url": "https://myznikovv.github.io/portal-pto-landing/", "name": "Исполнительная документация и ПТО: АОСР из сметы", "inLanguage": "ru-RU", "about": {"@id": "https://myznikovv.github.io/portal-pto-landing/#org"}}, {"@type": "Service", "name": "Оформление исполнительной документации", "serviceType": "Исполнительная документация", "provider": {"@id": "https://myznikovv.github.io/portal-pto-landing/#org"}, "areaServed": {"@type": "Country", "name": "Россия"}, "description": "АОСР, реестры материалов, сертификаты, ведомости и исполнительные схемы собираются из сметы в один PDF-комплект."}, {"@type": "Service", "name": "Ведение ПТО на аутсорсе", "serviceType": "Услуги ПТО", "provider": {"@id": "https://myznikovv.github.io/portal-pto-landing/#org"}, "areaServed": {"@type": "Country", "name": "Россия"}, "description": "Ведём ПТО и собираем исполнительную документацию по заказу подрядчика или дилера; стоимость по прайсу от суммы заказа."}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Что входит в исполнительную документацию?", "acceptedAnswer": {"@type": "Answer", "text": "Обложка, титульный лист и общий реестр; приказы и разрешительные документы, выписки СРО; ведомость подсчёта выполненных работ; для каждого акта — АОСР, реестр материалов, исполнительные схемы и сертификаты; корешок папки и этикетка носителя. В портале всё это собирается в один PDF."}}, {"@type": "Question", "name": "Что такое АОСР и когда его оформляют?", "acceptedAnswer": {"@type": "Answer", "text": "АОСР — акт освидетельствования скрытых работ. Его оформляют на работы, которые закрываются следующими этапами: контур заземления в грунте, трубы в стяжке пола, кабель в штробе или за подвесным потолком. Акт подписывают до того, как работу закроют. В портале текст акта собирается из сметы автоматически, даты и формулировки можно поправить."}}, {"@type": "Question", "name": "Почему заказчик не подписывает КС-2 без исполнительной документации?", "acceptedAnswer": {"@type": "Answer", "text": "Исполнительная документация подтверждает, что работы выполнены по проекту и из заявленных материалов. Пока нет актов скрытых работ, реестров и сертификатов, заказчику нечем подтвердить объём в КС-2 — поэтому приёмка и оплата откладываются."}}, {"@type": "Question", "name": "Можно ли передать ведение ПТО на аутсорс?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Вы передаёте заказ, мы ведём ПТО и собираем исполнительную документацию. Это удобно подрядчикам и дилерам, которым невыгодно держать своего инженера ПТО."}}, {"@type": "Question", "name": "Сколько стоит оформление исполнительной документации?", "acceptedAnswer": {"@type": "Answer", "text": "Стоимость считается по прайсу от суммы заказа: чем больше заказ, тем ниже ставка. Пришлите смету или сумму заказа — посчитаем."}}, {"@type": "Question", "name": "Где хранятся документы по объекту?", "acceptedAnswer": {"@type": "Answer", "text": "В портале, у вашей компании: смета, акты, приказы, выписки СРО и сертификаты. Документы не пропадают, если меняется инженер ПТО, а комплект можно пересобрать после правок в смете."}}]}]}</script>
 </head>
 <body>
@@ -44,48 +44,25 @@
   <h1><span class="sr-only">Работы сданы, а денег нет? Исполнительная документация — из вашей сметы</span>
     <span aria-hidden="true" class="display">Работы сданы,</span>
     <span aria-hidden="true" class="display is-accent" data-scramble="а денег нет?">а денег нет?</span></h1>
-  <p class="lead">Заказчик не подпишет КС-2, пока нет исполнительной документации. Портал собирает акты скрытых работ (АОСР), реестры и сертификаты из вашей сметы в один PDF — исполнительная готова вместе с работами, а не через месяц после них.</p>
+  <p class="lead">Заказчик не подпишет КС-2 без исполнительной. Портал собирает акты скрытых работ из вашей сметы в один PDF — вместе с работами, а не через месяц.</p>
   <div class="row"><a class="btn btn-cta" href="#s9">Разобрать мой объект</a><a class="btn btn-ghost" href="#s4">Как собирается акт</a></div>
-  <div class="axo-count" aria-hidden="true"><span class="mono">Пример · секции 20 и 16 этажей + паркинг</span><b><span id="axo-n">192</span> АОСР</b><span class="mono">в одном комплекте ИД · от квартиры до жилого комплекса собирается одинаково</span></div>
-  <ol class="hero-stages" id="hero-stages" aria-label="Что показывает схема">
-    <li><b>Работы сданы</b><span>комплекс построен, скрытого не видно</span></li>
-    <li><b>Скрытые работы</b><span>заземление, лотки, стояки, щиты</span></li>
-    <li><b>Акты АОСР</b><span>по каждой работе — из сметы</span></li>
-    <li><b>Комплект ИД</b><span>все акты одним PDF</span></li>
-    <li><b>КС-2 → оплата</b><span>заказчику есть что подписать</span></li>
-  </ol>
+  <div class="axo-count" aria-hidden="true"><b><span id="axo-n">192</span> АОСР</b><span class="mono">пример: секции 20 и 16 этажей + паркинг</span></div>
 </div>
   <figure class="hero-shot xr" id="hero-shot">
     <div class="xr-art" id="xr-art" title="Нажмите, чтобы показать ещё раз">
       <img class="xr-base" src="assets/hero/complex.jpg" alt="Аксонометрия жилого комплекса: две секции на стилобате с паркингом" width="960" height="1200" fetchpriority="high">
       <img class="xr-xray" src="assets/hero/complex-xray.jpg" alt="Тот же комплекс в разрезе: скрытые электромонтажные работы — стояки, этажные щиты, лотки паркинга, ВРУ и контур заземления" width="960" height="1200">
       <div class="xr-scan" aria-hidden="true"></div>
-      <span class="xr-tag" style="--x: 31%; --y: 30%"><b>АОСР · стояки</b><span>ВРУ → этажные щиты</span></span>
-      <span class="xr-tag" style="--x: 14%; --y: 74%"><b>АОСР · паркинг</b><span>лотки и кабель</span></span>
-      <span class="xr-tag is-right" style="--x: 60%; --y: 92%"><b>АОСР · заземление</b><span>контур вокруг комплекса</span></span>
+      <span class="xr-tag" style="--x: 32%; --y: 30%"><b>Стояки</b></span>
+      <span class="xr-tag" style="--x: 15%; --y: 72%"><b>Паркинг</b></span>
+      <span class="xr-tag" style="--x: 37%; --y: 93%"><b>Заземление</b></span>
     </div>
     <div class="xr-side" aria-hidden="true">
-      <div class="xd xd-binder">
-        <div class="xd-spine"><span>Комплект ИД · Том 1</span></div>
-        <div class="xd-binder-body">
-          <span class="xd-k">Исполнительная документация</span>
-          <b class="xd-n">ДЕМО-01-ЭОМ</b><span class="xd-k">192 АОСР с приложениями</span>
-          <div class="xd-fill" id="xr-pile"><i></i></div>
-          <span class="xd-k">реестр · схемы · сертификаты</span>
-        </div>
-      </div>
-      <div class="xd xd-ks2">
-        <span class="xd-form">Унифицированная форма № КС-2</span>
-        <b class="xd-title">Акт о приёмке выполненных работ</b>
-        <div class="xd-table"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        <div class="xd-signs"><span>Сдал</span><span>Принял</span></div>
-        <span class="xd-stamp">Подписан</span>
-      </div>
-      <div class="xd xd-pay">
-        <span class="xd-form">Платёжное поручение</span>
-        <span class="xd-k">Оплата по акту КС-2</span>
-        <b class="xd-status">Исполнено</b>
-      </div>
+      <div class="xd xd-pay"><span class="xd-form">Платёжное поручение</span><b class="xd-status">Оплачено</b></div>
+      <div class="xd xd-ks2"><span class="xd-form">Форма КС-2</span><b class="xd-title">Акт о приёмке работ</b>
+        <div class="xd-table"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <span class="xd-stamp">Подписан</span></div>
+      <div class="xd xd-binder"><div class="xd-spine"></div><div class="xd-binder-body"><span class="xd-form">Комплект ИД</span><b class="xd-n">ДЕМО-01-ЭОМ</b><div class="xd-fill" id="xr-pile"><i></i></div></div></div>
     </div>
   </figure>
 </div></div></header>
@@ -563,6 +540,6 @@
 </div></footer>
 
 <script src="main.js?v=10"></script>
-<script src="visuals.js?v=15"></script>
+<script src="visuals.js?v=19"></script>
 </body>
 </html>

@@ -21,7 +21,7 @@
     const art = document.getElementById('xr-art')
     const pile = document.getElementById('xr-pile')
     const tags = [...xr.querySelectorAll('.xr-tag')].map(el => ({ el, y: parseFloat(el.style.getPropertyValue('--y')) / 100 }))
-    const stages = [...document.querySelectorAll('#hero-stages li')]
+    const stages = []
     const SHEETS = 24, SCAN_A = 0.12, SCAN_B = 0.66, DUR = 6500
     const seg = (p, a, b) => Math.min(1, Math.max(0, (p - a) / (b - a)))
     let committed = 0, raf = 0
