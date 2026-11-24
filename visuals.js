@@ -12,12 +12,16 @@
     blocks.forEach(block => { block.classList.add('vis-anim'); observer.observe(block) })
   }
 
-  // Первый экран: тонколинейная аксонометрия пролёта. Оси → каркас → пять скрытых работ по очереди, к каждой выноска АОСР.
-  // Чертёж строится в осях здания (метры), проекция изометрическая; задержки появления — в --d (мс)
+  // Первый экран: аксонометрия жилого комплекса — стилобат с паркингом и две секции по 16 этажей.
+  // Этажи растут снизу вверх, скрытые работы — синим пунктиром (как невидимые линии на чертеже), счётчик актов идёт вместе с этажами
   const axo = document.getElementById('axo')
+  const FH = 3.2, POD = 7, ACTS_PER_FLOOR = 5, PARKING_ACTS = 12
+  const towers = [{ x: 4, y: 4, w: 16, dp: 16, lag: 0, floors: 20 }, { x: 28, y: 4, w: 16, dp: 16, lag: 55, floors: 16 }]
+  const FLOORS = Math.max(...towers.map(t => t.floors))
+  const totalActs = towers.reduce((sum, t) => sum + t.floors, 0) * ACTS_PER_FLOOR + PARKING_ACTS
   if (axo) {
     const NS = 'http://www.w3.org/2000/svg'
-    const U = 30, C = Math.cos(Math.PI / 6)
+    const U = 7, C = Math.cos(Math.PI / 6)
     const P = (x, y, z) => [(x - y) * C * U, (x + y) * 0.5 * U - z * U]
     const pts = list => list.map(p => P(...p).map(v => v.toFixed(1)).join(',')).join(' ')
     const node = (tag, attrs, parent = axo) => {
@@ -28,100 +32,100 @@
     }
     const line = (list, cls, d, parent) => {
       const attrs = { points: pts(list), class: cls, style: `--d: ${d}ms` }
-      if (/ax-(work|dim|flow)/.test(cls)) attrs.pathLength = 1   // только прорисовываемым: у пунктирных осей и сетки штрих задан в единицах чертежа
+      if (/ax-(work|dim)/.test(cls)) attrs.pathLength = 1
       return node('polyline', attrs, parent)
     }
-    // Параллелепипед: видны верх и две ближние грани (к +x и +y)
-    const box = (x, y, z, w, dp, h, cls, d) => {
-      const g = node('g', { class: 'ax-box ' + cls, style: `--d: ${d}ms` })
+    const box = (x, y, z, w, dp, h, cls, d, parent = axo) => {
+      const g = node('g', { class: 'ax-box ' + cls, style: `--d: ${d}ms` }, parent)
       node('polygon', { points: pts([[x, y + dp, z], [x + w, y + dp, z], [x + w, y + dp, z + h], [x, y + dp, z + h]]), class: 'f-l' }, g)
       node('polygon', { points: pts([[x + w, y, z], [x + w, y + dp, z], [x + w, y + dp, z + h], [x + w, y, z + h]]), class: 'f-r' }, g)
       node('polygon', { points: pts([[x, y, z + h], [x + w, y, z + h], [x + w, y + dp, z + h], [x, y + dp, z + h]]), class: 'f-t' }, g)
       return g
     }
-    const L = 12, W = 6, H = 3.4
+    const PL = 48, PW = 24
+    const floorAt = f => 1700 + f * 110
 
-    // Заземление лежит ниже плиты — рисуем первым, плита перекроет дальние стороны
-    const W1 = 1400, W2 = 2100, W3 = 2800, W4 = 3500, W5 = 4200
-    line([[-0.8, -0.8, -1], [L + 0.8, -0.8, -1], [L + 0.8, W + 0.8, -1], [-0.8, W + 0.8, -1], [-0.8, -0.8, -1]], 'ax-work ax-strip', W1)
-    for (const [x, y] of [[L + 0.8, -0.8], [L + 0.8, W + 0.8], [-0.8, W + 0.8]]) line([[x, y, -1], [x, y, -2.4]], 'ax-work ax-strip', W1 + 300)
-    line([[L + 0.8, W + 0.8, -0.3], [L + 0.8, W + 0.8, -1]], 'ax-work ax-strip', W1 + 300)
-
-    // Оси и размеры
+    // Оси комплекса
     const axes = node('g', { class: 'ax-axes' })
-    ;[[0, '1'], [6, '2'], [12, '3']].forEach(([x, n], i) => {
-      line([[x, -2, 0], [x, W + 0.6, 0]], 'ax-axis', i * 80, axes)
-      const [cx, cy] = P(x, -2.5, 0)
-      const g = node('g', { class: 'ax-fade', style: `--d: ${200 + i * 80}ms` }, axes)
-      node('circle', { cx, cy, r: 11, class: 'ax-bubble' }, g)
+    'АБВГДЕЖ'.split('').forEach((n, i) => {
+      const x = i * 8
+      line([[x, -4, 0], [x, PW + 2, 0]], 'ax-axis', i * 50, axes)
+      const [cx, cy] = P(x, -6, 0)
+      const g = node('g', { class: 'ax-fade', style: `--d: ${150 + i * 50}ms` }, axes)
+      node('circle', { cx, cy, r: 9, class: 'ax-bubble' }, g)
       node('text', { x: cx, y: cy + 4, class: 'ax-bubble-t', 'text-anchor': 'middle' }, g).textContent = n
     })
-    ;[[0, 'А'], [6, 'Б']].forEach(([y, n], i) => {
-      line([[-2, y, 0], [L + 0.6, y, 0]], 'ax-axis', 240 + i * 80, axes)
-      const [cx, cy] = P(-2.5, y, 0)
-      const g = node('g', { class: 'ax-fade', style: `--d: ${440 + i * 80}ms` }, axes)
-      node('circle', { cx, cy, r: 11, class: 'ax-bubble' }, g)
-      node('text', { x: cx, y: cy + 4, class: 'ax-bubble-t', 'text-anchor': 'middle' }, g).textContent = n
-    })
-    line([[0, -1.4, 0], [L, -1.4, 0]], 'ax-dim', 400, axes)
-    ;[3, 9].forEach((x, i) => {
-      const [tx, ty] = P(x, -3.3, 0)
-      node('text', { x: tx, y: ty, class: 'ax-dim-t ax-fade', 'text-anchor': 'middle', style: `--d: ${600 + i * 80}ms` }, axes).textContent = '6000'
+    ;[0, 12, 24].forEach((y, i) => {
+      line([[-4, y, 0], [PL + 2, y, 0]], 'ax-axis', 350 + i * 50, axes)
+      const [cx, cy] = P(-6, y, 0)
+      const g = node('g', { class: 'ax-fade', style: `--d: ${500 + i * 50}ms` }, axes)
+      node('circle', { cx, cy, r: 9, class: 'ax-bubble' }, g)
+      node('text', { x: cx, y: cy + 4, class: 'ax-bubble-t', 'text-anchor': 'middle' }, g).textContent = String(i + 1)
     })
 
-    // Каркас: плита пола, колонны, щит на дальней стене, фантом перекрытия и каркас потолка
-    box(0, 0, -0.3, L, W, 0.3, 'ax-slab', 500)
-    box(9.5, 0, 0.9, 1.2, 0.3, 1.4, 'ax-panel', 900)
-    const [px, py] = P(9.4, 0.3, 1.6)
-    node('text', { x: px - 8, y: py, class: 'ax-panel-t ax-fade', 'text-anchor': 'end', style: '--d: 1000ms' }).textContent = 'ЩР-1'
-    ;[[0, 0], [6, 0], [12, 0], [0, W], [6, W], [12, W]]
-      .sort((a, b) => a[0] + a[1] - (b[0] + b[1]))
-      .forEach(([x, y], i) => box(x - 0.22, y - 0.22, 0, 0.44, 0.44, H, 'ax-col', 650 + i * 70))
-    line([[0, 0, H], [L, 0, H], [L, W, H], [0, W, H], [0, 0, H]], 'ax-phantom', 1000)
-    const grid = node('g', { class: 'ax-ceilgrid' })
-    for (let x = 4.8; x <= L; x += 1.2) line([[x, 0, 2.85], [x, W, 2.85]], 'ax-grid', 1100, grid)
-    for (let y = 0; y <= W; y += 1.2) line([[4.8, y, 2.85], [L, y, 2.85]], 'ax-grid', 1150, grid)
+    // Контур заземления вокруг стилобата
+    line([[-3, -3, 0], [PL + 3, -3, 0], [PL + 3, PW + 3, 0], [-3, PW + 3, 0], [-3, -3, 0]], 'ax-work ax-strip', 700)
 
-    // Гофротруба в стяжке пола к щиту
-    line([[2, 5.2, 0.02], [2, 1.2, 0.02], [9.8, 1.2, 0.02], [9.8, 0.3, 0.02], [9.8, 0.3, 0.9]], 'ax-work ax-pipe', W2)
-    // Лотки под перекрытием на шпильках
-    for (let x = 1.6; x < 11; x += 1.6) line([[x, 3, H], [x, 3, 3.12]], 'ax-work ax-rod', W3)
-    box(1, 2.8, 3.02, 10, 0.4, 0.1, 'ax-tray ax-work-box', W3 + 200)
-    // Кабель в лотках и к щиту
-    line([[1.3, 3, 3.13], [10.6, 3, 3.13]], 'ax-work ax-cable', W4)
-    line([[10.6, 3, 3.13], [10.1, 3, 3.13], [10.1, 0.3, 3.13], [10.1, 0.3, 2.3]], 'ax-work ax-cable', W5)
-    // «Ток» по кабелям после сборки
-    line([[1.3, 3, 3.13], [10.6, 3, 3.13], [10.1, 3, 3.13], [10.1, 0.3, 3.13], [10.1, 0.3, 2.3]], 'ax-flow', 0)
-    line([[2, 5.2, 0.02], [2, 1.2, 0.02], [9.8, 1.2, 0.02], [9.8, 0.3, 0.02], [9.8, 0.3, 0.9]], 'ax-flow', 0)
+    // Стилобат: два уровня паркинга, лотки по фасадам — пунктиром, как скрытые
+    box(0, 0, 0, PL, PW, POD, 'ax-pod', 900)
+    line([[0, PW, 3.5], [PL, PW, 3.5]], 'ax-level', 1000)
+    line([[PL, 0, 3.5], [PL, PW, 3.5]], 'ax-level', 1000)
+    line([[2, PW, 2.6], [PL - 2, PW, 2.6]], 'ax-hidden ax-fade', 1500)
+    line([[2, PW, 6.1], [PL - 2, PW, 6.1]], 'ax-hidden ax-fade', 1600)
+    line([[PL, 2, 6.1], [PL, PW - 2, 6.1]], 'ax-hidden ax-fade', 1600)
 
-    // Выноски: точка на работе → полка → номер акта и название; галочка-печать, когда акт готов
+    // Секции: этаж за этажом, дальняя первой. На фасаде — стояк ВРУ и этажные ответвления пунктиром
+    for (const t of towers) {
+      const g = node('g', { class: 'ax-tower' })
+      for (let f = 0; f < t.floors; f++) {
+        const z = POD + f * FH, d = floorAt(f) + t.lag
+        const fl = box(t.x, t.y, z, t.w, t.dp, FH, 'ax-floor', d, g)
+        // импосты окон на двух видимых гранях
+        for (let k = 2; k < t.w; k += 2.7) node('polyline', { points: pts([[t.x + k, t.y + t.dp, z + 0.6], [t.x + k, t.y + t.dp, z + FH - 0.5]]), class: 'ax-mull' }, fl)
+        for (let k = 2; k < t.dp; k += 2.7) node('polyline', { points: pts([[t.x + t.w, t.y + k, z + 0.6], [t.x + t.w, t.y + k, z + FH - 0.5]]), class: 'ax-mull' }, fl)
+        // стояк и ответвление к этажному щиту
+        node('polyline', { points: pts([[t.x + t.w * 0.55, t.y + t.dp, z], [t.x + t.w * 0.55, t.y + t.dp, z + FH]]), class: 'ax-hidden' }, fl)
+        node('polyline', { points: pts([[t.x + t.w * 0.55, t.y + t.dp, z + 1.6], [t.x + t.w * 0.8, t.y + t.dp, z + 1.6]]), class: 'ax-hidden' }, fl)
+      }
+    }
+
+    // Выноски
+    const top = POD + towers[0].floors * FH
     const tags = [
-      { at: [L + 0.8, 4, -1], dx: 46, dy: 56, n: 'АОСР-1', t: 'Контур заземления', d: W1 },
-      { at: [2, 4, 0.02], dx: -70, dy: 70, n: 'АОСР-2', t: 'Гофротруба в стяжке', d: W2, left: true },
-      { at: [3.2, 2.8, 3.07], dx: -40, dy: -84, n: 'АОСР-3', t: 'Лотки 200×50', d: W3, left: true },
-      { at: [7.5, 3, 3.13], dx: 30, dy: -96, n: 'АОСР-4', t: 'Кабель в лотках', d: W4 },
-      { at: [10.1, 0.3, 2.8], dx: 70, dy: -40, n: 'АОСР-5', t: 'Кабель к ЩР-1', d: W5 }
+      { at: [PL + 3, 14, 0], dx: 30, dy: 46, n: 'АОСР · заземление', t: 'Контур вокруг комплекса', d: 900 },
+      { at: [24, PW, 6.1], dx: -60, dy: 60, n: 'АОСР · паркинг', t: 'Лотки и кабель, 2 уровня', d: 1700, left: true },
+      { at: [28 + 16 * 0.55, 20, POD + 6 * FH], dx: 70, dy: -10, n: 'АОСР · стояки', t: 'ВРУ → этажные щиты', d: floorAt(8) },
+      { at: [4 + 8, 4, top], dx: 60, dy: -20, n: 'Секция 1 · 20 этажей', t: 'по 5 актов на этаж', d: floorAt(FLOORS) + 200 }
     ]
     for (const tag of tags) {
       const [ax, ay] = P(...tag.at)
       const ex = ax + tag.dx, ey = ay + tag.dy
-      const g = node('g', { class: 'ax-tag', style: `--d: ${tag.d + 600}ms` })
+      const g = node('g', { class: 'ax-tag', style: `--d: ${tag.d}ms` })
       const leader = node('polyline', { class: 'ax-leader' }, g)
       node('circle', { cx: ax, cy: ay, r: 4, class: 'ax-pin' }, g)
       const num = node('text', { x: 0, y: ey - 26, class: 'ax-tag-n' }, g); num.textContent = tag.n
       const name = node('text', { x: 0, y: ey - 7, class: 'ax-tag-t' }, g); name.textContent = tag.t
-      // Полка по длине текста: номер и название над ней, галочка-печать в конце полки
-      const width = Math.max(num.getComputedTextLength(), name.getComputedTextLength()) + 44
-      const x0 = tag.left ? ex - width : ex
-      num.setAttribute('x', x0 + (tag.left ? 0 : 8)); name.setAttribute('x', x0 + (tag.left ? 0 : 8))
+      const width = Math.max(num.getComputedTextLength(), name.getComputedTextLength()) + 16
+      const x0 = tag.left ? ex - width : ex + 8
+      num.setAttribute('x', x0); name.setAttribute('x', x0)
       leader.setAttribute('points', `${ax},${ay} ${ex},${ey} ${tag.left ? ex - width : ex + width},${ey}`)
-      const cx = tag.left ? ex - 16 : ex + width - 16
-      node('circle', { cx, cy: ey - 20, r: 12, class: 'ax-check' }, g)
-      node('text', { x: cx, y: ey - 15, class: 'ax-check-t', 'text-anchor': 'middle' }, g).textContent = '✓'
     }
 
     const bb = axo.getBBox()
     axo.setAttribute('viewBox', `${(bb.x - 10).toFixed(0)} ${(bb.y - 10).toFixed(0)} ${(bb.width + 20).toFixed(0)} ${(bb.height + 20).toFixed(0)}`)
+
+    // Счётчик актов: растёт вместе с этажами, итог — в разметке
+    const counter = document.getElementById('axo-n')
+    if (counter && !reduced) {
+      counter.textContent = '0'
+      const start = performance.now() + floorAt(0) - 400, end = performance.now() + floorAt(FLOORS) + 55
+      const tick = now => {
+        const k = Math.min(1, Math.max(0, (now - start) / (end - start)))
+        counter.textContent = String(Math.round(k * totalActs))
+        if (k < 1) requestAnimationFrame(tick)
+      }
+      requestAnimationFrame(tick)
+    }
   }
   const heroShot = document.getElementById('hero-shot')
   if (heroShot && !reduced) {
