@@ -179,45 +179,6 @@
 .form-call a { color: var(--link); white-space: nowrap; }
 .field textarea::placeholder, .field input::placeholder { color: var(--muted); }
 
-/* ═══ Лист 5: общий реестр в рамке листа (вместо карточек «Что входит» / «Журнал актов») ═══ */
-.registry { display: grid; gap: var(--s-48); grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr); align-items: start; margin-top: var(--s-48); }
-.reg-side { display: grid; gap: var(--s-12); }
-.reg-side h3 { font-size: var(--fs-18); }
-.reg-side p { margin: 0; }
-.reg-side .btn-link { justify-self: start; }
-.reg-sheet { position: relative; padding: var(--s-32) var(--s-32) var(--s-24); background: var(--card); border: var(--bw) solid var(--line); border-radius: var(--r-sm);
-  box-shadow: var(--shadow-screen); outline: var(--bw) solid var(--ink); outline-offset: calc(var(--s-12) * -1); }
-.reg-table { width: 100%; border-collapse: collapse; font-size: var(--fs-14); }
-.reg-table th { padding: var(--s-8); border-bottom: var(--bw-strong) solid var(--ink); color: var(--muted); font-weight: 600; font-size: var(--fs-12); text-align: left; text-transform: uppercase; letter-spacing: 0.06em; }
-.reg-table td { padding: var(--s-8); border-bottom: var(--bw) solid var(--line-soft); color: var(--ink); vertical-align: top; }
-.reg-table .num { text-align: right; font-family: var(--font-mono); white-space: nowrap; }
-.reg-table th:first-child, .reg-table td:first-child { width: var(--s-32); color: var(--muted); }
-.reg-table td:last-child { color: var(--muted); font-size: var(--fs-12); }
-.reg-table tr.is-gap td { background: var(--warn-soft); }
-.reg-table tr.is-gap td:last-child { color: var(--warn); font-weight: 600; }
-.reg-stamp { display: grid; grid-template-columns: auto auto auto; justify-content: end; margin: var(--s-16) 0 0 auto; width: max-content; border: var(--bw-strong) solid var(--ink); font-size: var(--fs-12); }
-.reg-stamp span { padding: var(--s-4) var(--s-12); border: var(--bw) solid var(--line); color: var(--ink); }
-.reg-stamp span:first-child { grid-column: 1 / -1; font-weight: 600; }
-@media (max-width: 900px) { .registry { grid-template-columns: minmax(0, 1fr); gap: var(--s-24); } .reg-sheet { padding: var(--s-24) var(--s-16) var(--s-16); } }
-
-/* Закреплённый первый экран: комплекс собирается при прокрутке */
-.hero.is-pinned { display: block; min-height: calc(100vh * var(--hero-len)); padding-top: 0; overflow: clip; }
-.hero.is-pinned .hero-stick { position: sticky; top: var(--header); height: calc(100vh - var(--header)); display: flex; align-items: center; }
-.hero.is-pinned .hero-grid { padding-block: var(--s-24); }
-.hero-stick { width: 100%; }
-.hero-stages { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-4); counter-reset: hs; }
-.hero-stages li { display: grid; grid-template-columns: var(--s-32) auto 1fr; gap: var(--s-8); align-items: baseline; color: var(--muted); font-size: var(--fs-14);
-  counter-increment: hs; transition: color var(--t-base) var(--ease); }
-.hero-stages li::before { content: counter(hs, decimal-leading-zero); font: 600 var(--fs-12)/1 var(--font-mono); }
-.hero-stages b { font-weight: 600; }
-.hero-stages span { font-size: var(--fs-12); }
-.hero-stages li.is-done { color: var(--text); }
-.hero-stages li.is-on { color: var(--ink); }
-.hero-stages li.is-on::before { color: var(--link); }
-.hero-stages li.is-on b { color: var(--link); }
-.hero-hint { color: var(--muted); font-size: var(--fs-12); }
-@media (max-width: 900px) { .hero-stages { display: none; } }
-
 /* ═══ Первый экран: иллюстрация (Higgsfield) и её рентген, скан открывает скрытые работы ═══ */
 @media (min-width: 1100px) {
   .hero-grid { grid-template-columns: minmax(0, 33rem) minmax(0, 1fr); }
@@ -463,3 +424,59 @@
 .st-num { font-family: var(--font-mono); font-weight: 700; fill: currentColor; }
 .st-small { font-family: var(--font-mono); font-weight: 700; fill: currentColor; letter-spacing: 0.2em; }
 .aosr .stamp-svg { width: calc(var(--s-96) + var(--s-24)); background: none; right: var(--s-16); bottom: var(--s-4); }
+
+/* ═══ Лист 5: общий реестр — лист А4 по ГОСТ со стопкой, статусы строк, основная надпись ф. 2 ═══ */
+.registry { display: grid; gap: var(--s-64); grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.6fr); align-items: center; margin-top: var(--s-64); }
+.reg-side { display: grid; gap: var(--s-16); align-content: start; }
+.reg-side h3 { font-size: var(--fs-24); }
+.reg-side p { margin: 0; }
+.reg-points { list-style: none; margin: var(--s-8) 0; padding: 0; display: grid; gap: var(--s-16); counter-reset: rp; }
+.reg-points li { position: relative; display: grid; gap: var(--s-4); padding-left: var(--s-48); counter-increment: rp; }
+.reg-points li::before { content: counter(rp, decimal-leading-zero); position: absolute; left: 0; top: 0; display: grid; place-items: center; width: var(--s-32); aspect-ratio: 1;
+  border-radius: 50%; background: var(--link-soft); color: var(--link); font: 700 var(--fs-12)/1 var(--font-mono); }
+.reg-points b { color: var(--ink); font-size: var(--fs-16); }
+.reg-points span { color: var(--text); font-size: var(--fs-14); }
+.reg-side .btn-link { justify-self: start; }
+.reg-paper { position: relative; padding: var(--s-16) var(--s-24) var(--s-24) var(--s-16); }
+.reg-paper::before, .reg-paper::after { content: ''; position: absolute; inset: var(--s-16) var(--s-24) var(--s-24) var(--s-16); background: var(--card); border: var(--bw) solid var(--line);
+  border-radius: var(--r-sm); box-shadow: var(--shadow-screen); }
+.reg-paper::before { transform: rotate(2.2deg) translate(var(--s-12), var(--s-8)); }
+.reg-paper::after { transform: rotate(-1.2deg) translate(calc(var(--s-8) * -1), var(--s-4)); }
+.reg-sheet { position: relative; z-index: 1; padding: var(--s-24) var(--s-24) var(--s-16) var(--s-64); background: var(--card); border: var(--bw) solid var(--line); border-radius: var(--r-sm);
+  box-shadow: var(--shadow-screen); outline: 0; }
+/* рамка по ГОСТ: поле подшивки слева шире */
+.reg-sheet::before { content: ''; position: absolute; inset: var(--s-8) var(--s-8) var(--s-8) var(--s-48); border: var(--bw-strong) solid var(--ink); pointer-events: none; }
+.reg-head { display: grid; gap: var(--s-4); padding: var(--s-8) var(--s-8) var(--s-12); text-align: center; }
+.reg-head b { color: var(--ink); font: 700 var(--fs-14)/1.2 var(--font-body); text-transform: uppercase; letter-spacing: 0.06em; }
+.reg-head span { color: var(--muted); font-size: var(--fs-12); }
+.reg-table { width: 100%; border-collapse: collapse; font-size: var(--fs-14); }
+.reg-table th, .reg-table td { padding: var(--s-8); border: var(--bw) solid var(--line); vertical-align: top; color: var(--ink); text-align: left; }
+.reg-table th { padding-block: var(--s-8); color: var(--muted); font: 600 var(--fs-12)/1.2 var(--font-mono); text-transform: uppercase; letter-spacing: 0.04em; border-bottom: var(--bw-strong) solid var(--ink); background: var(--paper); }
+.reg-table .num { width: var(--s-48); text-align: right; font-family: var(--font-mono); white-space: nowrap; color: var(--muted); }
+.reg-table td.num:nth-child(3) { color: var(--ink); }
+.reg-table .st { width: var(--s-64); text-align: center; }
+.reg-table tr.is-gap td { background: var(--warn-soft); color: var(--warn); font-weight: 600; }
+.st-ok, .st-gap { display: inline-grid; place-items: center; width: var(--s-24); aspect-ratio: 1; border-radius: 50%; font: 700 var(--fs-12)/1 var(--font-mono); font-style: normal; }
+.st-ok { background: var(--ok-soft); color: var(--ok); } .st-ok::before { content: '✓'; }
+.st-gap { background: var(--warn); color: var(--on-dark); animation: pg-pulse 1.8s var(--ease) infinite; } .st-gap::before { content: '!'; }
+/* основная надпись, упрощённая форма 2 */
+.gost { display: grid; grid-template-columns: repeat(5, minmax(0, auto)) minmax(0, 1fr) repeat(3, var(--s-48)); margin: var(--s-16) 0 0 auto; width: min(100%, calc(var(--col-min) * 2));
+  border: var(--bw-strong) solid var(--ink); font: var(--fs-12)/1.2 var(--font-mono); color: var(--ink); }
+.gost > span { padding: var(--s-4) var(--s-8); border: var(--bw) solid var(--line); white-space: nowrap; overflow: hidden; }
+.g-h { color: var(--muted); }
+.g-role { grid-column: span 2; color: var(--muted); }
+.g-code { grid-column: 6 / -1; grid-row: 1; font-weight: 700; text-align: center; }
+.g-title { grid-column: 6; grid-row: 2 / span 2; display: grid; place-items: center; text-align: center; white-space: normal !important; font-weight: 600; font-family: var(--font-body); }
+.g-k { color: var(--muted); text-align: center; } .g-v { text-align: center; font-weight: 700; }
+.g-org { grid-column: 1 / -1; text-align: center; color: var(--muted); }
+.g-sign i { display: block; width: var(--s-32); height: var(--s-12); border-bottom: var(--bw) solid var(--link); border-radius: 50%; transform: rotate(-8deg); }
+@media (max-width: 900px) {
+  .registry { grid-template-columns: minmax(0, 1fr); gap: var(--s-32); }
+  .reg-sheet { padding: var(--s-16) var(--s-12) var(--s-12) var(--s-32); }
+  .reg-sheet::before { left: var(--s-24); }
+  .reg-table .st { width: var(--s-32); } .reg-table th.st { font-size: 0; }
+  .gost { display: none; }
+}
+/* появление: строки отмечаются по очереди */
+.registry.vis-anim .reg-table .st i { transition: opacity var(--t-fast) linear, transform var(--t-base) var(--ease); transition-delay: calc(var(--r) * 110ms + 300ms); }
+.registry.vis-anim:not(.is-in) .reg-table .st i { opacity: 0; transform: scale(1.8); }

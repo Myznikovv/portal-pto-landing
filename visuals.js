@@ -2,7 +2,7 @@
 // Скрытые начальные состояния включаются только здесь (.vis-anim): без скрипта и при reduced-motion всё видно сразу.
 ;(() => {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches
-  const blocks = ['#lag', '#kit', '#route'].map(selector => document.querySelector(selector)).filter(Boolean)
+  const blocks = ['#lag', '#kit', '#route', '#registry'].map(selector => document.querySelector(selector)).filter(Boolean)
   if (!reduced && 'IntersectionObserver' in window) {
     const observer = new IntersectionObserver(entries => entries.forEach(entry => {
       if (!entry.isIntersecting) return
