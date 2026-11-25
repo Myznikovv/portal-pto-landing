@@ -270,7 +270,7 @@
 .tl-row { display: grid; grid-template-columns: var(--name) minmax(0, 1fr); align-items: center; }
 .tl-name { font: 600 var(--fs-14)/1.2 var(--font-body); color: var(--ink); }
 .tl-track { position: relative; height: var(--s-48); }
-.tl-usual { margin-top: var(--s-48); } .tl-usual + .tl-row { margin-top: var(--s-32); }
+.tl-usual { margin-top: var(--s-48); } .tl-usual + .tl-row { margin-top: calc(var(--s-64) + var(--s-24)); }
 .tl-bar { position: absolute; top: 0; bottom: 0; left: calc(var(--a) * 1%); width: calc((var(--b) - var(--a)) * 1%); display: flex; align-items: center; padding: 0 var(--s-16);
   font: 600 var(--fs-14)/1.2 var(--font-body); white-space: nowrap; overflow: hidden; transform-origin: left; }
 .tl-work { background: var(--ink); color: var(--on-dark); border-radius: var(--r-sm); }
@@ -281,9 +281,10 @@
 .tl-pin { position: absolute; left: calc(var(--at) * 1%); bottom: calc(100% + var(--s-12)); display: grid; place-items: center; width: var(--s-32); aspect-ratio: 1;
   border-radius: 50%; border: var(--bw-strong) solid var(--cta); background: var(--card); color: var(--cta); font: 700 var(--fs-12)/1 var(--font-mono); transform: translateX(-50%); }
 .tl-pin::after { content: ''; position: absolute; left: 50%; top: 100%; height: var(--s-12); border-left: var(--bw) solid var(--cta); }
-.tl-acts i { position: absolute; bottom: calc(100% + var(--s-8)); left: calc(var(--at) * 1%); width: var(--s-16); height: var(--s-24); background: var(--card); border-radius: var(--r-sm);
-  transform: translateX(-50%) rotate(-6deg); box-shadow: 0 0 0 var(--bw) var(--ink); }
-.tl-acts i::after { content: ''; position: absolute; right: calc(var(--s-4) * -1); bottom: calc(var(--s-4) * -1); width: var(--s-12); height: var(--s-12); border-radius: 50%; border: var(--bw-strong) solid var(--cta); background: var(--card); }
+.tl-acts em { position: absolute; left: 0; bottom: calc(100% + var(--s-48) + var(--s-8)); color: var(--muted); font: 600 var(--fs-12)/1 var(--font-mono); font-style: normal; text-transform: uppercase; letter-spacing: 0.06em; }
+.tl-act { position: absolute; bottom: calc(100% + var(--s-8)); left: calc(var(--at) * 1%); display: grid; justify-items: center; gap: var(--s-4); transform: translateX(-50%); }
+.tl-act img { width: var(--s-32); height: auto; }
+.tl-act b { padding: var(--bw-strong) var(--s-4); border-radius: var(--r-sm); background: var(--card); border: var(--bw) solid var(--line); color: var(--cta); font: 700 var(--fs-12)/1 var(--font-mono); white-space: nowrap; }
 .tl-dim { position: relative; margin-left: var(--name); height: var(--s-32); }
 .tl-dim::before { content: ''; position: absolute; left: calc(var(--a) * 1%); width: calc((var(--b) - var(--a)) * 1%); top: var(--s-24); border-top: var(--bw-strong) solid var(--ok); }
 .tl-dim::after { content: ''; position: absolute; left: calc(var(--a) * 1%); width: calc((var(--b) - var(--a)) * 1%); top: calc(var(--s-16) + var(--bw)); height: var(--s-16);
@@ -307,12 +308,13 @@
 /* появление */
 .tl.vis-anim .tl-bar { transition: transform var(--t-story) var(--ease); transition-delay: calc(var(--i) * 600ms); }
 .tl.vis-anim .tl-pay, .tl.vis-anim .tl-pin { transition: opacity var(--t-base) var(--ease), transform var(--t-story) var(--ease); transition-delay: calc(var(--i) * 350ms + 600ms); }
-.tl.vis-anim .tl-acts i { transition: opacity var(--t-fast) linear calc(var(--at) * 12ms + 200ms); }
+.tl.vis-anim .tl-act { transition: opacity var(--t-fast) linear calc(var(--at) * 14ms + 200ms), transform var(--t-base) var(--ease) calc(var(--at) * 14ms + 200ms); }
 .tl.vis-anim .tl-dim { transition: opacity var(--t-base) var(--ease) 2600ms; }
 .tl.vis-anim:not(.is-in) .tl-bar { transform: scaleX(0); }
 .tl.vis-anim:not(.is-in) .tl-pay { opacity: 0; transform: translate(-50%, -50%) scale(1.8); }
 .tl.vis-anim:not(.is-in) .tl-pin { opacity: 0; transform: translate(-50%, calc(var(--s-8) * -1)); }
-.tl.vis-anim:not(.is-in) .tl-acts i, .tl.vis-anim:not(.is-in) .tl-dim { opacity: 0; }
+.tl.vis-anim:not(.is-in) .tl-act { opacity: 0; transform: translate(-50%, var(--s-8)); }
+.tl.vis-anim:not(.is-in) .tl-dim, .tl.vis-anim:not(.is-in) .tl-acts em { opacity: 0; }
 
 /* ═══ Лист 5: комплект ИД — разделы веерами, как карты в руке, в конце итоговый PDF ═══ */
 .deck-wrap { margin: var(--s-48) 0 0; padding: var(--s-24) 0; background: var(--paper); border-radius: var(--r-lg); overflow: hidden; }
