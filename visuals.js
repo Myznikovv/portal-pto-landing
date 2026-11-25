@@ -2,7 +2,7 @@
 // Скрытые начальные состояния включаются только здесь (.vis-anim): без скрипта и при reduced-motion всё видно сразу.
 ;(() => {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches
-  const blocks = ['#lag', '#kit', '#route', '#registry'].map(selector => document.querySelector(selector)).filter(Boolean)
+  const blocks = ['#lag', '#kit', '#route', '#registry', '#browser'].map(selector => document.querySelector(selector)).filter(Boolean)
   if (!reduced && 'IntersectionObserver' in window) {
     const observer = new IntersectionObserver(entries => entries.forEach(entry => {
       if (!entry.isIntersecting) return
@@ -94,6 +94,30 @@
       current = (current + 1) % items.length
       items[current].classList.add('is-on')
     }, 2800)
+  }
+
+  // Лист 6: окно портала — вкладки и подсветка места на экране по пункту расшифровки
+  const browser = document.getElementById('browser')
+  if (browser) {
+    const tabs = [...browser.querySelectorAll('[role="tab"]')], panels = [...browser.querySelectorAll('.br-panel')]
+    const show = i => {
+      tabs.forEach((t, k) => t.setAttribute('aria-selected', String(k === i)))
+      panels.forEach((p, k) => p.classList.toggle('is-on', k === i))
+    }
+    tabs.forEach((t, i) => t.addEventListener('click', () => show(i)))
+    browser.addEventListener('keydown', e => {
+      const i = tabs.indexOf(document.activeElement)
+      if (i < 0 || !['ArrowLeft', 'ArrowRight'].includes(e.key)) return
+      const next = (i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length
+      tabs[next].focus(); show(next)
+    })
+    panels.forEach(panel => {
+      const hot = (n, on) => panel.querySelectorAll(`.mark[data-m="${n}"]`).forEach(m => m.classList.toggle('is-hot', on))
+      panel.querySelectorAll('.shot-legend li').forEach(li => {
+        const n = li.dataset.m
+        for (const [ev, on] of [['mouseenter', true], ['mouseleave', false], ['focus', true], ['blur', false]]) li.addEventListener(ev, () => { hot(n, on); panel.classList.toggle('is-pointing', on) })
+      })
+    })
   }
 
   // Заявка: что вводят в форму, сразу появляется в основной надписи листа; после отправки ставится печать

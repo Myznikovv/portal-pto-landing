@@ -480,3 +480,47 @@
 /* появление: строки отмечаются по очереди */
 .registry.vis-anim .reg-table .st i { transition: opacity var(--t-fast) linear, transform var(--t-base) var(--ease); transition-delay: calc(var(--r) * 110ms + 300ms); }
 .registry.vis-anim:not(.is-in) .reg-table .st i { opacity: 0; transform: scale(1.8); }
+
+/* ═══ Лист 6: окно браузера с вкладками ═══ */
+.browser { margin-top: var(--s-32); border: var(--bw) solid var(--line); border-radius: var(--r-lg); background: var(--card); overflow: hidden;
+  box-shadow: 0 var(--s-24) var(--s-64) calc(var(--s-24) * -1) color-mix(in srgb, var(--ink) 35%, transparent); transform-origin: 50% 0; }
+.br-bar { display: flex; align-items: center; gap: var(--s-8); padding: var(--s-12) var(--s-16); background: var(--paper); border-bottom: var(--bw) solid var(--line); }
+.br-bar > i { width: var(--s-12); aspect-ratio: 1; border-radius: 50%; background: var(--line); }
+.br-bar > i:first-child { background: color-mix(in srgb, var(--cta) 55%, var(--line)); }
+.br-url { flex: 1; margin-left: var(--s-12); padding: var(--s-4) var(--s-12); border-radius: var(--r-pill); background: var(--card); border: var(--bw) solid var(--line);
+  color: var(--muted); font: var(--fs-12)/1.2 var(--font-mono); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.br-demo { color: var(--muted); font: var(--fs-12)/1 var(--font-mono); }
+.br-tabs { display: flex; gap: var(--s-4); padding: var(--s-8) var(--s-16) 0; border-bottom: var(--bw) solid var(--line); overflow-x: auto; }
+.br-tabs button { display: grid; gap: var(--s-4); text-align: left; padding: var(--s-12) var(--s-16); border: 0; border-bottom: var(--bw-strong) solid transparent; background: none; cursor: pointer;
+  color: var(--muted); font: 600 var(--fs-14)/1.2 var(--font-body); white-space: nowrap; }
+.br-tabs button small { font: var(--fs-12)/1.2 var(--font-mono); color: var(--muted); }
+.br-tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--link); }
+.br-tabs button:focus-visible { outline: var(--bw-strong) solid var(--link); outline-offset: calc(var(--s-4) * -1); }
+.br-panel { display: none; }
+.br-panel.is-on { display: block; animation: br-in var(--t-base) var(--ease); }
+@keyframes br-in { from { opacity: 0; transform: translateY(var(--s-8)); } }
+.br-panel .shot-legend li { cursor: default; border-radius: var(--r-sm); transition: background var(--t-fast); }
+.br-panel .shot-legend li:hover, .br-panel .shot-legend li:focus-visible { background: var(--link-soft); outline: 0; }
+.mark { animation: mark-pulse 2.4s var(--ease) infinite; animation-delay: calc(var(--y) * 0.01s); transition: transform var(--t-fast) var(--ease), background var(--t-fast); }
+@keyframes mark-pulse { 50% { box-shadow: 0 0 0 var(--s-8) color-mix(in srgb, var(--link) 16%, transparent); } }
+.br-panel.is-pointing .mark { opacity: 0.35; animation: none; }
+.br-panel.is-pointing .mark.is-hot { opacity: 1; transform: translate(-50%, -50%) scale(1.35); background: var(--cta); box-shadow: 0 0 0 var(--s-8) color-mix(in srgb, var(--cta) 22%, transparent); }
+.browser.vis-anim { transition: transform 900ms var(--ease), opacity var(--t-base) var(--ease); }
+.browser.vis-anim:not(.is-in) { opacity: 0; transform: perspective(calc(var(--container) * 1.6)) rotateX(14deg) translateY(var(--s-48)); }
+@media (prefers-reduced-motion: reduce) { .mark { animation: none; } }
+
+/* ═══ Единый фон: белые листы, за ними тихие фрагменты «кальки» — у каждого листа свой участок, растворяется к краю ═══ */
+.section, .section.is-paper { position: relative; background: var(--bg); isolation: isolate; }
+.section::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0.32;
+  background: url("assets/hero/blueprint.webp") var(--bp-x, 100%) var(--bp-y, 0%) / var(--bp-size, 140%) auto no-repeat;
+  -webkit-mask: radial-gradient(ellipse 45% 70% at var(--bp-mx, 100%) var(--bp-my, 30%), var(--ink), transparent 100%);
+          mask: radial-gradient(ellipse 45% 70% at var(--bp-mx, 100%) var(--bp-my, 30%), var(--ink), transparent 100%); }
+#s2 { --bp-x: 100%; --bp-y: 0%; --bp-mx: 100%; --bp-my: 20%; }
+#s3 { --bp-x: 0%; --bp-y: 100%; --bp-mx: 0%; --bp-my: 85%; }
+#s4 { --bp-x: 100%; --bp-y: 100%; --bp-mx: 100%; --bp-my: 80%; }
+#s5 { --bp-x: 0%; --bp-y: 0%; --bp-mx: 0%; --bp-my: 15%; --bp-size: 120%; }
+#s6 { --bp-x: 60%; --bp-y: 0%; --bp-mx: 100%; --bp-my: 10%; }
+#s7 { --bp-x: 0%; --bp-y: 50%; --bp-mx: 0%; --bp-my: 50%; }
+#s8 { --bp-x: 100%; --bp-y: 60%; --bp-mx: 100%; --bp-my: 70%; }
+#s9 { --bp-x: 30%; --bp-y: 100%; --bp-mx: 100%; --bp-my: 100%; }
+.story.is-pinned { overflow: clip; }
