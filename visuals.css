@@ -450,3 +450,16 @@
   -webkit-mask: linear-gradient(90deg, transparent 0, var(--ink) 38%, var(--ink) 82%, transparent 100%), linear-gradient(transparent 0, var(--ink) 15%, var(--ink) 75%, transparent 100%);
   mask: linear-gradient(90deg, transparent 0, var(--ink) 38%, var(--ink) 82%, transparent 100%), linear-gradient(transparent 0, var(--ink) 15%, var(--ink) 75%, transparent 100%);
   -webkit-mask-composite: source-in; mask-composite: intersect; }
+
+/* ═══ Печати: оттиск резинового штампа — SVG-фильтр «чернил» (#ink в index.html) ═══ */
+.stamp, .xd-stamp, .route-stamp { filter: url(#ink); mix-blend-mode: multiply; }
+.stamp-svg { width: calc(var(--s-96) + var(--s-32)); border: 0; outline: 0; background: none; color: var(--cta); }
+.stamp-svg svg { display: block; width: 100%; height: auto; overflow: visible; }
+.st-ring { fill: none; stroke: currentColor; stroke-width: 1.4; }
+.st-thick { stroke-width: 3.2; }
+.st-line { stroke: currentColor; stroke-width: 1.2; }
+.st-arc-t { font-family: var(--font-mono); font-weight: 700; fill: currentColor; letter-spacing: 0.02em; }
+.st-main { font-family: var(--font-display); font-weight: 700; fill: currentColor; letter-spacing: 0.04em; }
+.st-num { font-family: var(--font-mono); font-weight: 700; fill: currentColor; }
+.st-small { font-family: var(--font-mono); font-weight: 700; fill: currentColor; letter-spacing: 0.2em; }
+.aosr .stamp-svg { width: calc(var(--s-96) + var(--s-24)); background: none; right: var(--s-16); bottom: var(--s-4); }
