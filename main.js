@@ -75,11 +75,17 @@ const updateStory = () => {
   const n = works.length
   works.forEach((work, i) => work.style.setProperty('--d', Math.min(1, Math.max(0, progress * n * 1.08 - i))))
   const current = Math.min(n - 1, Math.floor(progress * n * 1.08))
+  let doneCount = 0
   acts.forEach((act, i) => {
     const done = progress * n * 1.08 - i >= 1
+    if (done) doneCount++
     act.classList.toggle('is-done', done)
     act.classList.toggle('is-current', i === current && !done)
   })
+  // подсветка работы, которая сейчас рисуется, и счётчик готовых актов
+  works.forEach((work, i) => work.classList.toggle('is-now', i === current && progress * n * 1.08 - i < 1 && progress > 0))
+  const counter = document.getElementById('reel-n')
+  if (counter) counter.textContent = String(doneCount)
 }
 
 const update = () => {

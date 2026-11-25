@@ -406,11 +406,16 @@
 .reg-ic { width: var(--s-96); height: auto; margin-bottom: var(--s-8); }
 /* Фон первого экрана: «калька» с чертежами, растворяется к краям и под текстом */
 .hero { background-color: var(--paper); }
-.hero::before { content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0.4;
+.hero::before { content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0.55;
   background: url("assets/hero/blueprint.webp") 100% 60% / cover no-repeat;
-  -webkit-mask: linear-gradient(90deg, transparent 0, var(--ink) 38%, var(--ink) 82%, transparent 100%), linear-gradient(transparent 0, var(--ink) 15%, var(--ink) 75%, transparent 100%);
-  mask: linear-gradient(90deg, transparent 0, var(--ink) 38%, var(--ink) 82%, transparent 100%), linear-gradient(transparent 0, var(--ink) 15%, var(--ink) 75%, transparent 100%);
+  /* чертежи только по краям: за комплексом и под текстом фон растворяется */
+  -webkit-mask: radial-gradient(ellipse 34% 62% at 58% 55%, transparent 0, transparent 55%, var(--ink) 100%), linear-gradient(90deg, transparent 0, var(--ink) 30%);
+          mask: radial-gradient(ellipse 34% 62% at 58% 55%, transparent 0, transparent 55%, var(--ink) 100%), linear-gradient(90deg, transparent 0, var(--ink) 30%);
   -webkit-mask-composite: source-in; mask-composite: intersect; }
+/* мягкий свет за зданием — акцент на объекте */
+.xr-art::before { content: ''; position: absolute; inset: -12% -18%; z-index: -1; pointer-events: none;
+  background: radial-gradient(closest-side, var(--bg) 0, color-mix(in srgb, var(--bg) 85%, transparent) 55%, transparent 100%); }
+.xr-art { isolation: isolate; }
 
 /* ═══ Печати: оттиск резинового штампа — SVG-фильтр «чернил» (#ink в index.html) ═══ */
 .stamp, .xd-stamp, .route-stamp { filter: url(#ink); mix-blend-mode: multiply; }
@@ -559,3 +564,23 @@
 .asm-steps li.is-done { color: var(--text); }
 .asm-steps li.is-done::before { color: var(--ok); }
 @media (max-width: 640px) { .asm-src { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: var(--s-24); } .asm-wires { display: none; } }
+
+.hero-stick { width: 100%; flex: 1 1 auto; }
+
+/* Подписи на акте: росчерки синей пастой (Higgsfield), «расписываются» слева направо */
+.aosr-sign .sig { position: absolute; left: var(--s-4); bottom: calc(100% - var(--s-8)); width: 88%; height: auto; mix-blend-mode: multiply; transform: rotate(-3deg);
+  clip-path: inset(0 0 0 0); transition: clip-path 900ms cubic-bezier(0.4, 0.1, 0.3, 1); }
+.aosr-sign span:nth-child(2) .sig { width: 62%; transform: rotate(2deg); transition-delay: 300ms; }
+.aosr-sign span:nth-child(3) .sig { transition-delay: 600ms; transform: rotate(-1deg); }
+.asm-live:not(.st-sign) .aosr-sign .sig { clip-path: inset(0 100% 0 0); }
+
+/* ═══ Лист 3: быстрее, счётчик готовых актов, подсветка текущей работы ═══ */
+.reel-lead { display: flex; gap: var(--s-24); align-items: center; }
+.reel-count { display: flex; align-items: center; gap: var(--s-8); flex: none; padding: var(--s-8) var(--s-16); border-radius: var(--r-md); background: var(--card); border: var(--bw) solid var(--line); }
+.reel-count b { color: var(--link); font: 700 var(--fs-h2)/1 var(--font-display); font-variant-numeric: tabular-nums; min-width: 1ch; }
+.reel-count span { color: var(--muted); font: 600 var(--fs-12)/1.2 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; }
+.cut .w.is-now .draw { filter: drop-shadow(0 0 var(--s-4) color-mix(in srgb, var(--link) 55%, transparent)); }
+.cut .w.is-now .tag rect { stroke: var(--link); stroke-width: 3; }
+.act b, .act .act-num { padding-right: var(--s-32); }
+.act::after { width: var(--s-24); height: var(--s-24); }
+@media (max-width: 900px) { .reel-lead { flex-direction: column; align-items: flex-start; } }
