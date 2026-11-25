@@ -586,3 +586,47 @@
 .act b, .act .act-num { padding-right: var(--s-32); }
 .act::after { width: var(--s-24); height: var(--s-24); }
 @media (max-width: 900px) { .reel-lead { flex-direction: column; align-items: flex-start; } }
+
+/* ═══ Лист 3: работы закрываются после акта — засыпка, стяжка, потолок, штукатурка; фото в карточках актов ═══ */
+.cut .cover { opacity: var(--c, 0); transition: opacity var(--t-base) var(--ease); }
+.cut .cv-fill { stroke: none; }
+.cut .cv-soil { fill: color-mix(in srgb, var(--warn-soft) 70%, var(--paper)); }
+.cut .cv-screed { fill: color-mix(in srgb, var(--line) 80%, var(--paper)); }
+.cut .cv-veil { fill: color-mix(in srgb, var(--paper) 82%, transparent); }
+.cut .cv-ceil { stroke: var(--muted); stroke-width: 6; }
+.cut .cv-plaster { fill: color-mix(in srgb, var(--line) 60%, var(--bg)); }
+.cut .cv-t { font-family: var(--font-mono); font-size: var(--cut-fs-sm); fill: var(--ok); font-weight: 600; letter-spacing: 0.04em; }
+.act { grid-template-columns: minmax(0, 1fr); }
+.act-photo { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--r-sm); margin-bottom: var(--s-4); }
+.story.is-pinned .act-photo { opacity: 0.25; filter: grayscale(1); transition: opacity var(--t-base), filter var(--t-base); }
+.story.is-pinned .act.is-current .act-photo, .story.is-pinned .act.is-done .act-photo { opacity: 1; filter: none; }
+.act::after { top: var(--s-8); right: var(--s-8); width: var(--s-32); height: var(--s-32); }
+.story.is-pinned .cut { height: 30vh; }
+
+/* Лист 2: габариты — иконки и монеты по высоте полос, меньше пустот */
+.tl { gap: var(--s-16); }
+.tl-name small { display: block; margin-top: var(--s-4); color: var(--muted); font: 600 var(--fs-12)/1.2 var(--font-mono); text-transform: uppercase; letter-spacing: 0.04em; }
+.tl-usual { margin-top: calc(var(--s-48) + var(--s-8)); }
+.tl-usual + .tl-row { margin-top: calc(var(--s-48) + var(--s-16)); }
+.tl-pin { width: var(--s-48); height: var(--s-48); }
+.tl-pin b { width: var(--s-16); font-size: calc(var(--fs-12) * 0.85); right: calc(var(--s-8) * -1); }
+.tl-pay { width: var(--s-48); height: var(--s-48); aspect-ratio: auto; }
+.tl-pay img { width: 100%; height: 100%; object-fit: contain; }
+.tl-act img { width: var(--s-24); }
+.tl-act b { font-size: calc(var(--fs-12) * 0.9); }
+.tl-dim { height: var(--s-24); }
+
+/* Реестр: основная надпись крупнее, настоящие подписи с заходом за линии, колонки без обрезки */
+.gost { grid-template-columns: auto auto auto var(--s-64) auto minmax(var(--s-128), 1fr) auto auto auto; width: 100%; font-size: var(--fs-12); }
+.gost > span { padding: var(--s-8); }
+.g-code { font-size: var(--fs-14); letter-spacing: 0.06em; }
+.g-title { font-size: var(--fs-14); line-height: 1.25; padding-inline: var(--s-12) !important; }
+.g-sign { position: relative; overflow: visible !important; }
+.g-sign img { position: absolute; left: var(--s-4); top: 50%; width: calc(var(--s-64) + var(--s-8)); height: auto; transform: translateY(-58%) rotate(-4deg); mix-blend-mode: multiply; pointer-events: none; }
+.g-sign + span + .g-title ~ .g-sign img, .gost .g-sign:nth-of-type(2) img { transform: translateY(-50%) rotate(3deg); }
+/* Лист 3: фото узкой полосой, чертежу — высоту */
+.act-photo { aspect-ratio: 3 / 1; }
+.story.is-pinned .cut { height: 36vh; }
+
+.gost > span { padding: var(--s-8) var(--s-4); }
+.gost .g-title { padding-inline: var(--s-8) !important; }

@@ -63,7 +63,7 @@ const syncPin = () => {
   story.classList.toggle('is-pinned', pin)
   if (!pin) {
     cut.style.transform = ''
-    works.forEach(work => work.style.setProperty('--d', 1))
+    works.forEach(work => { work.style.setProperty('--d', 1); work.style.setProperty('--c', 0) })
   }
 }
 const updateStory = () => {
@@ -73,7 +73,11 @@ const updateStory = () => {
   const span = Math.max(0, cut.getBoundingClientRect().width - reel.clientWidth)
   cut.style.transform = `translateX(${-span * progress}px)`
   const n = works.length
-  works.forEach((work, i) => work.style.setProperty('--d', Math.min(1, Math.max(0, progress * n * 1.08 - i))))
+  works.forEach((work, i) => {
+    work.style.setProperty('--d', Math.min(1, Math.max(0, progress * n * 1.08 - i)))
+    // работа закрывается (засыпка, стяжка, потолок, штукатурка), когда началась следующая: акт уже есть
+    work.style.setProperty('--c', Math.min(1, Math.max(0, (progress * n * 1.08 - i - 1.15) * 2.2)))
+  })
   const current = Math.min(n - 1, Math.floor(progress * n * 1.08))
   let doneCount = 0
   acts.forEach((act, i) => {
