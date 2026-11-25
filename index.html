@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="design/components.css">
 <link rel="stylesheet" href="site.css?v=50">
 <link rel="stylesheet" href="article.css">
-<link rel="stylesheet" href="visuals.css?v=80">
+<link rel="stylesheet" href="visuals.css?v=91">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://myznikovv.github.io/portal-pto-landing/#org", "name": "ООО «БИЗНЕСТЕХНОЛОГИИ»", "alternateName": "Портал ПТО", "url": "https://myznikovv.github.io/portal-pto-landing/", "logo": "https://myznikovv.github.io/portal-pto-landing/favicon.svg", "telephone": "+7 977 753-70-70", "email": "7537070@mail.ru", "taxID": "9719009312", "address": {"@type": "PostalAddress", "streetAddress": "ул. Константина Федина, д. 13", "addressLocality": "Москва", "postalCode": "105215", "addressCountry": "RU"}}, {"@type": "WebPage", "@id": "https://myznikovv.github.io/portal-pto-landing/", "url": "https://myznikovv.github.io/portal-pto-landing/", "name": "Исполнительная документация и ПТО: АОСР из сметы", "inLanguage": "ru-RU", "about": {"@id": "https://myznikovv.github.io/portal-pto-landing/#org"}}, {"@type": "Service", "name": "Оформление исполнительной документации", "serviceType": "Исполнительная документация", "provider": {"@id": "https://myznikovv.github.io/portal-pto-landing/#org"}, "areaServed": {"@type": "Country", "name": "Россия"}, "description": "АОСР, реестры материалов, сертификаты, ведомости и исполнительные схемы собираются из сметы в один PDF-комплект."}, {"@type": "Service", "name": "Ведение ПТО на аутсорсе", "serviceType": "Услуги ПТО", "provider": {"@id": "https://myznikovv.github.io/portal-pto-landing/#org"}, "areaServed": {"@type": "Country", "name": "Россия"}, "description": "Ведём ПТО и собираем исполнительную документацию по заказу подрядчика или дилера; стоимость по прайсу от суммы заказа."}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Что входит в исполнительную документацию?", "acceptedAnswer": {"@type": "Answer", "text": "Обложка, титульный лист и общий реестр; приказы и разрешительные документы, выписки СРО; ведомость подсчёта выполненных работ; для каждого акта — АОСР, реестр материалов, исполнительные схемы и сертификаты; корешок папки и этикетка носителя. В портале всё это собирается в один PDF."}}, {"@type": "Question", "name": "Что такое АОСР и когда его оформляют?", "acceptedAnswer": {"@type": "Answer", "text": "АОСР — акт освидетельствования скрытых работ. Его оформляют на работы, которые закрываются следующими этапами: контур заземления в грунте, трубы в стяжке пола, кабель в штробе или за подвесным потолком. Акт подписывают до того, как работу закроют. В портале текст акта собирается из сметы автоматически, даты и формулировки можно поправить."}}, {"@type": "Question", "name": "Почему заказчик не подписывает КС-2 без исполнительной документации?", "acceptedAnswer": {"@type": "Answer", "text": "Исполнительная документация подтверждает, что работы выполнены по проекту и из заявленных материалов. Пока нет актов скрытых работ, реестров и сертификатов, заказчику нечем подтвердить объём в КС-2 — поэтому приёмка и оплата откладываются."}}, {"@type": "Question", "name": "Можно ли передать ведение ПТО на аутсорс?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Вы передаёте заказ, мы ведём ПТО и собираем исполнительную документацию. Это удобно подрядчикам и дилерам, которым невыгодно держать своего инженера ПТО."}}, {"@type": "Question", "name": "Сколько стоит оформление исполнительной документации?", "acceptedAnswer": {"@type": "Answer", "text": "Стоимость считается по прайсу от суммы заказа: чем больше заказ, тем ниже ставка. Пришлите смету или сумму заказа — посчитаем."}}, {"@type": "Question", "name": "Где хранятся документы по объекту?", "acceptedAnswer": {"@type": "Answer", "text": "В портале, у вашей компании: смета, акты, приказы, выписки СРО и сертификаты. Документы не пропадают, если меняется инженер ПТО, а комплект можно пересобрать после правок в смете."}}]}]}</script>
 </head>
 <body>
@@ -347,33 +347,34 @@
   <div>
     <span class="sheet">Лист 4 из 9 · как собирается акт</span>
     <h2 class="head2"><span class="sr-only">Акт собирается из сметы</span><span aria-hidden="true" class="display" data-scramble="Акт собирается">Акт собирается</span><span aria-hidden="true" class="display is-accent">из сметы</span></h2>
-    <ol class="steps" id="steps">
-      <li><div><b>Работа из сметы</b><span>Позиции и единицы берутся из локальной сметы заказа.</span></div></li>
-      <li><div><b>Материалы и объём</b><span>К работе привязываются материалы и количество.</span></div></li>
-      <li><div><b>Участники и приказы</b><span>Реквизиты, приказы и выписки СРО подставляются в акт.</span></div></li>
-      <li><div><b>Текст АОСР</b><span>Текст акта собирается автоматически, даты и формулировки можно поправить.</span></div></li>
-      <li><div><b>Печать и комплект</b><span>Акты складываются в итоговый комплект ИД одним PDF.</span></div></li>
+    <ol class="steps asm-steps" id="asm-steps">
+      <li><button type="button" class="asm-step"><b>Работа из сметы</b><span>Позиции и единицы берутся из локальной сметы заказа.</span></button></li>
+      <li><button type="button" class="asm-step"><b>Материалы и объём</b><span>К работе привязываются материалы и количество.</span></button></li>
+      <li><button type="button" class="asm-step"><b>Участники и приказы</b><span>Реквизиты, приказы и выписки СРО подставляются в акт.</span></button></li>
+      <li><button type="button" class="asm-step"><b>Текст АОСР</b><span>Текст акта собирается автоматически, даты и формулировки можно поправить.</span></button></li>
+      <li><button type="button" class="asm-step"><b>Печать и комплект</b><span>Акты складываются в итоговый комплект ИД одним PDF.</span></button></li>
     </ol>
   </div>
   <div class="build" aria-label="Пример: строка сметы превращается в акт скрытых работ (данные демонстрационные)">
-    <div class="est">
-      <span class="est-k mono">Смета · поз. 14</span>
-      <span class="est-name">Монтаж лотков перфорированных 200×50 за подвесным потолком</span>
-      <span class="est-unit mono">м</span><span class="est-qty mono">180</span>
+    <div class="asm-src" aria-hidden="true">
+      <span class="src" data-src="1" data-to="f1"><img src="assets/icons/binder.webp" alt="" width="256" height="256"><b>Смета · поз. 14</b><em>Лотки 200×50 · 180 м</em></span>
+      <span class="src" data-src="2" data-to="f3"><img src="assets/icons/certificate.webp" alt="" width="256" height="256"><b>Материал</b><em>сертификат приложен</em></span>
+      <span class="src" data-src="3" data-to="sign"><img src="assets/icons/ks2-unsigned.webp" alt="" width="256" height="256"><b>Приказы</b><em>3 участника, СРО</em></span>
+      <span class="src" data-src="4" data-to="f2"><img src="assets/icons/scheme.webp" alt="" width="256" height="256"><b>Проект</b><em>ДЕМО-01-ЭОМ, л. 4</em></span>
     </div>
-    <div class="est-flow" aria-hidden="true"><span>в пункты 1 и 3 акта</span></div>
-    <article class="aosr is-filling" id="tb">
+    <svg class="asm-wires" id="asm-wires" aria-hidden="true" focusable="false"></svg>
+    <article class="aosr" id="asm-doc">
       <header class="aosr-head"><span class="mono">ДЕМО-01-ЭОМ</span><b>Акт освидетельствования скрытых работ № 3</b></header>
       <ol class="aosr-fields">
-        <li style="--i: 0"><span>К освидетельствованию предъявлены работы</span><b>Монтаж лотков перфорированных за подвесным потолком, 180 м</b></li>
-        <li style="--i: 1"><span>Работы выполнены по проектной документации</span><b>ДЕМО-01-ЭОМ, лист 4</b></li>
-        <li style="--i: 2"><span>При выполнении работ применены</span><b>Лоток перфорированный 200×50 — сертификат</b></li>
-        <li style="--i: 3"><span>Предъявлены документы</span><b>Исполнительная схема, фото</b></li>
-        <li style="--i: 4"><span>Разрешается производство последующих работ</span><b>Прокладка кабеля в лотках</b></li>
+        <li id="f1" style="--i: 0"><span>К освидетельствованию предъявлены работы</span><b>Монтаж лотков перфорированных за подвесным потолком, 180 м</b></li>
+        <li id="f2" style="--i: 1"><span>Работы выполнены по проектной документации</span><b>ДЕМО-01-ЭОМ, лист 4</b></li>
+        <li id="f3" style="--i: 2"><span>При выполнении работ применены</span><b>Лоток перфорированный 200×50 — сертификат</b></li>
+        <li id="f4" style="--i: 3"><span>Предъявлены документы</span><b>Исполнительная схема, фото</b></li>
+        <li id="f5" style="--i: 4"><span>Разрешается производство последующих работ</span><b>Прокладка кабеля в лотках</b></li>
       </ol>
-      <footer class="aosr-sign" style="--i: 5"><span>Заказчик</span><span>Подрядчик</span><span>Стройконтроль</span></footer>
+      <footer class="aosr-sign" id="sign"><span><svg viewBox="0 0 80 24" aria-hidden="true"><path pathLength="1" d="M4 18 C12 4, 18 22, 26 10 S38 16, 44 8 C50 2, 54 20, 62 12 L76 9"/></svg>Заказчик</span><span><svg viewBox="0 0 80 24" aria-hidden="true"><path pathLength="1" d="M3 14 C10 20, 16 2, 24 14 C30 22, 36 6, 44 12 S60 18, 77 6"/></svg>Подрядчик</span><span><svg viewBox="0 0 80 24" aria-hidden="true"><path pathLength="1" d="M5 16 L14 6 L20 18 C28 6, 34 6, 40 14 C48 22, 58 4, 75 12"/></svg>Стройконтроль</span></footer>
       <figure class="clip"><img src="assets/photo/lotki.jpg" alt="Фото скрытой работы: перфорированные лотки на шпильках над каркасом подвесного потолка (пример)" width="1100" height="829" loading="lazy"></figure>
-      <div class="stamp stamp-svg is-pending" id="st" role="img" aria-label="Печать: АОСР № 3, принято">
+      <div class="stamp stamp-svg" id="asm-stamp" role="img" aria-label="Печать: АОСР № 3, принято">
         <svg viewBox="0 0 120 120" aria-hidden="true" focusable="false">
           <defs><path id="st-arc" d="M60,60 m-42.5,0 a42.5,42.5 0 1,1 85,0 a42.5,42.5 0 1,1 -85,0"/></defs>
           <circle cx="60" cy="60" r="57" class="st-ring st-thick"/><circle cx="60" cy="60" r="53" class="st-ring"/><circle cx="60" cy="60" r="34.5" class="st-ring"/>
@@ -556,6 +557,6 @@
 </div></footer>
 
 <script src="main.js?v=51"></script>
-<script src="visuals.js?v=80"></script>
+<script src="visuals.js?v=91"></script>
 </body>
 </html>

@@ -120,6 +120,64 @@
     })
   }
 
+  // Лист 4: акт собирается из источников. Этап 1–5: источник загорается, к строке акта тянется пунктир, текст печатается;
+  // подписи, фото, печать. Без скрипта и при reduced-motion — итоговый акт целиком
+  const asm = document.getElementById('asm-doc')
+  if (asm) {
+    const build = asm.closest('.build'), wires = document.getElementById('asm-wires')
+    const steps = [...document.querySelectorAll('#asm-steps .asm-step')]
+    const srcs = [...build.querySelectorAll('.src')]
+    const field = id => document.getElementById(id)
+    const typed = new Map()
+    build.querySelectorAll('.aosr-fields b').forEach(b => typed.set(b, b.textContent))
+    const typeIn = (b, on) => {
+      const full = typed.get(b)
+      clearInterval(b._t)
+      if (!on) { b.textContent = ''; b.classList.remove('is-typed'); return }
+      if (b.classList.contains('is-typed')) return
+      b.classList.add('is-typed')
+      let i = 0
+      b._t = setInterval(() => { i += 2; b.textContent = full.slice(0, i); if (i >= full.length) clearInterval(b._t) }, 18)
+    }
+    const NS = 'http://www.w3.org/2000/svg'
+    const drawWire = (src, target, on) => {
+      let path = wires.querySelector(`[data-w="${src.dataset.src}"]`)
+      if (!path) { path = document.createElementNS(NS, 'path'); path.dataset.w = src.dataset.src; path.setAttribute('pathLength', '1'); wires.append(path) }
+      const box = build.getBoundingClientRect(), a = src.getBoundingClientRect(), t = target.getBoundingClientRect()
+      const x1 = a.left + a.width / 2 - box.left, y1 = a.bottom - box.top
+      const x2 = t.left - box.left - 6, y2 = t.top + Math.min(t.height / 2, 24) - box.top
+      // разводка под прямым углом, как на чертеже: вниз → влево по полю слева от акта → к строке
+      const doc = asm.getBoundingClientRect()
+      const gy = doc.top - box.top - 18 + Number(src.dataset.src) * 4, gx = doc.left - box.left - 14 - Number(src.dataset.src) * 5
+      path.setAttribute('d', `M${x1},${y1} V${gy} H${gx} V${y2} H${x2}`)
+      path.classList.toggle('is-on', on)
+    }
+    let stage = 0
+    const render = n => {
+      stage = n
+      wires.setAttribute('viewBox', `0 0 ${build.clientWidth} ${build.clientHeight}`)
+      srcs.forEach((src, i) => { src.classList.toggle('is-on', n >= i + 1); src.classList.toggle('is-now', n === i + 1); drawWire(src, field(src.dataset.to), n >= i + 1 && n === i + 1) })
+      typeIn(field('f1').querySelector('b'), n >= 1)
+      typeIn(field('f3').querySelector('b'), n >= 2)
+      ;['f2', 'f4', 'f5'].forEach(id => typeIn(field(id).querySelector('b'), n >= 4))
+      build.classList.toggle('st-sign', n >= 3)
+      build.classList.toggle('st-photo', n >= 4)
+      build.classList.toggle('st-stamp', n >= 5)
+      ;['f1', 'f3', 'sign', 'f2'].forEach((id, i) => field(id).classList.toggle('is-now', n === i + 1))
+      steps.forEach((b, i) => { const li = b.parentElement; li.classList.toggle('is-on', i + 1 === n); li.classList.toggle('is-done', i + 1 < n); b.setAttribute('aria-pressed', String(i + 1 === n)) })
+    }
+    if (reduced) { build.classList.add('asm-static') }
+    else {
+      build.classList.add('asm-live')
+      render(0)
+      let timer = 0
+      const play = () => { let n = 0; clearInterval(timer); timer = setInterval(() => { render(++n); if (n >= 5) clearInterval(timer) }, 1400) }
+      steps.forEach((b, i) => b.addEventListener('click', () => { clearInterval(timer); render(i + 1) }))
+      new IntersectionObserver((entries, obs) => { if (entries[0].isIntersecting) { obs.disconnect(); setTimeout(play, 300) } }, { threshold: 0.35 }).observe(build)
+      addEventListener('resize', () => render(stage))
+    }
+  }
+
   // Заявка: что вводят в форму, сразу появляется в основной надписи листа; после отправки ставится печать
   const form = document.getElementById('form')
   const stamp = document.getElementById('req-stamp')

@@ -511,10 +511,10 @@
 
 /* ═══ Единый фон: белые листы, за ними тихие фрагменты «кальки» — у каждого листа свой участок, растворяется к краю ═══ */
 .section, .section.is-paper { position: relative; background: var(--bg); isolation: isolate; }
-.section::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0.32;
+.section::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0.5;
   background: url("assets/hero/blueprint.webp") var(--bp-x, 100%) var(--bp-y, 0%) / var(--bp-size, 140%) auto no-repeat;
-  -webkit-mask: radial-gradient(ellipse 45% 70% at var(--bp-mx, 100%) var(--bp-my, 30%), var(--ink), transparent 100%);
-          mask: radial-gradient(ellipse 45% 70% at var(--bp-mx, 100%) var(--bp-my, 30%), var(--ink), transparent 100%); }
+  -webkit-mask: radial-gradient(ellipse 55% 80% at var(--bp-mx, 100%) var(--bp-my, 30%), var(--ink), transparent 100%);
+          mask: radial-gradient(ellipse 55% 80% at var(--bp-mx, 100%) var(--bp-my, 30%), var(--ink), transparent 100%); }
 #s2 { --bp-x: 100%; --bp-y: 0%; --bp-mx: 100%; --bp-my: 20%; }
 #s3 { --bp-x: 0%; --bp-y: 100%; --bp-mx: 0%; --bp-my: 85%; }
 #s4 { --bp-x: 100%; --bp-y: 100%; --bp-mx: 100%; --bp-my: 80%; }
@@ -524,3 +524,38 @@
 #s8 { --bp-x: 100%; --bp-y: 60%; --bp-mx: 100%; --bp-my: 70%; }
 #s9 { --bp-x: 30%; --bp-y: 100%; --bp-mx: 100%; --bp-my: 100%; }
 .story.is-pinned { overflow: clip; }
+
+/* ═══ Лист 4: сборочная линия акта ═══ */
+.build { position: relative; }
+.asm-src { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-8); margin-bottom: var(--s-48); }
+.src { display: grid; justify-items: center; gap: var(--s-4); padding: var(--s-8); text-align: center; background: var(--card); border: var(--bw) solid var(--line); border-radius: var(--r-md);
+  font-size: var(--fs-12); line-height: 1.2; color: var(--muted); transition: border-color var(--t-base), box-shadow var(--t-base), opacity var(--t-base), transform var(--t-base) var(--ease); }
+.src img { width: var(--s-48); height: auto; }
+.src b { color: var(--ink); font-size: var(--fs-12); }
+.src em { font-style: normal; font-family: var(--font-mono); }
+.asm-wires { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; z-index: 2; }
+.asm-wires path { fill: none; stroke: var(--link); stroke-width: 1.6; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; opacity: 0; transition: stroke-dashoffset 700ms var(--ease), opacity var(--t-fast); }
+.asm-wires path.is-on { stroke-dashoffset: 0; opacity: 1; }
+.aosr-sign span { position: relative; }
+.aosr-sign svg { position: absolute; left: var(--s-8); bottom: calc(100% + var(--bw)); width: 70%; height: auto; overflow: visible; }
+.aosr-sign path { fill: none; stroke: var(--link); stroke-width: 1.6; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke-dashoffset 900ms var(--ease); }
+.aosr-sign span:nth-child(2) path { transition-delay: 250ms; } .aosr-sign span:nth-child(3) path { transition-delay: 500ms; }
+/* живой режим */
+.asm-live .src { opacity: 0.45; }
+.asm-live .src.is-on { opacity: 1; }
+.asm-live .src.is-now { border-color: var(--link); box-shadow: 0 0 0 var(--s-4) var(--link-soft); transform: translateY(calc(var(--s-4) * -1)); }
+.asm-live .aosr-fields b { min-height: 1.3em; }
+.asm-live .aosr-fields li.is-now b, .asm-live .aosr-sign.is-now { background: var(--link-soft); }
+.asm-live .aosr-fields b.is-typed::after { content: ''; }
+.asm-live:not(.st-sign) .aosr-sign path { stroke-dashoffset: 1; }
+.asm-live .clip { transition: opacity var(--t-base) var(--ease), transform var(--t-story) var(--ease); }
+.asm-live:not(.st-photo) .clip { opacity: 0; transform: translate(var(--s-24), calc(var(--s-24) * -1)) rotate(12deg); }
+.asm-live #asm-stamp { transition: opacity var(--t-fast) linear, transform var(--t-story) var(--ease); }
+.asm-live:not(.st-stamp) #asm-stamp { opacity: 0; transform: rotate(-8deg) scale(1.8); }
+.asm-live.st-stamp #asm-stamp { opacity: 1; transform: rotate(-8deg); }
+.asm-steps .asm-step { display: grid; gap: var(--s-4); width: 100%; padding: 0; text-align: left; background: none; border: 0; font: inherit; color: inherit; cursor: pointer; }
+.asm-steps .asm-step:focus-visible { outline: var(--bw-strong) solid var(--link); outline-offset: var(--s-4); border-radius: var(--r-sm); }
+.asm-steps li { position: relative; }
+.asm-steps li.is-done { color: var(--text); }
+.asm-steps li.is-done::before { color: var(--ok); }
+@media (max-width: 640px) { .asm-src { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: var(--s-24); } .asm-wires { display: none; } }
