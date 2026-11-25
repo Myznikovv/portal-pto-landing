@@ -719,3 +719,62 @@
   .reads { display: none; }
 }
 @media (max-width: 640px) { .registry { display: none; } }
+
+.xr-mobile { display: none; }
+/* ═══ Телефон, вторая редакция: одна мысль на лист, крупный текст, минимум рамок и декора ═══ */
+@media (max-width: 640px) {
+  body { font-size: var(--fs-16); }
+  .section::before, .hero::before, .ticker, .rail, .section .sheet, .hero .sheet { display: none; }
+  .section { padding-block: var(--s-48); border-top: var(--bw) solid var(--line-soft); }
+  .lead, .hero .lead { font-size: var(--fs-16); line-height: 1.5; }
+  .head2 { margin: 0 0 var(--s-12); }
+  /* 1 */
+  .hero .row { display: grid; gap: var(--s-8); }
+  .hero .row .btn { width: 100%; }
+  .hero .row .btn-ghost { display: none; }
+  .hero-text .axo-count { display: none; }
+  .xr-art { width: 100%; }
+  .xr-side { display: none !important; }
+  .xr-mobile { display: block; margin: var(--s-8) 0 0; text-align: center; color: var(--text); font-size: var(--fs-14); line-height: 1.5; }
+  .xr-mobile b { color: var(--link); }
+  /* 2 */
+  .tl { padding: var(--s-16); gap: var(--s-12); }
+  .tl-axis { display: none; }
+  .tl-bar { font-size: var(--fs-14); }
+  .tl-name { font-size: var(--fs-16); }
+  .tl-name small { font-size: var(--fs-12); }
+  .tl-dim b { font-size: var(--fs-12); }
+  .fixes { grid-template-columns: minmax(0, 1fr); gap: 0; margin-top: var(--s-24); }
+  .fixes li { grid-template-columns: var(--s-48) minmax(0, 1fr); align-items: center; column-gap: var(--s-16); padding: var(--s-12) 0; border-top: var(--bw) solid var(--line); }
+  .fixes li:first-child { border-top: 0; }
+  .fx-n { grid-row: 1 / span 2; width: var(--s-48); height: var(--s-48); }
+  .fixes b { font-size: var(--fs-16); font-weight: 600; }
+  /* 3: без разреза — счётчик и карусель */
+  #s3 .reel { display: none; }
+  .reel-lead { gap: var(--s-16); }
+  .reel-count { padding: var(--s-8) var(--s-12); }
+  .acts { margin-top: var(--s-16); }
+  .act { flex-basis: 84%; padding: var(--s-16); font-size: var(--fs-14); gap: var(--s-8); }
+  .act b { font-size: var(--fs-16); }
+  .act-vol { font-size: var(--fs-16); }
+  /* 4: только акт */
+  #s4 .asm-steps { display: none; }
+  .aosr-fields b { font-size: var(--fs-14); }
+  .aosr-fields span { font-size: var(--fs-12); }
+  /* 5 */
+  .deck-note { font-size: var(--fs-14); }
+  .hand-tab { font-size: var(--fs-12); }
+  /* 6: расшифровка списком */
+  .shot-legend { grid-template-columns: minmax(0, 1fr); font-size: var(--fs-14); gap: var(--s-8); }
+  .br-bar .br-url { display: none; }
+  /* 7: маршрут — простая нумерация */
+  .route { counter-reset: none; }
+  .route::before, .route li::after { display: none; }
+  .route li { padding: var(--s-12) 0; border: 0; border-top: var(--bw) solid var(--line); border-radius: 0; background: none; }
+  .route b { font-size: var(--fs-16); }
+  .route-stamp { display: none; }
+  .dealer .checks { font-size: var(--fs-16); }
+  /* 8–9 */
+  .faq-item summary { font-size: var(--fs-16); padding: var(--s-16); }
+}
+@media (max-width: 640px) { .tl-wait { font-size: 0; padding: 0; } .tl-dim b { white-space: normal; } }
