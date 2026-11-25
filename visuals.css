@@ -630,3 +630,43 @@
 
 .gost > span { padding: var(--s-8) var(--s-4); }
 .gost .g-title { padding-inline: var(--s-8) !important; }
+
+/* ═══ Мобильная версия ═══ */
+@media (max-width: 900px) {
+  /* первый экран: документы строкой «ИД → КС-2 → оплата» */
+  .xr-side { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-8); align-items: stretch; height: auto; margin-top: var(--s-16); }
+  .xd { position: relative; inset: auto; transform: none; padding: var(--s-8); gap: var(--s-4); }
+  .xd:not(:last-child)::after { content: none; }
+  .xd-binder { order: 1; } .xd-ks2 { order: 2; } .xd-pay { order: 3; }
+  .xd-form { font-size: calc(var(--fs-12) * 0.8); letter-spacing: 0.02em; }
+  .xd-title { font-size: var(--fs-12); }
+  .xd-table { display: none; }
+  .xd-stamp { position: static; justify-self: start; margin-top: var(--s-4); font-size: calc(var(--fs-12) * 0.8); padding: var(--bw-strong) var(--s-4); }
+  .xd-status { font-size: var(--fs-12); gap: var(--s-4); }
+  .xd-status::before { width: var(--s-24); }
+  .xd-binder { grid-template-columns: var(--s-8) 1fr; }
+  .xd-binder-body { padding: var(--s-8); gap: var(--s-4); }
+  .xd-n { font-size: var(--fs-12); }
+  .xr-art { width: 100%; }
+}
+@media (max-width: 800px) {
+  /* лист 3: акты — карусель, листается пальцем */
+  .acts { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: var(--s-12); padding-bottom: var(--s-8); margin-inline: calc(var(--s-16) * -1); padding-inline: var(--s-16); }
+  .act { flex: 0 0 78%; scroll-snap-align: start; }
+}
+@media (max-width: 640px) {
+  .tl-bar { white-space: normal; font-size: var(--fs-12); line-height: 1.15; }
+  .tl-wait { padding-right: var(--s-32); }
+  .reg-table { font-size: var(--fs-12); }
+  .reg-table th, .reg-table td { padding: var(--s-4) var(--s-8); }
+  .reg-table .num { width: auto; }
+  .reg-head b { font-size: var(--fs-12); }
+  .deck-note { font-size: var(--fs-12); }
+  .hero .lead { font-size: var(--fs-16); }
+}
+
+@media (max-width: 900px) {
+  .xr .xr-side { width: 100%; justify-self: stretch; }
+  .tl-usual { margin-top: var(--s-16); }
+  .tl-usual + .tl-row { margin-top: var(--s-24); }
+}
