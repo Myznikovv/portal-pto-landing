@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="design/components.css">
 <link rel="stylesheet" href="site.css?v=50">
 <link rel="stylesheet" href="article.css">
-<link rel="stylesheet" href="visuals.css?v=131">
+<link rel="stylesheet" href="visuals.css?v=142">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://myznikovv.github.io/portal-pto-landing/#org", "name": "ООО «БИЗНЕСТЕХНОЛОГИИ»", "alternateName": "Портал ПТО", "url": "https://myznikovv.github.io/portal-pto-landing/", "logo": "https://myznikovv.github.io/portal-pto-landing/favicon.svg", "telephone": "+7 977 753-70-70", "email": "7537070@mail.ru", "taxID": "9719009312", "address": {"@type": "PostalAddress", "streetAddress": "ул. Константина Федина, д. 13", "addressLocality": "Москва", "postalCode": "105215", "addressCountry": "RU"}}, {"@type": "WebPage", "@id": "https://myznikovv.github.io/portal-pto-landing/", "url": "https://myznikovv.github.io/portal-pto-landing/", "name": "Исполнительная документация и ПТО: АОСР из сметы", "inLanguage": "ru-RU", "about": {"@id": "https://myznikovv.github.io/portal-pto-landing/#org"}}, {"@type": "Service", "name": "Оформление исполнительной документации", "serviceType": "Исполнительная документация", "provider": {"@id": "https://myznikovv.github.io/portal-pto-landing/#org"}, "areaServed": {"@type": "Country", "name": "Россия"}, "description": "АОСР, реестры материалов, сертификаты, ведомости и исполнительные схемы собираются из сметы в один PDF-комплект."}, {"@type": "Service", "name": "Ведение ПТО на аутсорсе", "serviceType": "Услуги ПТО", "provider": {"@id": "https://myznikovv.github.io/portal-pto-landing/#org"}, "areaServed": {"@type": "Country", "name": "Россия"}, "description": "Ведём ПТО и собираем исполнительную документацию по заказу подрядчика или дилера; стоимость по прайсу от суммы заказа."}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Что входит в исполнительную документацию?", "acceptedAnswer": {"@type": "Answer", "text": "Обложка, титульный лист и общий реестр; приказы и разрешительные документы, выписки СРО; ведомость подсчёта выполненных работ; для каждого акта — АОСР, реестр материалов, исполнительные схемы и сертификаты; корешок папки и этикетка носителя. В портале всё это собирается в один PDF."}}, {"@type": "Question", "name": "Что такое АОСР и когда его оформляют?", "acceptedAnswer": {"@type": "Answer", "text": "АОСР — акт освидетельствования скрытых работ. Его оформляют на работы, которые закрываются следующими этапами: контур заземления в грунте, трубы в стяжке пола, кабель в штробе или за подвесным потолком. Акт подписывают до того, как работу закроют. В портале текст акта собирается из сметы автоматически, даты и формулировки можно поправить."}}, {"@type": "Question", "name": "Почему заказчик не подписывает КС-2 без исполнительной документации?", "acceptedAnswer": {"@type": "Answer", "text": "Исполнительная документация подтверждает, что работы выполнены по проекту и из заявленных материалов. Пока нет актов скрытых работ, реестров и сертификатов, заказчику нечем подтвердить объём в КС-2 — поэтому приёмка и оплата откладываются."}}, {"@type": "Question", "name": "Можно ли передать ведение ПТО на аутсорс?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Вы передаёте заказ, мы ведём ПТО и собираем исполнительную документацию. Это удобно подрядчикам и дилерам, которым невыгодно держать своего инженера ПТО."}}, {"@type": "Question", "name": "Сколько стоит оформление исполнительной документации?", "acceptedAnswer": {"@type": "Answer", "text": "Стоимость считается по прайсу от суммы заказа: чем больше заказ, тем ниже ставка. Пришлите смету или сумму заказа — посчитаем."}}, {"@type": "Question", "name": "Где хранятся документы по объекту?", "acceptedAnswer": {"@type": "Answer", "text": "В портале, у вашей компании: смета, акты, приказы, выписки СРО и сертификаты. Документы не пропадают, если меняется инженер ПТО, а комплект можно пересобрать после правок в смете."}}]}]}</script>
 </head>
 <body>
@@ -45,7 +45,9 @@
   <nav class="nav" aria-label="Разделы">
     <a href="#s4">Как собирается акт</a><a href="#s5">Комплект ИД</a><a href="#s7">Дилерам</a>
     <a class="btn btn-cta" href="#s9">Оставить заявку</a>
+    <button class="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="m-menu"><i></i><i></i><i></i></button>
   </nav>
+  <div class="m-menu" id="m-menu" hidden><a href="#s2">Где застревают деньги</a><a href="#s3">Пять скрытых работ</a><a href="#s4">Как собирается акт</a><a href="#s5">Комплект ИД</a><a href="#s6">Как это в портале</a><a href="#s7">ПТО на аутсорсе</a><a href="#s8">Вопросы</a></div>
 </div></div>
 
 <header class="hero" id="s1"><div class="hero-stick"><div class="container hero-grid"><div class="hero-text">
@@ -107,6 +109,18 @@
     </div>
     <div class="tl-dim" aria-hidden="true" style="--a: 55; --b: 92"><b>оплата раньше на всё время сборки ИД</b></div>
   </figure>
+  <div class="m-only m-flow">
+    <div class="m-card m-lane is-bad"><span class="m-k">Как обычно</span>
+      <ol class="m-steps"><li>Работы на объекте</li><li class="wait">Собирают ИД — оплата ждёт</li><li class="pay"><img src="assets/icons/payment.webp" alt="" width="256" height="256">Оплата — через месяц после работ</li></ol></div>
+    <div class="m-card m-lane is-good"><span class="m-k">С порталом</span>
+      <ol class="m-steps"><li>Работы + акты по ходу <em>АОСР-1…5 готовы к концу работ</em></li><li class="pay"><img src="assets/icons/payment.webp" alt="" width="256" height="256">Оплата — сразу после сдачи</li></ol></div>
+  </div>
+  <ul class="m-only m-pains">
+    <li class="m-card"><img src="assets/icons/ks2-unsigned.webp" alt="" width="256" height="256"><div><b>«Без исполнительной КС-2 не подпишем»</b><span>Акты собираются по ходу работ из сметы — комплект готов вместе с работами</span></div></li>
+    <li class="m-card"><img src="assets/icons/corrections.webp" alt="" width="256" height="256"><div><b>Одно замечание — переписывать все акты</b><span>Правите смету в одном месте — портал пересоберёт комплект</span></div></li>
+    <li class="m-card"><img src="assets/icons/certs-mail.webp" alt="" width="256" height="256"><div><b>Сертификаты по почте и флешкам</b><span>Привязаны к материалам и сами попадают в акт и PDF</span></div></li>
+    <li class="m-card"><img src="assets/icons/engineer-left.webp" alt="" width="256" height="256"><div><b>Инженер ушёл — исполнительная с ним</b><span>Всё хранится в портале у компании, а не у одного человека</span></div></li>
+  </ul>
   <ol class="fixes">
     <li><span class="fx-n"><img src="assets/icons/ks2-unsigned.webp" alt="" width="256" height="256" loading="lazy"><b>01</b></span><s>«Без исполнительной КС-2 не подпишем»</s><b>Акты собираются по ходу работ из сметы — комплект готов вместе с работами</b></li>
     <li><span class="fx-n"><img src="assets/icons/corrections.webp" alt="" width="256" height="256" loading="lazy"><b>02</b></span><s>Одно замечание — и переписывать все акты</s><b>Правите смету в одном месте — портал пересоберёт комплект</b></li>
@@ -341,6 +355,7 @@
 <g class="tag"><line class="leader" x1="2640" y1="300" x2="2880" y2="246"/><rect x="2860" y="176" width="330" height="76" rx="6"/><text class="t-num" x="2878" y="208">АОСР-5</text><text class="t-name" x="2878" y="236">Кабель в штробе к щиту</text></g>
 <g class="cover"><rect x="2610" y="170" width="48" height="230" class="cv-fill cv-plaster"/></g></g>
 </svg></div>
+  <ol class="m-only m-works"><li class="m-card"><img src="assets/photo/zazem.jpg" alt="" width="1100" height="829" loading="lazy"><div><span class="m-num">АОСР-1</span><b>Контур заземления</b><span>полоса 40×4 · 60 м</span></div><i class="m-st ok" aria-label="готово"></i></li><li class="m-card"><img src="assets/photo/gofra.jpg" alt="" width="1100" height="829" loading="lazy"><div><span class="m-num">АОСР-2</span><b>Гофротруба в стяжке</b><span>ПНД Ø25 · 120 м</span></div><i class="m-st ok" aria-label="готово"></i></li><li class="m-card"><img src="assets/photo/lotki.jpg" alt="" width="1100" height="829" loading="lazy"><div><span class="m-num">АОСР-3</span><b>Лотки за потолком</b><span>лоток 200×50 · 180 м</span></div><i class="m-st ok" aria-label="готово"></i></li><li class="m-card"><img src="assets/photo/kabel.jpg" alt="" width="1100" height="829" loading="lazy"><div><span class="m-num">АОСР-4</span><b>Кабель в лотках</b><span>ВВГнг 5×16 · 860 м</span></div><i class="m-st ok" aria-label="готово"></i></li><li class="m-card"><img src="assets/photo/shtroba.jpg" alt="" width="1100" height="829" loading="lazy"><div><span class="m-num">АОСР-5</span><b>Кабель в штробе к ЩР-1</b><span>ВВГнг 3×2,5 · 40 м</span></div><i class="m-st ok" aria-label="готово"></i></li></ol>
   <ol class="acts" id="acts"><li class="act"><img class="act-photo" src="assets/photo/zazem.jpg" alt="" width="1100" height="829" loading="lazy"><span class="act-num">АОСР-1</span><b>Устройство контура заземления</b><span>Полоса стальная оцинкованная 40×4</span><span class="act-vol">60 м</span><span class="act-docs">схема · сертификат</span></li><li class="act"><img class="act-photo" src="assets/photo/gofra.jpg" alt="" width="1100" height="829" loading="lazy"><span class="act-num">АОСР-2</span><b>Прокладка гофротрубы в стяжке пола</b><span>Труба гофрированная ПНД Ø25</span><span class="act-vol">120 м</span><span class="act-docs">схема · сертификат</span></li><li class="act"><img class="act-photo" src="assets/photo/lotki.jpg" alt="" width="1100" height="829" loading="lazy"><span class="act-num">АОСР-3</span><b>Монтаж лотков за подвесным потолком</b><span>Лоток перфорированный 200×50</span><span class="act-vol">180 м</span><span class="act-docs">схема · сертификат</span></li><li class="act"><img class="act-photo" src="assets/photo/kabel.jpg" alt="" width="1100" height="829" loading="lazy"><span class="act-num">АОСР-4</span><b>Прокладка кабеля в лотках</b><span>Кабель ВВГнг(А)-LS 5×16</span><span class="act-vol">860 м</span><span class="act-docs">схема · сертификат</span></li><li class="act"><img class="act-photo" src="assets/photo/shtroba.jpg" alt="" width="1100" height="829" loading="lazy"><span class="act-num">АОСР-5</span><b>Прокладка кабеля в штробе до щита ЩР-1</b><span>Кабель ВВГнг(А)-LS 3×2,5</span><span class="act-vol">40 м</span><span class="act-docs">схема · сертификат</span></li></ol>
 </div></div></section>
 
@@ -355,6 +370,15 @@
       <li><button type="button" class="asm-step"><b>Текст АОСР</b><span>Текст акта собирается автоматически, даты и формулировки можно поправить.</span></button></li>
       <li><button type="button" class="asm-step"><b>Печать и комплект</b><span>Акты складываются в итоговый комплект ИД одним PDF.</span></button></li>
     </ol>
+  </div>
+  <div class="m-only m-flow">
+    <div class="m-card m-row"><img src="assets/icons/binder.webp" alt="" width="256" height="256"><div><span class="m-k">Смета · поз. 14</span><b>Монтаж лотков 200×50 за потолком</b><span>180 м — уходит в пункты 1 и 3 акта</span></div></div><i class="m-arrow" aria-hidden="true"></i>
+    <div class="m-card m-row"><img src="assets/icons/certificate.webp" alt="" width="256" height="256"><div><span class="m-k">Материал</span><b>Лоток перфорированный 200×50</b><span>сертификат приложен</span></div></div><i class="m-arrow" aria-hidden="true"></i>
+    <div class="m-card m-row"><img src="assets/icons/ks2-unsigned.webp" alt="" width="256" height="256"><div><span class="m-k">Приказы и участники</span><b>Заказчик, подрядчик, стройконтроль</b><span>реквизиты и выписки СРО подставлены</span></div></div><i class="m-arrow" aria-hidden="true"></i>
+    <div class="m-card m-act"><span class="m-k">ДЕМО-01-ЭОМ</span><b>Акт освидетельствования скрытых работ № 3</b>
+      <ul><li><span>Работы</span>Монтаж лотков, 180 м</li><li><span>Материал</span>Лоток 200×50 — сертификат</li><li><span>Документы</span>Схема, фото</li></ul>
+      <div class="m-signs"><img src="assets/icons/sign-1.webp" alt="" width="480" height="112"><img src="assets/icons/sign-2.webp" alt="" width="480" height="180"><img src="assets/icons/sign-3.webp" alt="" width="480" height="102"></div>
+      <img class="m-stamp" src="assets/icons/stamp-ok.webp" alt="" width="256" height="256"></div>
   </div>
   <div class="build" aria-label="Пример: строка сметы превращается в акт скрытых работ (данные демонстрационные)">
     <div class="asm-src" aria-hidden="true">
@@ -393,6 +417,13 @@
   <span class="sheet">Лист 5 из 9 · состав исполнительной документации</span>
   <h2 class="head2"><span class="sr-only">Весь комплект ИД в одном файле</span><span aria-hidden="true" class="display" data-scramble="Весь комплект ИД">Весь комплект ИД</span><span aria-hidden="true" class="display is-accent">в одном файле</span></h2>
   <p class="lead">Порядок листов собирается автоматически. Если не хватает приложения, сборка скажет об этом, а не пропустит молча.</p>
+  <div class="m-only m-flow">
+    <div class="m-card m-row"><span class="m-stack " aria-hidden="true"><i></i><i></i><i><b>Ведомость</b></i></span><div><span class="m-pill">Общая часть</span><span>Обложка, титул, реестр, приказы, СРО, ведомость</span></div><i class="m-st ok" aria-label="готово"></i></div><i class="m-arrow" aria-hidden="true"></i>
+    <div class="m-card m-row"><span class="m-stack " aria-hidden="true"><i></i><i></i><i><b>АОСР-1</b></i></span><div><span class="m-pill">АОСР-1 · заземление</span><span>Акт, реестр материалов, схема, сертификат</span></div><i class="m-st ok" aria-label="готово"></i></div><i class="m-arrow" aria-hidden="true"></i>
+    <div class="m-card m-row is-warn"><span class="m-stack warn" aria-hidden="true"><i></i><i></i><i><b>Сертификат</b></i></span><div><span class="m-pill warn">АОСР-2 · гофротруба</span><span>Нет сертификата на трубу ПНД Ø25 — лист 14</span></div><i class="m-st warn" aria-label="не хватает"></i></div><i class="m-arrow" aria-hidden="true"></i>
+    <div class="m-card m-row is-pdf"><img src="assets/icons/binder.webp" alt="" width="256" height="256"><div><b class="m-file">ДЕМО-01-ЭОМ.pdf</b><span>весь комплект одним файлом</span></div><i class="m-st ok" aria-label="готово"></i></div>
+    <div class="m-tip"><svg class="m-bulb" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.6.5 1.1 1.2 1.1 2V17h5v-1.2c0-.8.5-1.5 1.1-2A6 6 0 0 0 12 3z"/></svg><div><b>Подсказка сборки</b><span>АОСР-2: нет сертификата на трубу ПНД Ø25 — добавьте файл к материалу, и лист 14 встанет на место.</span></div></div>
+  </div>
   <figure class="deck-wrap" id="kit" aria-label="Пример комплекта ИД: общая часть, затем по каждому акту — АОСР, реестр материалов, схема и сертификат; у АОСР-2 не хватает сертификата, сборка подсказывает это">
     <div class="deck-scroll"><ol class="deck">
       <li class="hand" style="--g:0"><span class="hand-tab">Общая часть</span><ol class="hand-cards"><li class="pg pg-cover" style="--i:0; --k:6"><em>Исполнительная документация</em><b>ДЕМО-01-ЭОМ</b><em>Том 1</em><u>01</u></li><li class="pg pg-text" style="--i:1; --k:6"><b>Титульный лист</b><i></i><i></i><i></i><i></i><i></i><u>02</u></li><li class="pg pg-table" style="--i:2; --k:6"><b>Реестр ИД</b><span class="pg-grid"></span><u>03</u></li><li class="pg pg-text" style="--i:3; --k:6"><b>Приказы</b><i></i><i></i><i></i><i></i><i></i><u>04</u></li><li class="pg pg-text" style="--i:4; --k:6"><b>Выписка СРО</b><i></i><i></i><i></i><i></i><i></i><u>05</u></li><li class="pg pg-table" style="--i:5; --k:6"><b>Ведомость работ</b><span class="pg-grid"></span><u>06</u></li></ol></li>
@@ -558,6 +589,6 @@
 </div></footer>
 
 <script src="main.js?v=97"></script>
-<script src="visuals.js?v=97"></script>
+<script src="visuals.js?v=140"></script>
 </body>
 </html>

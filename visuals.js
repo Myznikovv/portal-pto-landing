@@ -178,6 +178,15 @@
     }
   }
 
+  // Бургер-меню на телефоне
+  const burger = document.querySelector('.burger'), menu = document.getElementById('m-menu')
+  if (burger && menu) {
+    const toggle = open => { menu.hidden = !open; burger.setAttribute('aria-expanded', String(open)) }
+    burger.addEventListener('click', () => toggle(menu.hidden))
+    menu.addEventListener('click', e => { if (e.target.closest('a')) toggle(false) })
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') toggle(false) })
+  }
+
   // Заявка: что вводят в форму, сразу появляется в основной надписи листа; после отправки ставится печать
   const form = document.getElementById('form')
   const stamp = document.getElementById('req-stamp')
