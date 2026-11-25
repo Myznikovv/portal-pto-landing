@@ -117,7 +117,7 @@
   document.querySelectorAll('[data-topic]').forEach(button => button.addEventListener('click', () => setTimeout(sync)))
   // Печать — когда main.js сообщил об успешной отправке (сообщение есть и это не ошибка)
   new MutationObserver(() => {
-    const ok = Boolean(message.textContent) && !message.classList.contains('is-error')
+    const ok = /^(Заявка отправлена|Открыли письмо)/.test(message.textContent) && !message.classList.contains('is-error')
     stamp.classList.toggle('is-pending', !ok)
     stamp.classList.toggle('is-stamped', ok)
   }).observe(message, { childList: true, characterData: true, subtree: true, attributes: true })

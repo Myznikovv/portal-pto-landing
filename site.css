@@ -223,3 +223,6 @@ main { overflow-x: clip; }
 /* Заголовки с перебором букв: ширину держит настоящая буква, случайная — поверх */
 .sc { position: relative; -webkit-text-fill-color: transparent; }
 .sc::after { content: attr(data-g); position: absolute; left: 50%; top: 0; transform: translateX(-50%); -webkit-text-fill-color: currentColor; }
+
+/* Поле-ловушка для ботов: людям не видно, читалкам экрана не объявляется */
+.trap { position: absolute; left: -9999em; width: 1px; height: 1px; overflow: hidden; }

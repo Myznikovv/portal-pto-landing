@@ -3,8 +3,9 @@ const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches
 const $ = (selector, root = document) => root.querySelector(selector)
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)]
 
-// ── Куда уходят заявки. Пусто — открывается письмо в почте посетителя. Адрес приёма заявок (скрипт/CRM) укажет владелец сайта
-const LEAD_ENDPOINT = ''
+// ── Куда уходят заявки: gateway портала пересылает их ботом в чат MAX (backend: gateway/src/modules/landing-leads).
+// Пусто — открывается письмо в почте посетителя
+const LEAD_ENDPOINT = 'https://82.146.32.241/api/v1/landing/leads'
 const LEAD_EMAIL = '7537070@mail.ru'
 
 // ── Заголовок «собирается»: буквы сходятся слева направо. Настоящий текст уже в разметке (sr-only) и остаётся после анимации
@@ -120,7 +121,17 @@ form.addEventListener('submit', async event => {
     return
   }
   try {
-    const response = await fetch(LEAD_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+    const button = form.querySelector('button[type="submit"]')
+    button.disabled = true
+    message.textContent = 'Отправляем…'
+    const response = await fetch(LEAD_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...data, page: location.href }) })
+      .finally(() => { button.disabled = false })
+    if (response.status === 400) {
+      const problem = await response.json().catch(() => ({}))
+      message.classList.add('is-error')
+      message.textContent = problem.message || 'Проверьте имя и телефон.'
+      return
+    }
     if (!response.ok) throw new Error(String(response.status))
     form.reset()
     message.textContent = 'Заявка отправлена. Ответим в рабочее время.'
