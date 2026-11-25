@@ -124,7 +124,8 @@ form.addEventListener('submit', async event => {
     const button = form.querySelector('button[type="submit"]')
     button.disabled = true
     message.textContent = 'Отправляем…'
-    const response = await fetch(LEAD_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...data, page: location.href }) })
+    // urlencoded — «простой» запрос без preflight: портал за nginx/Next не отвечает на OPTIONS заголовками CORS
+    const response = await fetch(LEAD_ENDPOINT, { method: 'POST', body: new URLSearchParams({ ...data, page: location.href }) })
       .finally(() => { button.disabled = false })
     if (response.status === 400) {
       const problem = await response.json().catch(() => ({}))
