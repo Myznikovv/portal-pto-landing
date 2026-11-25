@@ -295,13 +295,7 @@
 /* Фон первого экрана: тёплая «калька» и изометрическая разметка площадки под комплексом (в тон аксонометрии, не клетка) */
 .hero { background-color: var(--paper); }
 .hero::after { background: linear-gradient(transparent, var(--bg)); }
-.hero-shot::before { content: ''; position: absolute; inset: -12% -8% -18% -14%; z-index: -1; pointer-events: none;
-  background:
-    repeating-linear-gradient(30deg, transparent 0 calc(var(--grid-step) - var(--bw)), color-mix(in srgb, var(--link) 14%, transparent) calc(var(--grid-step) - var(--bw)) var(--grid-step)),
-    repeating-linear-gradient(-30deg, transparent 0 calc(var(--grid-step) - var(--bw)), color-mix(in srgb, var(--link) 14%, transparent) calc(var(--grid-step) - var(--bw)) var(--grid-step)),
-    radial-gradient(closest-side, var(--bg), transparent);
-  -webkit-mask: radial-gradient(ellipse 55% 50% at 45% 62%, var(--ink) 35%, transparent 100%);
-          mask: radial-gradient(ellipse 55% 50% at 45% 62%, var(--ink) 35%, transparent 100%); }
+
 .hero-shot { isolation: isolate; }
 .xd { box-shadow: var(--shadow-screen), 0 0 0 var(--bw) color-mix(in srgb, var(--line) 50%, transparent); }
 
@@ -424,3 +418,35 @@
 .hand { position: relative; }
 .hand:not(:first-child)::after, .pg-pdf::after { content: '→'; position: absolute; left: calc(var(--s-16) * -1); top: 42%; transform: translateX(-50%); color: var(--muted); font: 600 var(--fs-18)/1 var(--font-mono); }
 .pg-pdf { position: relative; }
+
+/* ═══ Иконки из Higgsfield (assets/icons) ═══ */
+.tl-pin { width: var(--s-64); height: var(--s-64); border: 0; border-radius: 0; background: none; bottom: calc(100% + var(--s-8)); }
+.tl-pin img { width: 100%; height: 100%; object-fit: contain; }
+.tl-pin b { position: absolute; right: calc(var(--s-4) * -1); top: calc(var(--s-4) * -1); display: grid; place-items: center; width: var(--s-24); aspect-ratio: 1; border-radius: 50%;
+  background: var(--cta); color: var(--on-dark); font: 700 var(--fs-12)/1 var(--font-mono); }
+.tl-pin::after { height: var(--s-8); border-left-style: dashed; }
+.tl-pay { width: var(--s-64); background: none; box-shadow: none; }
+.tl-pay img { width: 100%; height: auto; }
+.fx-n { position: relative; width: var(--s-64); height: var(--s-64); border: 0; border-radius: 0; }
+.fx-n img { width: 100%; height: 100%; object-fit: contain; }
+.fx-n b { position: absolute; right: calc(var(--s-4) * -1); top: calc(var(--s-4) * -1); display: grid; place-items: center; width: var(--s-24); aspect-ratio: 1; border-radius: 50%;
+  background: var(--cta); color: var(--on-dark); font: 700 var(--fs-12)/1 var(--font-mono); }
+.xd-status::before { content: ''; width: var(--s-32); background: url("assets/icons/payment.webp") center / contain no-repeat; border-radius: 0; }
+.act::after { content: ''; width: var(--s-32); height: var(--s-32); border: 0; border-radius: 0; background: url("assets/icons/stamp-ok.webp") center / contain no-repeat; top: var(--s-4); right: var(--s-4); }
+.pg-pic { display: block; width: 86%; margin: var(--s-8) auto 0; height: auto; }
+.pg-cert { outline: 0; }
+.pg-missing .pg-pic { opacity: 0.35; filter: grayscale(1); }
+.pg-missing .pg-warn { top: 64%; }
+.pg-seal { right: var(--s-8); bottom: var(--s-24); width: var(--s-48); height: auto; border: 0; outline: 0; border-radius: 0; transform: rotate(-10deg); }
+.pdf-file { width: calc(var(--pg-w) * 1.05); aspect-ratio: 1; padding: 0; border: 0; background: none; clip-path: none; place-items: center; position: relative; }
+.pdf-file::after { content: none; }
+.pdf-file img { width: 100%; height: auto; }
+.pdf-file b { position: absolute; right: 8%; bottom: 14%; transform: rotate(-6deg); box-shadow: 0 0 0 var(--bw-strong) var(--card); }
+.reg-ic { width: var(--s-96); height: auto; margin-bottom: var(--s-8); }
+/* Фон первого экрана: «калька» с чертежами, растворяется к краям и под текстом */
+.hero { background-color: var(--paper); }
+.hero::before { content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0.4;
+  background: url("assets/hero/blueprint.webp") 100% 60% / cover no-repeat;
+  -webkit-mask: linear-gradient(90deg, transparent 0, var(--ink) 38%, var(--ink) 82%, transparent 100%), linear-gradient(transparent 0, var(--ink) 15%, var(--ink) 75%, transparent 100%);
+  mask: linear-gradient(90deg, transparent 0, var(--ink) 38%, var(--ink) 82%, transparent 100%), linear-gradient(transparent 0, var(--ink) 15%, var(--ink) 75%, transparent 100%);
+  -webkit-mask-composite: source-in; mask-composite: intersect; }
